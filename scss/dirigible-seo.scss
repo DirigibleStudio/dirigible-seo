@@ -1,0 +1,36 @@
+#ds-editor-seo-preview .ds-seo-preview {
+  span {
+    display: block;
+    font-style: normal;
+    line-height: 1.33;
+    &.title {
+      margin-bottom: 4px;
+      font-size: 15px;
+      color: #1a0dab;
+    }
+    &.link {
+      font-size: 11px;
+      margin-bottom: 4px;
+      color: #006621;
+    }
+    &.excerpt {
+      font-size: 11px;
+      margin-bottom: 0px;
+      color: #545454;
+    }
+  }
+}
+
+.term-php #ds-editor-seo-preview {
+  display: block;
+  width: 200%;
+  .ds-seo-preview {
+    background: white;
+    border-radius: 5px;
+    padding: 24px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(0,0,0,.2);
+  }
+} 
