@@ -17,6 +17,24 @@
 		"oAP": "/.gitattributes",
 		"oF": 0
 		},
+	"/css/dirigible-seo.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/css/dirigible-seo-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/dirigible-seo.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/dirigible-seo.php",
+		"oF": 0
+		},
 	"/scss/dirigible-seo.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -29,6 +47,14 @@
 		"oF": 3,
 		"oS": 0,
 		"uL": 1
+		},
+	"/src/DirigibleSEO.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/src/DirigibleSEO.php",
+		"oF": 0
 		}
 	},
 "hooks": [
