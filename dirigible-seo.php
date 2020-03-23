@@ -10,4 +10,5 @@
 
 defined( 'ABSPATH' ) OR exit;
 require_once 'src/DirigibleSEO.php';
+require_once 'src/ajax.php';
 $SEO = new DirigibleSEO(__FILE__);
