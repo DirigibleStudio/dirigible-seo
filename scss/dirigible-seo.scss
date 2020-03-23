@@ -1,3 +1,7 @@
+@import '../../themes/dirigible/scss/abstracts/variables';
+@import '../../themes/dirigible/scss/abstracts/icons';
+@import '../../themes/dirigible/scss/abstracts/mixins';
+
 #ds-editor-seo-preview .ds-seo-preview {
   span {
     display: block;
@@ -33,4 +37,48 @@
     margin-bottom: 32px;
     border: 1px solid rgba(0,0,0,.2);
   }
-} 
+}
+
+
+.dirigible-seo-page {
+  $lt-gray : #2ecc71;
+  $red: #e74c3c;
+  h1 {
+    margin-bottom: $u4;
+  }
+  .dirigible-seo-tools {
+    .tool {
+      box-sizing: border-box;
+      padding: $u4;
+      background: #fff;;
+      max-width: 400px;
+      min-width: 100%;
+      margin: 0px 1% 1% 0px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.1);
+      @include break(700px) {
+        min-width: 49%;
+        max-width: none;
+        width: 49%;
+      }
+      input {
+        margin-bottom: 0px;
+      }
+      h3 {
+        margin-top: 0px;
+      }
+    }
+    .notification {
+      margin-top: $u3;
+      background: $lt-gray;
+      border-radius: 3px;
+      padding: $u2;
+      color: #fff;
+      p { margin: 0px;  }
+      a { color: #fff !important; }
+      &.error {
+        background: $red;
+      }
+    }
+  }
+}

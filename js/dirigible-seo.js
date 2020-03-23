@@ -51,4 +51,24 @@ jQuery(document).ready(function( $ ) {
     return urlparameter;
   }
 
+
+  $('#ds-migrate-yoast').on( "click", function() {
+		var $this = $(this);
+		var $section = $this.parent('.tool');
+		var $button = $section.find('.button');
+		$section.find('.notification').remove();
+		var data = {
+	    'action': 'ds_migrate_yoast',
+		};
+		$.post(ajaxurl, data, function(response) {
+      console.log(response);
+			var json = JSON.parse(response);
+			json.forEach(function(entry) {
+			 	$section.append(entry);
+			});
+		});
+	});
+
+
+
 });

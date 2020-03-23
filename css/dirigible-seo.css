@@ -1,3 +1,7 @@
+/* Variables
+***************************************/
+/* Dirigible Mixins
+***************************************/
 #ds-editor-seo-preview .ds-seo-preview span {
   display: block;
   font-style: normal;
@@ -26,3 +30,38 @@
     max-width: 500px;
     margin-bottom: 32px;
     border: 1px solid rgba(0, 0, 0, 0.2); }
+
+.dirigible-seo-page h1 {
+  margin-bottom: 32px; }
+
+.dirigible-seo-page .dirigible-seo-tools .tool {
+  box-sizing: border-box;
+  padding: 32px;
+  background: #fff;
+  max-width: 400px;
+  min-width: 100%;
+  margin: 0px 1% 1% 0px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+  @media screen and (min-width: 700px) {
+    .dirigible-seo-page .dirigible-seo-tools .tool {
+      min-width: 49%;
+      max-width: none;
+      width: 49%; } }
+  .dirigible-seo-page .dirigible-seo-tools .tool input {
+    margin-bottom: 0px; }
+  .dirigible-seo-page .dirigible-seo-tools .tool h3 {
+    margin-top: 0px; }
+
+.dirigible-seo-page .dirigible-seo-tools .notification {
+  margin-top: 24px;
+  background: #2ecc71;
+  border-radius: 3px;
+  padding: 16px;
+  color: #fff; }
+  .dirigible-seo-page .dirigible-seo-tools .notification p {
+    margin: 0px; }
+  .dirigible-seo-page .dirigible-seo-tools .notification a {
+    color: #fff !important; }
+  .dirigible-seo-page .dirigible-seo-tools .notification.error {
+    background: #e74c3c; }

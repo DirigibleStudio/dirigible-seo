@@ -20,7 +20,7 @@ class DirigibleSEO {
         add_action( 'admin_notices', [ $this, 'nagYoast' ] );
       }
       add_action('wp_head', [ $this, 'readerHeaderHook' ], 1);
-
+      add_action( 'admin_menu', [ $this, 'registerToolsPages' ], 11 );
     }
   }
 
@@ -137,12 +137,12 @@ class DirigibleSEO {
 
   public function nagYoast() {
     $warning = "It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. You can, however, still set up your SEO data while both are active.";
-    printf("<div class='notice notice-error'><h1>Dirigible SEO Yoast Warning</h1><p>{$warning}</p></div>");
+    printf("<div class='notice notice-error is-dismissable'><h2>Dirigible SEO Yoast Warning</h2><p>{$warning}</p></div>");
   }
 
   public function nagACF() {
     $warning = "Dirigible SEO requires <a href='https://www.advancedcustomfields.com/'>Advanced Custom Fields Pro</a> for SEO functionality. Please install ACF. (And... let's be real, you should be using ACF anyway!)";
-    printf("<div class='notice notice-error'><h1>SEO Warning</h1><p>{$warning}</p></div>");
+    printf("<div class='notice notice-error'><h2>SEO Warning</h2><p>{$warning}</p></div>");
   }
 
   public function registerStyle() {
@@ -151,7 +151,7 @@ class DirigibleSEO {
   }
 
   public function registerScripts() {
-    wp_register_script( 'dirigible-seo-js', plugins_url('dirigible-seo/js/dirigible-seo-min.js'), ['jquery'], NULL, true);
+    wp_register_script( 'dirigible-seo-js', plugins_url('dirigible-seo/js/dirigible-seo.js'), ['jquery'], NULL, true);
     wp_enqueue_script('dirigible-seo-js');
   }
 
@@ -232,6 +232,44 @@ class DirigibleSEO {
       'active' => true,
     ];
     acf_add_local_field_group($SEO_fields);
+  }
+
+  public function registerToolsPages() {
+    if ( empty ( $GLOBALS['admin_page_hooks']['dirigibleAdminPage'] ) ) {
+  		$icon = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDYuNDQgMTgzLjg1Ij4KICA8cGF0aCBzdHJva2U9Im5vbmUiIGZpbGw9IndoaXRlIiBkPSJNMTMuMzQsMTYyLjYzbDQwLjM4LTUyLjM4TDAsNzAuNDNjNi4xMi0xLDEwLjczLTEuNzYsMTUuMzctMi40MUM0MC41Niw2NC41NCw2NS43OCw2MS4xNyw5MSw1Ny41NGExMCwxMCwwLDAsMSw4LjU5LDIuNTFjMy4zMiwyLjc1LDYuODgsNi45NCwxMC41LDcuMTFTMTE3LjM2LDYzLjI3LDEyMSw2MUMxNDUuMjIsNDUuNDQsMTcxLjc5LDM0Ljg4LDE5OSwyNS44NWMzMS43OC0xMC41NCw2NC4xOS0xOC42NCw5Ny40NC0yMi44QzMyOS0xLDM2MS42LTIuNCwzOTMuMzYsNy44MmExMDMuNDksMTAzLjQ5LDAsMCwxLDI4LDEzLjcxYzI2LjU1LDE4Ljg4LDM3LDU3LDYuMTksODguODgtMTYuNTgsMTcuMTgtMzYuOTQsMjguMDktNTguODMsMzYuNzNhMTMuNCwxMy40LDAsMCwwLTUuOTEsNS4yNGMtMi42Miw0LjIzLTQuMjYsOS4wNi02LjkzLDEzLjI1YTEwLjA2LDEwLjA2LDAsMCwxLTUuOTUsNC4yNWMtMjYuNjcsNC43NC01My40LDkuMTEtODAuMDgsMTMuODEtMy4zMS41OC00LjgzLS4zNi02LjI1LTMuMTEtMi42OC01LjE3LTUuNDktMTAuMy04LjYzLTE1LjE5YTcuMzIsNy4zMiwwLDAsMC00Ljg4LTMuMWMtNDMuNTMtMi05NC45NC0xMS45MS0xMjguODktMjguMTMtMy40Niw0LjI4LTYuODUsOC44LTEwLjYyLDEzYTEwLjU3LDEwLjU3LDAsMCwxLTUuNjgsMy40MkM3NS4zMiwxNTQuODMsNDUuNjgsMTU4LjksMTYsMTYzQTE3LjE5LDE3LjE5LDAsMCwxLDEzLjM0LDE2Mi42M1oiLz4KPC9zdmc+Cg==";
+  		add_menu_page(
+  			'Dirigible Options', // Page Title
+  			'Dirigible', // Menu Title
+  			'manage_options', // Capability
+  			'dirigible/tools', // menu_slug
+  			'dirigibleAdminPage', // page content
+  			'data:image/svg+xml;base64,' . $icon, // icon
+  			99 // position
+  		);
+  	}
+    add_submenu_page(
+  		'dirigible/tools', // parent slug
+  		'Dirigible SEO', // page_title
+  		'SEO', // menu title
+  		'manage_options', // capability
+  		'dirigibleSEO', // slug
+  		[$this, 'adminPage'] // output function
+  	);
+  }
+
+  public function adminPage() {
+    ?>
+    <div class='wrap dirigible-seo-page'>
+      <h1>Dirigible SEO</h1>
+      <div class="dirigible-seo-tools">
+        <div class="tool">
+          <h3>Migrate Yoast Data</h3>
+          <p>Transfer data from Yoast to Dirigible SEO. This will overwrite any conflicting data, so use with caution!</p>
+          <a class='button' id='ds-migrate-yoast'>Migrate</a>
+        </div>
+      </div>
+    </div>
+    <?php
   }
 
 }
