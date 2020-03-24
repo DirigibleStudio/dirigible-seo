@@ -5,10 +5,7 @@ class DirigibleSEO {
   public $yoast = false;
 
   function __construct($args) {
-    if ( !is_plugin_active('advanced-custom-fields-pro/acf.php') ) {
-      add_action( 'admin_notices', [ $this, 'nagACF' ] );
-    }
-    else {
+    if ( is_plugin_active('advanced-custom-fields-pro/acf.php') || is_plugin_active('advanced-custom-fields/acf.php') ) {
       $this->path = $args;
       if ( is_plugin_active('wordpress-seo/wp-seo.php') ) {
         $this->yoast = true;
@@ -22,7 +19,12 @@ class DirigibleSEO {
       add_action('wp_head', [ $this, 'readerHeaderHook' ], 1);
       add_action( 'admin_menu', [ $this, 'registerToolsPages' ], 11 );
     }
+    else {
+      add_action( 'admin_notices', [ $this, 'nagACF' ] );
+    }
   }
+
+
 
   public function readerHeaderHook() {
     echo '<!-- Dirigible SEO -->';
@@ -142,7 +144,7 @@ class DirigibleSEO {
   }
 
   public function nagACF() {
-    $warning = "Dirigible SEO requires <a href='https://www.advancedcustomfields.com/'>Advanced Custom Fields Pro</a> for SEO functionality. Please install ACF. (And... let's be real, you should be using ACF anyway!)";
+    $warning = "Dirigible SEO requires <a href='https://www.advancedcustomfields.com/'>Advanced Custom Fields</a> for SEO functionality. Please install ACF. (Let's be real, you should be using ACF anyway!)";
     printf("<div class='notice notice-error'><h2>SEO Warning</h2><p>{$warning}</p></div>");
   }
 

@@ -9,12 +9,7 @@
 */
 
 defined( 'ABSPATH' ) OR exit;
-if ( ! function_exists( 'is_plugin_active' ) ) {
-    function is_plugin_active( $plugin ) {
-        return in_array( $plugin, (array) get_option( 'active_plugins', array() ) );
-    }
-}
-
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 require_once 'src/DirigibleSEO.php';
 require_once 'src/ajax.php';
 $SEO = new DirigibleSEO(__FILE__);
