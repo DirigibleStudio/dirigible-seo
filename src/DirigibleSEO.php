@@ -243,7 +243,7 @@ class DirigibleSEO {
   			'Dirigible', // Menu Title
   			'manage_options', // Capability
   			'dirigible/tools', // menu_slug
-        [$this, 'dirigibleAdminPage'], // output function 
+        [$this, 'dirigibleAdminPage'], // output function
   			'data:image/svg+xml;base64,' . $icon, // icon
   			99 // position
   		);
@@ -260,7 +260,7 @@ class DirigibleSEO {
 
   public function dirigibleAdminPage() {
     ?>
-    <div class='wrap dirigible-seo-page'>
+    <div class='wrap dirigible-admin-page'>
       <h1>Dirigible Studio</h1>
       <div class="dirigible-seo-tools">
         <p>For more information, please visit <a href="http://dirigiblestudio.com">Dirigible Studio</a>.</p>

@@ -31,17 +31,20 @@
     margin-bottom: 32px;
     border: 1px solid rgba(0, 0, 0, 0.2); }
 
-.dirigible-seo-page h1 {
+.dirigible-seo-page h1,
+.dirigible-admin-page h1 {
   margin-bottom: 32px;
   background: white;
   padding: 32px;
   line-height: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   @media screen and (min-width: 600px) {
-    .dirigible-seo-page h1 {
+    .dirigible-seo-page h1,
+    .dirigible-admin-page h1 {
       margin: -8px -19px 24px -20px; } }
 
-.dirigible-seo-page .dirigible-seo-tools .tool {
+.dirigible-seo-page .dirigible-seo-tools .tool,
+.dirigible-admin-page .dirigible-seo-tools .tool {
   box-sizing: border-box;
   padding: 32px;
   background: #fff;
@@ -51,29 +54,37 @@
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.1); }
   @media screen and (min-width: 700px) {
-    .dirigible-seo-page .dirigible-seo-tools .tool {
+    .dirigible-seo-page .dirigible-seo-tools .tool,
+    .dirigible-admin-page .dirigible-seo-tools .tool {
       min-width: 49%;
       max-width: none;
       width: 49%; } }
-  .dirigible-seo-page .dirigible-seo-tools .tool input {
+  .dirigible-seo-page .dirigible-seo-tools .tool input,
+  .dirigible-admin-page .dirigible-seo-tools .tool input {
     margin-bottom: 0px; }
-  .dirigible-seo-page .dirigible-seo-tools .tool h3 {
+  .dirigible-seo-page .dirigible-seo-tools .tool h3,
+  .dirigible-admin-page .dirigible-seo-tools .tool h3 {
     margin-top: 0px; }
 
-.dirigible-seo-page .dirigible-seo-tools .notification {
+.dirigible-seo-page .dirigible-seo-tools .notification,
+.dirigible-admin-page .dirigible-seo-tools .notification {
   margin-top: 24px;
   background: #2ecc71;
   border-radius: 3px;
   padding: 16px;
   color: #fff; }
-  .dirigible-seo-page .dirigible-seo-tools .notification h3 {
+  .dirigible-seo-page .dirigible-seo-tools .notification h3,
+  .dirigible-admin-page .dirigible-seo-tools .notification h3 {
     margin-bottom: 4px;
     color: #fff; }
-  .dirigible-seo-page .dirigible-seo-tools .notification p {
+  .dirigible-seo-page .dirigible-seo-tools .notification p,
+  .dirigible-admin-page .dirigible-seo-tools .notification p {
     margin: 0px; }
-  .dirigible-seo-page .dirigible-seo-tools .notification a {
+  .dirigible-seo-page .dirigible-seo-tools .notification a,
+  .dirigible-admin-page .dirigible-seo-tools .notification a {
     color: #fff !important; }
-  .dirigible-seo-page .dirigible-seo-tools .notification.error {
+  .dirigible-seo-page .dirigible-seo-tools .notification.error,
+  .dirigible-admin-page .dirigible-seo-tools .notification.error {
     border-left: 0px solid white;
     border: 1px solid #d62c1a;
     margin-bottom: 0px;
