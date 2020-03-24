@@ -136,8 +136,9 @@ class DirigibleSEO {
   }
 
   public function nagYoast() {
-    $warning = "It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. You can, however, still set up your SEO data while both are active.";
-    printf("<div class='notice notice-error is-dismissable'><h2>Dirigible SEO Yoast Warning</h2><p>{$warning}</p></div>");
+    $link = menu_page_url("dirigibleSEO", false);
+    $warning = "<p>It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. In the meantime, you can still set up your Dirigible SEO data.</p><p>If you already have Yoast metadata set up, you can <a href='$link'>use our migration tool</a> to move your data from Yoast to Dirigible SEO.</p>";
+    printf("<div class='notice notice-error is-dismissable'><h2>Dirigible SEO and Yoast are both active.</h2>{$warning}</div>");
   }
 
   public function nagACF() {
