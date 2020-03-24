@@ -24,8 +24,6 @@ class DirigibleSEO {
     }
   }
 
-
-
   public function readerHeaderHook() {
     echo '<!-- Dirigible SEO -->';
     if($this->yoast) { echo "<!--\n"; } // comment it out if yoast is active
