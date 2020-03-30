@@ -28,8 +28,8 @@ class DirigibleSEO {
     echo '<!-- Dirigible SEO -->';
     if($this->yoast) { echo "<!--\n"; } // comment it out if yoast is active
     if($this->yoast) { echo "Please deactivate Yoast SEO in order to use Dirigible SEO.\n"; } // comment it out if yoast is active
-    $title = $this->metaTitle();
-    $description = $this->metaDescription();
+    $title = $this->stringFilters($this->metaTitle());
+    $description = $this->stringFilters($this->metaDescription());
     $link = get_the_permalink();
     $name = get_bloginfo('name');
     echo '<meta property="og:title" content="'.$title.'">';
@@ -45,6 +45,20 @@ class DirigibleSEO {
     echo '<!-- End Dirigible SEO -->';
   }
 
+  public function stringFilters($str) {
+    if (strpos($str, '{') !== false) {
+      $term = get_queried_object();
+      $title = get_the_title();
+      if( isset($term) ){
+        $title = $term->name;
+      }
+      $site = get_bloginfo( 'name' );
+      $str = str_replace(['{Title}', '{title}'], $title, $str);
+      $str = str_replace(['{Site}', '{site}'], $site, $str);
+    }
+    return $str;
+  }
+
   public function metaDescription() {
     $seoDescription = "";
 		$term = get_queried_object();
@@ -56,7 +70,6 @@ class DirigibleSEO {
 		elseif( isset($term) ){
 			if(function_exists('is_shop')) {
 				if( is_shop() ) {
-
 					$shop = get_option( 'woocommerce_shop_page_id' );
 					$seoDescription = get_field('ds_seo_description', $shop);
 					if($seoDescription) { return $seoDescription;	}
@@ -178,7 +191,8 @@ class DirigibleSEO {
           'name' => 'ds_seo_title',
           'type' => 'text',
           'wrapper' => [ 'id' => 'ds-editor-seo-title'],
-          'placeholder' => $default_title,
+          'placeholder' => '{title} - {site}',
+          'default' => '{title} - {site}',
           'maxlength' => 70,
         ],
         [

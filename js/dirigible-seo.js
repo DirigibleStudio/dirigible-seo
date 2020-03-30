@@ -18,13 +18,15 @@ jQuery(document).ready(function( $ ) {
   function getPreviewSEO($box) {
     var $preview = $('<div class="ds-seo-preview"></div>');
     var title = $('#ds-editor-seo-title').find('input').val();
+    var url = window.location.href;
     var description = $('#ds-editor-seo-description').find('textarea').val();
     var id = getUrlParam('post','-1');
     var data = {
 	    'action': 'dsGetPreviewSEO',
       'page_id': id,
 	    'seo_title':  title,
-      'seo_description':  description
+      'seo_description':  description,
+      'editing_URL' : url
 		};
     $.post(ajaxurl, data, function(response) {
 			var json = JSON.parse(response);

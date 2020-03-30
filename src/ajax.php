@@ -9,18 +9,31 @@ if(!function_exists('dsGetPreviewSEO')) {
   	$seo_title = $_REQUEST['seo_title'];
   	$seo_description = $_REQUEST['seo_description'];
   	$page_id = $_REQUEST['page_id'];
+    $editingURL = $_REQUEST['editing_URL'];
+    $site = get_bloginfo( 'name' );
 
   	$permalink = '';
-  	$title = 'test';
-  	$description = '';
+  	$title = 'Enter a Title';
+    $titleSave = get_the_title($page_id) ?: 'Enter a Title';
+    $description = '';
 
-  	// Permalink
-  	if($page_id > 0) {
-  		$permalink = get_the_permalink($page_id);
-  	}
-  	else {
-  		$permalink = "https://example.com/";
-  	}
+    // Permalink
+  	if($page_id > 0) { 	$permalink = get_the_permalink($page_id); }
+  	else { $permalink = "https://example.com/"; }
+
+    // see if we are on a term ;
+    $url_parts = parse_url($editingURL);
+    parse_str($url_parts['query'], $query);
+    $term_id = (int)$query['tag_ID'];
+    if($term_id > 0) {
+      $tax = $query['taxonomy'];
+      $term = get_term($term_id, $tax);
+      $titleSave = $term->name;
+      $permalink = get_term_link($term_id, $tax);
+    }
+
+
+
 
   	// Title
   	if(isset($seo_title) && $seo_title) {
@@ -31,7 +44,8 @@ if(!function_exists('dsGetPreviewSEO')) {
   			$title = get_the_title($page_id) . ' - ' . get_bloginfo( 'name' );
   		}
   		else {
-  			$title = 'No Title - ' + get_bloginfo( 'name' );
+  			$title = 'Enter a Title - ' . $site;
+
   		}
   	}
 
@@ -45,10 +59,22 @@ if(!function_exists('dsGetPreviewSEO')) {
   		if( empty($excerpt) ) {
   			$post = get_post($page_id);
   			$excerpt = wp_html_excerpt( $post->post_content, 320 );
+        if( empty($excerpt)) {
+          $excerpt = "Enter a description";
+        }
   			$excerpt .= '…';
   		}
   		$description = $excerpt;
   	}
+
+    if (strpos($title, '{') !== false) {
+      $title = str_replace(['{Title}', '{title}'], $titleSave, $title);
+      $title = str_replace(['{Site}', '{site}'], $site, $title);
+    }
+    if (strpos($description, '{') !== false) {
+      $description = str_replace(['{Title}', '{title}'], $titleSave, $description);
+      $description = str_replace(['{Site}', '{site}'], $site, $description);
+    }
 
   	$values = [
   		'permalink' => $permalink,
