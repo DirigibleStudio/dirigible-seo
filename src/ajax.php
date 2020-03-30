@@ -90,8 +90,8 @@ if(!function_exists('dsGetPreviewSEO')) {
 if(!function_exists('ds_replace_yoast_string')) {
   function ds_replace_yoast_string($new_title, $id){
     $new_title = str_replace('%%sep%%', ' - ', $new_title);
-    $new_title = str_replace('%%sitename%%', get_bloginfo('name'), $new_title);
-    $new_title = str_replace('%%title%%', get_the_title($id), $new_title);
+    $new_title = str_replace('%%sitename%%', '{site}', $new_title);
+    $new_title = str_replace('%%title%%', '{title}', $new_title);
     $new_title = str_replace('%%page%%', "", $new_title);
     if (strpos($new_title, '%%primary_category%%') !== false) {
       $currentID = get_the_ID();
@@ -118,7 +118,9 @@ if(!function_exists('ds_replace_yoast_string')) {
         }
         $new_title = str_replace('%%primary_category%%',$category_display, $new_title);
       }
-
+      else {
+        $new_title = str_replace('%%primary_category%%','', $new_title);
+      }
     }
     return $new_title;
   }
@@ -129,9 +131,9 @@ if(!function_exists('ds_replace_yoast_string_term')) {
   function ds_replace_yoast_string_term($new_title, $term_id){
     $term_name = get_term( $term_id )->name;
     $new_title = str_replace('%%sep%%', ' - ', $new_title);
-    $new_title = str_replace('%%sitename%%', get_bloginfo('name'), $new_title);
-    $new_title = str_replace('%%title%%', $term_name, $new_title);
-    $new_title = str_replace('%%term_title%%', $term_name, $new_title);
+    $new_title = str_replace('%%sitename%%', '{site}', $new_title);
+    $new_title = str_replace('%%title%%', '{title}', $new_title);
+    $new_title = str_replace('%%term_title%%', '{title}', $new_title);
     $new_title = str_replace('%%page%%', "", $new_title);
     return $new_title;
   }
