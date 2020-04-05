@@ -8,7 +8,13 @@ if(!function_exists('dsGetPreviewSEO')) {
   function dsGetPreviewSEO() {
   	$seo_title = $_REQUEST['seo_title'];
   	$seo_description = $_REQUEST['seo_description'];
-  	$page_id = $_REQUEST['page_id'];
+    if(isset($_REQUEST['page_id'])) {
+      $page_id = $_REQUEST['page_id'];
+    }
+    else {
+      $page_id = -1;
+    }
+
     $editingURL = $_REQUEST['editing_URL'];
     $site = get_bloginfo( 'name' );
 
@@ -24,7 +30,13 @@ if(!function_exists('dsGetPreviewSEO')) {
     // see if we are on a term ;
     $url_parts = parse_url($editingURL);
     parse_str($url_parts['query'], $query);
-    $term_id = (int)$query['tag_ID'];
+    if(isset($query['tag_ID'])) {
+      $term_id = (int)$query['tag_ID'];
+    }
+    else {
+      $term_id = -1;
+    }
+
     if($term_id > 0) {
       $tax = $query['taxonomy'];
       $term = get_term($term_id, $tax);
@@ -58,11 +70,17 @@ if(!function_exists('dsGetPreviewSEO')) {
   		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $page_id, 'display' ) );
   		if( empty($excerpt) ) {
   			$post = get_post($page_id);
-  			$excerpt = wp_html_excerpt( $post->post_content, 320 );
-        if( empty($excerpt)) {
-          $excerpt = "Enter a description";
+        if($post) {
+          $excerpt = wp_html_excerpt( $post->post_content, 320 );
+          if( empty($excerpt)) {
+            $excerpt = "Enter a description";
+          }
+    			$excerpt .= '…';
         }
-  			$excerpt .= '…';
+        else {
+          $excerpt = "Enter a description.";
+        }
+
   		}
   		$description = $excerpt;
   	}
