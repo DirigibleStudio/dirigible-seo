@@ -17,6 +17,71 @@
 		"oAP": "/.gitattributes",
 		"oF": 0
 		},
+	"/assets/banner-1544x500.png": {
+		"ft": 32768,
+		"iS": 50356,
+		"oA": 0,
+		"oAP": "/assets/banner-1544x500.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/assets/banner-772x250.png": {
+		"ft": 32768,
+		"iS": 24535,
+		"oA": 0,
+		"oAP": "/assets/banner-772x250.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/assets/icon-126x126.png": {
+		"ft": 32768,
+		"iS": 2520,
+		"oA": 0,
+		"oAP": "/assets/icon-126x126.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/assets/icon-256x256.png": {
+		"ft": 32768,
+		"iS": 5182,
+		"oA": 0,
+		"oAP": "/assets/icon-256x256.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/assets/icon.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/assets/icon.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 52780316221407,
+		"prP": 0
+		},
+	"/assets/screenshot-1.png": {
+		"ft": 32768,
+		"iS": 917012,
+		"oA": 0,
+		"oAP": "/assets/screenshot-1.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/css/dirigible-seo.css": {
 		"aP": 1,
 		"bl": 0,
@@ -56,6 +121,14 @@
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
+		},
+	"/readme.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/readme.txt",
+		"oF": 0
 		},
 	"/scss/dirigible-seo.scss": {
 		"aP": 1,
