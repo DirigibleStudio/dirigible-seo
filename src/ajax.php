@@ -6,16 +6,16 @@
 if(!function_exists('dsGetPreviewSEO')) {
   add_action( 'wp_ajax_dsGetPreviewSEO', 'dsGetPreviewSEO' );
   function dsGetPreviewSEO() {
-  	$seo_title = $_REQUEST['seo_title'];
-  	$seo_description = $_REQUEST['seo_description'];
+  	$seo_title = sanitize_text_field($_REQUEST['seo_title']);
+  	$seo_description = sanitize_textarea_field($_REQUEST['seo_description']);
     if(isset($_REQUEST['page_id'])) {
-      $page_id = $_REQUEST['page_id'];
+      $page_id = (int) filter_var($_REQUEST['page_id'],FILTER_SANITIZE_NUMBER_INT);
     }
     else {
       $page_id = -1;
     }
 
-    $editingURL = $_REQUEST['editing_URL'];
+    $editingURL = esc_url($_REQUEST['editing_URL']);
     $site = get_bloginfo( 'name' );
 
   	$permalink = '';
@@ -32,6 +32,7 @@ if(!function_exists('dsGetPreviewSEO')) {
     parse_str($url_parts['query'], $query);
     if(isset($query['tag_ID'])) {
       $term_id = (int)$query['tag_ID'];
+      // $term_id = (int) filter_var($_REQUEST['page_id'],FILTER_SANITIZE_NUMBER_INT);
     }
     else {
       $term_id = -1;
@@ -270,7 +271,7 @@ if(!function_exists('ds_migrate_yoast')) {
       $return[] = "<div class='notification error'>Uh oh! It looks like Yoast is not activated. Activate to continue.</div>";
     }
 
-    echo json_encode($return);
+    echo json_encode(esc_html($return));
     wp_die();
   }
 }
