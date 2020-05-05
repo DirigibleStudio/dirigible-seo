@@ -60,6 +60,10 @@ Currently, you can use:
 {Title} for the post/taxonomy/page title.
 {Site} for your site name.
 
+= Does this work with Gutenberg? =
+
+Yup.
+
 
 == Screenshots ==
 
