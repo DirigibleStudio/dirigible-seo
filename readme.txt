@@ -3,7 +3,7 @@ Contributors: dirigible
 Donate link: https://dirigiblestudio.com/wordpress/freeware-donation/
 Tags: seo, meta description, description, search engine optimization, meta, meta title, dirigible
 Requires at least: 3.1
-Tested up to: 5.4
+Tested up to: 5.4.1
 Requires PHP: 7.2
 Stable tag: 1.0.1
 License: GPLv2 or later
@@ -61,7 +61,7 @@ Not at this time. We're open to input, so if you have a burning need, get in tou
 == Changelog ==
 
 = 1.0.1 =
-* Fix an ajax response escape. 
+* Fix an ajax response escape.
 
 = 1.0.0 =
 * Released into the wild
