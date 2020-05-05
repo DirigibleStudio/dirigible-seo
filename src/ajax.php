@@ -271,7 +271,7 @@ if(!function_exists('ds_migrate_yoast')) {
       $return[] = "<div class='notification error'>Uh oh! It looks like Yoast is not activated. Activate to continue.</div>";
     }
 
-    echo json_encode(esc_html($return));
+    echo json_encode($return);
     wp_die();
   }
 }
