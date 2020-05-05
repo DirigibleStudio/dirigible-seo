@@ -54,6 +54,12 @@ Yes, we have developed a tool for migrating your titles and meta descriptions fr
 
 Not at this time. We're open to input, so if you have a burning need, get in touch.
 
+= What text keywords/variables can I use? =
+
+Currently, you can use:
+{Title} for the post/taxonomy/page title.
+{Site} for your site name.
+
 
 == Screenshots ==
 
