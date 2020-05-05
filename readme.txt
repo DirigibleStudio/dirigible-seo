@@ -17,6 +17,7 @@ Tired of bloated SEO plugins?
 
 Us too. That’s why we built Dirigible SEO. We’re search engine optimization experts who use professional keyword research and tracking tools to optimize and refine our content outside of WordPress.
 We don’t need a complex plugin to help us accomplish our SEO goals—we simply needed a way to edit our title tags and meta descriptions within a WordPress page or post.
+
 Dirigible SEO uses the power of [Advanced Custom Fields](https://www.advancedcustomfields.com) to set up everything you need to manage your SEO.
 
 See it in action https://www.youtube.com/watch?v=Dd7ZeIrZMC0&feature=youtu.be
