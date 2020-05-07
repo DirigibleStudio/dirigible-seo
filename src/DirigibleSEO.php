@@ -26,24 +26,30 @@ class DirigibleSEO {
 
   public function readerHeaderHook() {
     echo '<!-- Dirigible SEO -->';
+    // the_post();
     if($this->yoast) { echo "<!--\n"; } // comment it out if yoast is active
     if($this->yoast) { echo "Please deactivate Yoast SEO in order to use Dirigible SEO.\n"; } // comment it out if yoast is active
+    $id = get_the_id();
     $title = $this->stringFilters($this->metaTitle());
     $description = $this->stringFilters($this->metaDescription());
     $link = get_the_permalink();
-    $id = get_the_id();
     $name = get_bloginfo('name');
     echo '<meta property="og:title" content="'.$title.'">';
     echo '<meta property="og:url" content="'.$link.'">';
     echo '<meta property="og:site_name" content="'.$name.'">';
     echo "<meta property='og:type' content='website' />";
     echo '<meta property="og:description" content="'.$description.'">';
-    if(has_post_thumbnail()) {
-      $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
-      echo "<meta property='og:image' content='{$thumbnail[0]}' />";
+
+    if($id) {
+      if(has_post_thumbnail()) {
+        $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
+        echo "<meta property='og:image' content='{$thumbnail[0]}' />";
+      }
     }
     if($this->yoast) { echo "-->\n"; } // comment it out if yoast is active
     echo '<!-- End Dirigible SEO -->';
+
+
   }
 
   public function stringFilters($str) {
