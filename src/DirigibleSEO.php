@@ -31,6 +31,7 @@ class DirigibleSEO {
     $title = $this->stringFilters($this->metaTitle());
     $description = $this->stringFilters($this->metaDescription());
     $link = get_the_permalink();
+    $id = get_the_id();
     $name = get_bloginfo('name');
     echo '<meta property="og:title" content="'.$title.'">';
     echo '<meta property="og:url" content="'.$link.'">';
