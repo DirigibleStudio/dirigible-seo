@@ -8,7 +8,7 @@
  Author URI: https://dirigiblestudio.com
 */
 
-defined( 'ABSPATH' ) OR exit;
+defined( 'ABSPATH' ) OR exit;  
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 require_once 'src/DirigibleSEO.php';
 require_once 'src/ajax.php';
