@@ -53,7 +53,7 @@ class DirigibleSEO {
   }
 
   public function stringFilters($str) {
-    if (strpos($str, '{') !== false) {
+    if (strpos($str, '{') !== false) { 
       $term = get_queried_object();
       $title = get_the_title();
       if( isset($term) ){
@@ -90,7 +90,7 @@ class DirigibleSEO {
 			$seoDescription = get_field('ds_seo_description', $term);
 			if($seoDescription) { return $seoDescription;	}
 			else return "";
-		}
+		} 
 		elseif (is_archive()) {
 			$page_for_posts = get_option( 'page_for_posts' );
 			$seoDescription = get_field('ds_seo_description', $page_for_posts);
@@ -105,7 +105,8 @@ class DirigibleSEO {
 
 
   function getDefaultDescription() {
-		$excerpt = "";
+    $excerpt = "";
+    $page_id = get_the_id(); 
 		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $page_id, 'display' ) );
 		if( empty($excerpt) ) {
 			$post = get_post($page_id);
@@ -115,7 +116,7 @@ class DirigibleSEO {
 		return strip_tags($excerpt);
 	}
 
-  public function metaTitle() {
+  public function metaTitle() { 
 		$term = get_queried_object();
     $seoTitle = "";
 		if(is_home()) { // blog page
@@ -281,28 +282,28 @@ class DirigibleSEO {
 
   public function dirigibleAdminPageRender() {
     ?>
-    <div class='wrap dirigible-admin-page'>
-      <h1>Dirigible Studio</h1>
-      <div class="dirigible-seo-tools">
-        <p>For more information, please visit <a href="http://dirigiblestudio.com">Dirigible Studio</a>.</p>
-      </div>
-    </div>
-    <?php
+<div class='wrap dirigible-admin-page'>
+  <h1>Dirigible Studio</h1>
+  <div class="dirigible-seo-tools">
+    <p>For more information, please visit <a href="http://dirigiblestudio.com">Dirigible Studio</a>.</p>
+  </div>
+</div>
+<?php
   }
 
   public function adminPage() {
     ?>
-    <div class='wrap dirigible-seo-page'>
-      <h1>Dirigible SEO</h1>
-      <div class="dirigible-seo-tools">
-        <div class="tool">
-          <h3>Migrate Yoast Data</h3>
-          <p>Transfer data from Yoast to Dirigible SEO. This will overwrite any conflicting data, so use with caution!</p>
-          <a class='button' id='ds-migrate-yoast'>Migrate</a>
-        </div>
-      </div>
+<div class='wrap dirigible-seo-page'>
+  <h1>Dirigible SEO</h1>
+  <div class="dirigible-seo-tools">
+    <div class="tool">
+      <h3>Migrate Yoast Data</h3>
+      <p>Transfer data from Yoast to Dirigible SEO. This will overwrite any conflicting data, so use with caution!</p>
+      <a class='button' id='ds-migrate-yoast'>Migrate</a>
     </div>
-    <?php
+  </div>
+</div>
+<?php
   }
 
 }
