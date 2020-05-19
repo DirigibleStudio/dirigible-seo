@@ -141,7 +141,7 @@ class DirigibleSEO {
 			if($seoTitle) { return $seoTitle;	}
 		}
 		elseif (is_archive()) {
-			return ds_getTitleSEODefault();
+			return $this->getDefaultTitle();
 		}
 		else {
 			$seoTitle = get_field('ds_seo_title');
