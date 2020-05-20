@@ -71,6 +71,9 @@ Yup.
 
 == Changelog ==
 
+= 1.0.4 =
+* Fix call to deprecated function.
+
 = 1.0.1 =
 * Fix an ajax response escape.
 
