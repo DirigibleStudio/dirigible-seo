@@ -5,7 +5,11 @@ class DirigibleSEO {
   public $yoast = false;
 
   function __construct($args) {
-    if ( is_plugin_active('advanced-custom-fields-pro/acf.php') || is_plugin_active('advanced-custom-fields/acf.php') ) {
+    if ( 
+      is_plugin_active('advanced-custom-fields-pro/acf.php') || 
+      is_plugin_active('advanced-custom-fields/acf.php') || 
+      !(class_exists('acf_pro') || class_exists('acf')) ) 
+    {
       $this->path = $args;
       if ( is_plugin_active('wordpress-seo/wp-seo.php') ) {
         $this->yoast = true;
