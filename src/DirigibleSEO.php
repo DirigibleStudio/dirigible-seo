@@ -44,6 +44,7 @@ class DirigibleSEO {
     echo '<meta property="og:site_name" content="'.$name.'">';
     echo "<meta property='og:type' content='website' />";
     echo '<meta property="og:description" content="'.$description.'">';
+    echo '<meta name="description" content="'.$description.'">';
 
     if($id) {
       if(has_post_thumbnail()) {
