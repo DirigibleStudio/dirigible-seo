@@ -61,6 +61,8 @@ class DirigibleSEO {
     $newTitle = $this->stringFilters($this->metaTitle());
     if($newTitle) {
       $title_parts['title'] = $newTitle;
+      $title_parts['tagline'] = '';
+      $title_parts['site'] = ''; 
     }
     return $title_parts;
   }
