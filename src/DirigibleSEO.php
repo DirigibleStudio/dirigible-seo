@@ -16,6 +16,7 @@ class DirigibleSEO {
       }
       add_action( 'admin_enqueue_scripts', [ $this, 'registerStyle' ] );
       add_action( 'admin_enqueue_scripts', [ $this, 'registerScripts' ] );
+      add_filter( 'document_title_parts', [ $this, 'dirigiblePageTitle' ] );
       add_action( 'acf/init',[ $this, 'registerFields' ] );
       if($this->yoast) {
         add_action( 'admin_notices', [ $this, 'nagYoast' ] );
@@ -52,9 +53,19 @@ class DirigibleSEO {
     }
     if($this->yoast) { echo "-->\n"; } // comment it out if yoast is active
     echo '<!-- End Dirigible SEO -->';
-
-
   }
+
+  
+  function dirigiblePageTitle($title_parts) {
+    $newTitle = $this->stringFilters($this->metaTitle());
+    if($newTitle) {
+      $title_parts['title'] = $newTitle;
+    }
+    return $title_parts;
+  }
+  
+
+
 
   public function stringFilters($str) {
     if (strpos($str, '{') !== false) { 
