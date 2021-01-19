@@ -127,9 +127,12 @@ class DirigibleSEO {
     $page_id = get_the_id(); 
 		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $page_id, 'display' ) );
 		if( empty($excerpt) ) {
-			$post = get_post($page_id);
-			$excerpt =	apply_filters( 'the_excerpt',  wp_html_excerpt( $post->post_content, 320 ));
-			$excerpt .= '…';
+      if($page_id) {
+        $post = get_post($page_id);
+        $excerpt =	apply_filters( 'the_excerpt',  wp_html_excerpt( $post->post_content, 320 ));
+        $excerpt .= '…';
+      }
+     
 		}
 		return strip_tags($excerpt);
 	}
