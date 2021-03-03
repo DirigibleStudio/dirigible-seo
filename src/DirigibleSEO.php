@@ -86,8 +86,9 @@ class DirigibleSEO {
 
   public function metaDescription() {
     $seoDescription = "";
-		$term = get_queried_object();
+		$term = get_queried_object(); 
 		if(is_home()) { // blog page
+      
 			$page_for_posts = get_option( 'page_for_posts' );
 			$seoDescription = get_field('ds_seo_description', $page_for_posts);
 			if($seoDescription) { return $seoDescription;	}
@@ -105,9 +106,19 @@ class DirigibleSEO {
 					else return $this->getDefaultDescription();
 				}
 			}
-			$seoDescription = get_field('ds_seo_description', $term);
-			if($seoDescription) { return $seoDescription;	}
-			else return "";
+
+      if($term instanceof WP_Post) {
+        $seoDescription = get_field('ds_seo_description');
+        if($seoDescription) { return $seoDescription;	}
+        return $this->getDefaultDescription();
+      }
+      else {
+        $seoDescription = get_field('ds_seo_description', $term);
+			  if($seoDescription) { return $seoDescription;	}
+			  else return "";
+      }
+
+			
 		} 
 		elseif (is_archive()) {
 			$page_for_posts = get_option( 'page_for_posts' );
@@ -115,9 +126,11 @@ class DirigibleSEO {
 			if($seoDescription) { return $seoDescription;	}
 		}
 		else {
+     
 			$seoDescription = get_field('ds_seo_description');
 			if($seoDescription) { return $seoDescription;	}
 		}
+   
 		return $this->getDefaultDescription();
   }
 
