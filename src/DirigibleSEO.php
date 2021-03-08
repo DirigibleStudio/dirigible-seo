@@ -106,7 +106,6 @@ class DirigibleSEO {
 					else return $this->getDefaultDescription();
 				}
 			}
-
       if($term instanceof WP_Post) {
         $seoDescription = get_field('ds_seo_description');
         if($seoDescription) { return $seoDescription;	}
@@ -117,8 +116,6 @@ class DirigibleSEO {
 			  if($seoDescription) { return $seoDescription;	}
 			  else return "";
       }
-
-			
 		} 
 		elseif (is_archive()) {
 			$page_for_posts = get_option( 'page_for_posts' );
@@ -126,11 +123,9 @@ class DirigibleSEO {
 			if($seoDescription) { return $seoDescription;	}
 		}
 		else {
-     
 			$seoDescription = get_field('ds_seo_description');
 			if($seoDescription) { return $seoDescription;	}
 		}
-   
 		return $this->getDefaultDescription();
   }
 
