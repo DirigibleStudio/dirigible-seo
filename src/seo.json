@@ -1,0 +1,21 @@
+{
+	"name": "SEO",
+	"namespace": "ds_seo",
+	"description": "Search Engine Optimization Settings",
+	"groups": [
+		{
+			"name": "Options",
+			"namespace": "ds_seo_options_panel",
+			"settings": [
+				{
+					"name": "Title Separator",
+					"namespace": "ds_seo_separator",
+					"default": "-",
+					"placeholder": "-",
+					"description": "Determines what character separates the page title from the site title for page names.",
+					"type": "inline-text"
+				}
+			]
+		}
+	]
+}

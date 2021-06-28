@@ -17,6 +17,7 @@ if(!function_exists('dsGetPreviewSEO')) {
 
     $editingURL = esc_url($_REQUEST['editing_URL']);
     $site = get_bloginfo( 'name' );
+    $separator = get_theme_mod('ds_seo_separator') ?? '-';
 
   	$permalink = '';
   	$title = 'Enter a Title';
@@ -45,20 +46,16 @@ if(!function_exists('dsGetPreviewSEO')) {
       $permalink = get_term_link($term_id, $tax);
     }
 
-
-
-
-  	// Title
   	if(isset($seo_title) && $seo_title) {
   		$title = $seo_title;
   	}
   	else {
+      // Title
   		if($page_id > 0) {
-  			$title = get_the_title($page_id) . ' - ' . get_bloginfo( 'name' );
+  			$title = get_the_title($page_id) . " {$separator} {$site}";
   		}
   		else {
-  			$title = 'Enter a Title - ' . $site;
-
+        $title = "Enter a Title {$separator} {$site}";
   		}
   	}
 
@@ -86,13 +83,17 @@ if(!function_exists('dsGetPreviewSEO')) {
   		$description = $excerpt;
   	}
 
+
+
     if (strpos($title, '{') !== false) {
-      $title = str_replace(['{Title}', '{title}'], $titleSave, $title);
+      $title = str_replace(['{Title}', '{title}', '{page}', '{Page}'], $titleSave, $title);
       $title = str_replace(['{Site}', '{site}'], $site, $title);
+      $title = str_replace(['{Sep}', '{sep}', '{separator}', '{Separator}', '{-}', '{|}'], $separator, $title);
     }
     if (strpos($description, '{') !== false) {
-      $description = str_replace(['{Title}', '{title}'], $titleSave, $description);
+      $description = str_replace(['{Title}', '{title}', '{page}', '{Page}'], $titleSave, $description);
       $description = str_replace(['{Site}', '{site}'], $site, $description);
+      $description = str_replace(['{Sep}', '{sep}', '{separator}', '{Separator}', '{-}', '{|}'], $separator, $description);
     }
 
   	$values = [

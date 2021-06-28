@@ -2,6 +2,7 @@
 
 class DirigibleSEO {
   public $path = "";
+  public $dir = "";
   public $yoast = false;
 
   function __construct($args) {
@@ -11,13 +12,16 @@ class DirigibleSEO {
       !(class_exists('acf_pro') || class_exists('acf')) ) 
     {
       $this->path = $args;
+      $this->dir = plugin_dir_path($args); 
       if ( is_plugin_active('wordpress-seo/wp-seo.php') ) {
         $this->yoast = true;
       }
       add_action( 'admin_enqueue_scripts', [ $this, 'registerStyle' ] );
       add_action( 'admin_enqueue_scripts', [ $this, 'registerScripts' ] );
       add_filter( 'document_title_parts', [ $this, 'dirigiblePageTitle' ] );
+      add_action( 'customize_register', [ $this, 'registerCustomizer'], 999, 1 );
       add_action( 'acf/init',[ $this, 'registerFields' ] );
+
       if($this->yoast) {
         add_action( 'admin_notices', [ $this, 'nagYoast' ] );
       }
@@ -28,6 +32,14 @@ class DirigibleSEO {
       add_action( 'admin_notices', [ $this, 'nagACF' ] );
     }
   }
+
+  function registerCustomizer($wp_customize) {
+    try {
+      $Settings = New DirigibleSettings($this->dir.'src/seo.json');
+      $Settings->registerCustomizer($wp_customize);
+    }
+    catch (\Exception $e) {}
+  } 
 
   public function readerHeaderHook() {
     echo '<!-- Dirigible SEO -->';
@@ -74,12 +86,14 @@ class DirigibleSEO {
     if (strpos($str, '{') !== false) { 
       $term = get_queried_object();
       $title = get_the_title();
+      $separator = get_theme_mod('ds_seo_separator') ?? '-';
       if( isset($term) ){
         $title = $term->name;
       }
       $site = get_bloginfo( 'name' );
-      $str = str_replace(['{Title}', '{title}'], $title, $str);
+      $str = str_replace(['{Title}', '{title}', '{page}', '{Page}'], $title, $str);
       $str = str_replace(['{Site}', '{site}'], $site, $str);
+      $str = str_replace(['{Sep}', '{sep}', '{separator}', '{Separator}', '{-}', '{|}'], $separator, $str);
     }
     return $str;
   }
@@ -181,8 +195,10 @@ class DirigibleSEO {
 
   function getDefaultTitle() {
     $default = "";
-    $default = wp_title('', false, 'right') . ' - ' . get_bloginfo( 'name' );
-    return $default;
+    $separator = get_theme_mod('ds_seo_separator') ?? '-';
+    $title = wp_title('', false, 'right'); 
+    $site = get_bloginfo( 'name' ); 
+    return "{$title} {$separator} {$site}";
   }
 
   public function nagYoast() {
@@ -197,17 +213,19 @@ class DirigibleSEO {
   }
 
   public function registerStyle() {
-    wp_register_style( 'dirigible-seo', plugins_url('dirigible-seo/css/dirigible-seo.css') );
+    wp_register_style( 'dirigible-seo', plugins_url('dirigible-seo/dist/ds-seo.css') );
     wp_enqueue_style( 'dirigible-seo' );
   }
 
   public function registerScripts() {
-    wp_register_script( 'dirigible-seo-js', plugins_url('dirigible-seo/js/dirigible-seo.js'), ['jquery'], NULL, true);
+    wp_register_script( 'dirigible-seo-js', plugins_url('dirigible-seo/dist/ds-seo-min.js'), ['jquery'], NULL, true);
     wp_enqueue_script('dirigible-seo-js');
   }
 
   public function registerFields() {
-    $default_title =  'Page Title - ' . get_bloginfo( 'name' );
+    $separator = get_theme_mod('ds_seo_separator') ?? '-';
+    $site = get_bloginfo( 'name' ); 
+    $default_title = "Page Title {$separator} {$site}";
     $SEO_fields = [
       'key' => 'group_5e7523693299c',
       'title' => 'SEO',
@@ -228,8 +246,8 @@ class DirigibleSEO {
           'name' => 'ds_seo_title',
           'type' => 'text',
           'wrapper' => [ 'id' => 'ds-editor-seo-title'],
-          'placeholder' => '{title} - {site}',
-          'default' => '{title} - {site}',
+          'placeholder' => '{title} {|} {site}',
+          'default' => '{title} {|} {site}',
           'maxlength' => 70,
         ],
         [

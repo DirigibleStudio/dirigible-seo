@@ -25,18 +25,6 @@
       "oAP" : "\/.gitignore",
       "oF" : 0
     },
-    "\/css\/dirigible-seo.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/css\/dirigible-seo-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/dirigible-seo.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -44,6 +32,29 @@
       "oA" : 0,
       "oAP" : "\/dirigible-seo.php",
       "oF" : 0
+    },
+    "\/dist\/ds-seo-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/dist\/ds-seo-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/dist\/ds-seo.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/dist\/ds-seo-min.css",
+      "oF" : 0,
+      "pg" : 0
     },
     "\/inc\/dirigible-licensing\/index.php" : {
       "cB" : 0,
@@ -962,28 +973,6 @@
       "oAP" : "\/inc\/plugin-update-checker\/vendor\/PucReadmeParser.php",
       "oF" : 0
     },
-    "\/js\/dirigible-seo-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/js\/dirigible-seo-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/js\/dirigible-seo.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/js\/dirigible-seo-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/readme.txt" : {
       "cB" : 0,
       "ft" : 8192,
@@ -991,20 +980,6 @@
       "oA" : 0,
       "oAP" : "\/readme.txt",
       "oF" : 0
-    },
-    "\/scss\/dirigible-seo.scss" : {
-      "aP" : 1,
-      "bl" : 1,
-      "dP" : 10,
-      "ec" : 1,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/css\/dirigible-seo.css",
-      "oF" : 2,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 1
     },
     "\/src\/ajax.php" : {
       "cB" : 0,
@@ -1021,6 +996,39 @@
       "oA" : 0,
       "oAP" : "\/src\/DirigibleSEO.php",
       "oF" : 0
+    },
+    "\/src\/ds-seo.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/dist\/ds-seo-min.js",
+      "oF" : 2,
+      "sC" : 0,
+      "tS" : 0
+    },
+    "\/src\/ds-seo.scss" : {
+      "aP" : 1,
+      "bl" : 1,
+      "dP" : 2,
+      "ec" : 0,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/dist\/ds-seo.css",
+      "oF" : 2,
+      "oS" : 3,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/src\/seo.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/src\/seo-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
     }
   },
   "hooks" : [
@@ -2984,14 +2992,14 @@
       "autoOutputPathReplace1" : "sass",
       "autoOutputPathReplace2" : "css",
       "autoOutputPathStyle" : 0,
-      "compilerType" : 1,
-      "cssoStyle" : 0,
-      "decimalPrecision" : 10,
-      "emitCharset" : 1,
-      "outputStyle" : 0,
+      "compilerType" : 0,
+      "cssoStyle" : 1,
+      "decimalPrecision" : 2,
+      "emitCharset" : 0,
+      "outputStyle" : 3,
       "purgeCSSStyle" : 0,
-      "shouldRunAutoprefixer" : 0,
-      "shouldRunBless" : 0,
+      "shouldRunAutoprefixer" : 1,
+      "shouldRunBless" : 1,
       "sourceMapStyle" : 0
     },
     "languageDefaultsSLIM" : {
