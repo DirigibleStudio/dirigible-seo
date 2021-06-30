@@ -72,6 +72,17 @@
       "oAP" : "\/inc\/dirigible-licensing\/src\/DirigibleLicensing.php",
       "oF" : 0
     },
+    "\/inc\/dirigible-licensing\/src\/js\/admin-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/inc\/dirigible-licensing\/src\/js\/admin-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/inc\/dirigible-licensing\/src\/js\/admin.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -90,6 +101,30 @@
       "oA" : 0,
       "oAP" : "\/inc\/dirigible-licensing\/src\/js\/options.php",
       "oF" : 0
+    },
+    "\/inc\/dirigible-licensing\/src\/licensing-min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/inc\/dirigible-licensing\/src\/licensing-min-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/inc\/dirigible-licensing\/src\/licensing.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/inc\/dirigible-licensing\/src\/licensing-min.css",
+      "oF" : 0,
+      "pg" : 0
     },
     "\/inc\/init.php" : {
       "cB" : 0,

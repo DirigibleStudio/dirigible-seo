@@ -23,6 +23,8 @@ class DirigibleSEO
       add_filter('document_title_parts', [$this, 'dirigiblePageTitle']);
       add_action('customize_register', [$this, 'registerCustomizer'], 999, 1);
       add_action('acf/init', [$this, 'registerFields']);
+      add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
+
 
       if ($this->yoast) {
         add_action('admin_notices', [$this, 'nagYoast']);
@@ -162,6 +164,16 @@ class DirigibleSEO
     return $this->getDefaultDescription();
   }
 
+
+  function addMigrateTool()
+  { ?>
+    <div class="tool">
+      <h3>Migrate Yoast Data</h3>
+      <p>Transfer data from Yoast to Dirigible SEO. This will overwrite any conflicting data, so use with caution!</p>
+      <a class='button' id='ds-migrate-yoast'>Migrate</a>
+    </div>
+  <?php
+  }
 
   function getDefaultDescription()
   {
@@ -350,7 +362,8 @@ class DirigibleSEO
 
   public function registerToolsPages()
   {
-    if (empty($GLOBALS['admin_page_hooks']['dirigibleAdminPage'])) {
+    global $admin_page_hooks;
+    if (empty($GLOBALS['admin_page_hooks']['dirigible/tools'])) {
       $icon = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDYuNDQgMTgzLjg1Ij4KICA8cGF0aCBzdHJva2U9Im5vbmUiIGZpbGw9IndoaXRlIiBkPSJNMTMuMzQsMTYyLjYzbDQwLjM4LTUyLjM4TDAsNzAuNDNjNi4xMi0xLDEwLjczLTEuNzYsMTUuMzctMi40MUM0MC41Niw2NC41NCw2NS43OCw2MS4xNyw5MSw1Ny41NGExMCwxMCwwLDAsMSw4LjU5LDIuNTFjMy4zMiwyLjc1LDYuODgsNi45NCwxMC41LDcuMTFTMTE3LjM2LDYzLjI3LDEyMSw2MUMxNDUuMjIsNDUuNDQsMTcxLjc5LDM0Ljg4LDE5OSwyNS44NWMzMS43OC0xMC41NCw2NC4xOS0xOC42NCw5Ny40NC0yMi44QzMyOS0xLDM2MS42LTIuNCwzOTMuMzYsNy44MmExMDMuNDksMTAzLjQ5LDAsMCwxLDI4LDEzLjcxYzI2LjU1LDE4Ljg4LDM3LDU3LDYuMTksODguODgtMTYuNTgsMTcuMTgtMzYuOTQsMjguMDktNTguODMsMzYuNzNhMTMuNCwxMy40LDAsMCwwLTUuOTEsNS4yNGMtMi42Miw0LjIzLTQuMjYsOS4wNi02LjkzLDEzLjI1YTEwLjA2LDEwLjA2LDAsMCwxLTUuOTUsNC4yNWMtMjYuNjcsNC43NC01My40LDkuMTEtODAuMDgsMTMuODEtMy4zMS41OC00LjgzLS4zNi02LjI1LTMuMTEtMi42OC01LjE3LTUuNDktMTAuMy04LjYzLTE1LjE5YTcuMzIsNy4zMiwwLDAsMC00Ljg4LTMuMWMtNDMuNTMtMi05NC45NC0xMS45MS0xMjguODktMjguMTMtMy40Niw0LjI4LTYuODUsOC44LTEwLjYyLDEzYTEwLjU3LDEwLjU3LDAsMCwxLTUuNjgsMy40MkM3NS4zMiwxNTQuODMsNDUuNjgsMTU4LjksMTYsMTYzQTE3LjE5LDE3LjE5LDAsMCwxLDEzLjM0LDE2Mi42M1oiLz4KPC9zdmc+Cg==";
       add_menu_page(
         'Dirigible Options', // Page Title
@@ -361,40 +374,24 @@ class DirigibleSEO
         'data:image/svg+xml;base64,' . $icon, // icon
         99 // position
       );
+      add_submenu_page(
+        'dirigible/tools', // parent slug
+        'Dirigible Tools', // page_title
+        'Tools', // menu title
+        'manage_options', // capability
+        'dirigible/tools', // slug
+        'ds_blocks_tools_page' // id
+      );
     }
-    add_submenu_page(
-      'dirigible/tools', // parent slug
-      'Dirigible SEO', // page_title
-      'SEO', // menu title
-      'manage_options', // capability
-      'dirigibleSEO', // slug
-      [$this, 'adminPage'] // output function
-    );
   }
 
   public function dirigibleAdminPageRender()
   {
-?>
-    <div class='wrap dirigible-admin-page'>
-      <h1>Dirigible Studio</h1>
-      <div class="dirigible-seo-tools">
-        <p>For more information, please visit <a href="http://dirigiblestudio.com">Dirigible Studio</a>.</p>
-      </div>
-    </div>
-  <?php
-  }
-
-  public function adminPage()
-  {
   ?>
-    <div class='wrap dirigible-seo-page'>
-      <h1>Dirigible SEO</h1>
-      <div class="dirigible-seo-tools">
-        <div class="tool">
-          <h3>Migrate Yoast Data</h3>
-          <p>Transfer data from Yoast to Dirigible SEO. This will overwrite any conflicting data, so use with caution!</p>
-          <a class='button' id='ds-migrate-yoast'>Migrate</a>
-        </div>
+    <div class='wrap dirigible-tools-page'>
+      <h1>Dirigible Tools</h1>
+      <div class="dirigible-tools">
+        <?php do_action('ds-tools-page'); ?>
       </div>
     </div>
 <?php
