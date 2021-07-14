@@ -98,9 +98,9 @@ class DirigibleSEO
     if (strpos($str, '{') !== false) {
       $term = get_queried_object();
       $title = get_the_title();
-      $separator = get_theme_mod('ds_seo_separator') ?? '-';
+      $separator = get_theme_mod('ds_seo_separator', '-');
       if (isset($term)) {
-        $title = $term->name;
+        $title = $term->name ?: get_the_title();
       }
       $site = get_bloginfo('name');
       $str = str_replace(['{Title}', '{title}', '{page}', '{Page}'], $title, $str);
@@ -115,53 +115,33 @@ class DirigibleSEO
     $seoDescription = "";
     $term = get_queried_object();
     if (is_home()) { // blog page
-
       $page_for_posts = get_option('page_for_posts');
-      $seoDescription = get_field('ds_seo_description', $page_for_posts);
-      if ($seoDescription) {
-        return $seoDescription;
-      }
+      $seoDescription = get_field('ds_seo_description', $page_for_posts) ?: $this->getDefaultDescription();
     } elseif (isset($term)) {
       if (function_exists('is_shop')) {
+
         if (is_shop()) {
+          // shop
           $shop = get_option('woocommerce_shop_page_id');
-          $seoDescription = get_field('ds_seo_description', $shop);
-          if ($seoDescription) {
-            return $seoDescription;
-          }
+          $seoDescription = get_field('ds_seo_description', $shop) ?: $this->getDefaultDescription();
         }
         if (is_product()) {
-          $seoDescription = get_field('ds_seo_description', $term);
-          if ($seoDescription) {
-            return $seoDescription;
-          } else return $this->getDefaultDescription();
+          // product
+          $seoDescription = get_field('ds_seo_description', $term) ?: $this->getDefaultDescription();
         }
       }
       if ($term instanceof WP_Post) {
-        $seoDescription = get_field('ds_seo_description');
-        if ($seoDescription) {
-          return $seoDescription;
-        }
-        return $this->getDefaultDescription();
+        $seoDescription = get_field('ds_seo_description') ?: $this->getDefaultDescription();
       } else {
-        $seoDescription = get_field('ds_seo_description', $term);
-        if ($seoDescription) {
-          return $seoDescription;
-        } else return "";
+        $seoDescription = get_field('ds_seo_description', $term) ?: $this->getDefaultDescription();
       }
     } elseif (is_archive()) {
       $page_for_posts = get_option('page_for_posts');
-      $seoDescription = get_field('ds_seo_description', $page_for_posts);
-      if ($seoDescription) {
-        return $seoDescription;
-      }
+      $seoDescription = get_field('ds_seo_description', $page_for_posts) ?: $this->getDefaultDescription();
     } else {
-      $seoDescription = get_field('ds_seo_description');
-      if ($seoDescription) {
-        return $seoDescription;
-      }
+      $seoDescription = get_field('ds_seo_description') ?: $this->getDefaultDescription();
     }
-    return $this->getDefaultDescription();
+    return $seoDescription === '' ? $this->getDefaultDescription() : $seoDescription;
   }
 
 
@@ -193,60 +173,36 @@ class DirigibleSEO
   public function metaTitle()
   {
     $term = get_queried_object();
-    $seoTitle = "";
-
-    if (is_home()) { // blog page
+    $returnTitle = "";
+    if (is_home()) {
+      // blog page
       $page_for_posts = get_option('page_for_posts');
-      $seoTitle = get_field('ds_seo_title', $page_for_posts);
-      if ($seoTitle) {
-        return $seoTitle;
-      }
+      $returnTitle = get_field('ds_seo_title', $page_for_posts) ?: $this->getDefaultTitle();
     } elseif (is_front_page()) {
-      $seoTitle = get_field('ds_seo_title');
-
-      if ($seoTitle) {
-        return $seoTitle;
-      } else {
-        return get_bloginfo('name');
-      };
-    } elseif (isset($term)) { // if any tax or shop
-
+      // home page
+      $returnTitle = get_field('ds_seo_title') ?: get_bloginfo('name');
+    } elseif (isset($term)) {
+      // if shop
       if (function_exists('is_shop')) {
         if (is_shop()) {
           $shop = get_option('woocommerce_shop_page_id');
-          $seoTitle = get_field('ds_seo_title', $shop);
-          if ($seoTitle) {
-            return $seoTitle;
-          }
+          $returnTitle = get_field('ds_seo_title', $shop);
         }
       }
-      $seoTitle = get_field('ds_seo_title', $term);
-
-      if ($seoTitle) {
-        if ($seoTitle = "") {
-          return $this->getDefaultTitle();
-        }
-        return $seoTitle;
-      } else {
-        return $this->getDefaultTitle();
-      }
+      // is taxonomy
+      $returnTitle = get_field('ds_seo_title', $term) ?: $this->getDefaultTitle();
     } elseif (is_archive()) {
-      return $this->getDefaultTitle();
+      // is archive
+      $returnTitle = $this->getDefaultTitle();
     } else {
-      $seoTitle = get_field('ds_seo_title');
-      if ($seoTitle) {
-        return $seoTitle;
-      } else {
-        return $this->getDefaultTitle();
-      }
+      $returnTitle = get_field('ds_seo_title') ?: $this->getDefaultTitle();
     }
-    return $this->getDefaultTitle();
+    return $returnTitle === '' ? $this->getDefaultTitle() : $returnTitle;
   }
 
   function getDefaultTitle()
   {
-    $default = "";
-    $separator = get_theme_mod('ds_seo_separator') ?? '-';
+    $separator = get_theme_mod('ds_seo_separator', '-');
     $title = wp_title('', false, 'right');
     $site = get_bloginfo('name');
     return "{$title} {$separator} {$site}";
