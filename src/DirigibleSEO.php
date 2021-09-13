@@ -174,6 +174,7 @@ class DirigibleSEO
   {
     $term = get_queried_object();
     $returnTitle = "";
+
     if (is_home()) {
       // blog page
       $page_for_posts = get_option('page_for_posts');
@@ -193,6 +194,7 @@ class DirigibleSEO
       $returnTitle = get_field('ds_seo_title', $term) ?: $this->getDefaultTitle();
     } elseif (is_archive()) {
       // is archive
+
       $returnTitle = $this->getDefaultTitle();
     } else {
       $returnTitle = get_field('ds_seo_title') ?: $this->getDefaultTitle();
@@ -204,6 +206,12 @@ class DirigibleSEO
   {
     $separator = get_theme_mod('ds_seo_separator', '-');
     $title = wp_title('', false, 'right');
+    if (is_tax()) {
+      // only show one parent category
+      $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+      $term_title = $term->name;
+      $title = $term_title;
+    }
     $site = get_bloginfo('name');
     return "{$title} {$separator} {$site}";
   }
