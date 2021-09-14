@@ -5,6 +5,7 @@ class DirigibleSEO
   public $path = "";
   public $dir = "";
   public $yoast = false;
+  public $imageSearch = null;
 
   function __construct($args)
   {
@@ -25,6 +26,10 @@ class DirigibleSEO
       add_action('acf/init', [$this, 'registerFields']);
       add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
 
+      add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag'], 10);
+      add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag'], 10);
+      add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag'], 10);
+
 
       if ($this->yoast) {
         add_action('admin_notices', [$this, 'nagYoast']);
@@ -44,6 +49,64 @@ class DirigibleSEO
     }
   }
 
+  public function printMetaTitleTag()
+  {
+    $title = $this->stringFilters($this->metaTitle());
+    echo '<meta property="og:title" content="' . $title . '">';
+  }
+
+
+  public function printMetaDescriptionTag()
+  {
+    $description = $this->stringFilters($this->metaDescription());
+    echo '<meta property="og:description" name="description" content="' . $description . '">';
+  }
+
+  public function printMetaImageTag()
+  {
+    $id = get_the_id();
+    if ($id) {
+      if (has_post_thumbnail()) {
+        $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
+        echo "<meta property='og:image' content='{$thumbnail[0]}' />";
+      } else {
+        global $post;
+        $blocks = parse_blocks($post->post_content);
+        $firstBlockImage = $blocks[0]['attrs']['bgImageID'] ?? null;
+        if ($firstBlockImage) {
+          $url = wp_get_attachment_image_src($firstBlockImage, 'large');
+          echo "<meta property='og:image' content='{$url[0]}' />";
+        } else {
+          foreach ($blocks as $block) {
+            $this->searchForImageBlock($block);
+            if ($this->imageSearch) {
+              echo "<meta property='og:image' content='{$this->imageSearch}' />";
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public function searchForImageBlock($block)
+  {
+    if ($this->imageSearch === null) {
+      $blockName = $block['blockName'] ?? null;
+      if ($blockName === 'core/image') {
+        $imageID = $block['attrs']['id'] ?? null;
+        if ($imageID) {
+          $url = wp_get_attachment_image_src($imageID, 'large');
+          $this->imageSearch = $url[0];
+        }
+      } else {
+        foreach ($block['innerBlocks'] as $newBlock) {
+          $this->searchForImageBlock($newBlock);
+        }
+      }
+    }
+  }
+
+
   public function readerHeaderHook()
   {
     echo '<!-- Dirigible SEO -->';
@@ -54,24 +117,15 @@ class DirigibleSEO
     if ($this->yoast) {
       echo "Please deactivate Yoast SEO in order to use Dirigible SEO.\n";
     } // comment it out if yoast is active
-    $id = get_the_id();
-    $title = $this->stringFilters($this->metaTitle());
-    $description = $this->stringFilters($this->metaDescription());
+
     $link = get_the_permalink();
     $name = get_bloginfo('name');
-    echo '<meta property="og:title" content="' . $title . '">';
+    echo "<meta property='og:type' content='website' />";
     echo '<meta property="og:url" content="' . $link . '">';
     echo '<meta property="og:site_name" content="' . $name . '">';
-    echo "<meta property='og:type' content='website' />";
-    echo '<meta property="og:description" content="' . $description . '">';
-    echo '<meta name="description" content="' . $description . '">';
-
-    if ($id) {
-      if (has_post_thumbnail()) {
-        $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
-        echo "<meta property='og:image' content='{$thumbnail[0]}' />";
-      }
-    }
+    do_action('ds_seo_head_title_tag');
+    do_action('ds_seo_head_description_tag');
+    do_action('ds_seo_head_image_tag');
     if ($this->yoast) {
       echo "-->\n";
     } // comment it out if yoast is active
