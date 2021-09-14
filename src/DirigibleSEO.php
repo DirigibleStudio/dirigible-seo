@@ -26,22 +26,22 @@ class DirigibleSEO
       add_action('acf/init', [$this, 'registerFields']);
       add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
 
-      add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag'], 10);
-      add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag'], 10);
-      add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag'], 10);
-
+      add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag']);
+      add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag']);
+      add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag']);
 
       if ($this->yoast) {
         add_action('admin_notices', [$this, 'nagYoast']);
       }
-      add_action('wp_head', [$this, 'readerHeaderHook'], 1);
+
+
       add_action('admin_menu', [$this, 'registerToolsPages'], 11);
     } else {
       add_action('admin_notices', [$this, 'nagACF']);
     }
   }
 
-  function registerCustomizer($wp_customize)
+  public function registerCustomizer($wp_customize)
   {
     if (class_exists('DirigibleSettings')) {
       $Settings = new DirigibleSettings($this->dir . 'src/seo.json');
@@ -107,7 +107,9 @@ class DirigibleSEO
   }
 
 
-  public function readerHeaderHook()
+
+
+  public function seoHeaderHook()
   {
     echo '<!-- Dirigible SEO -->';
     // the_post();
