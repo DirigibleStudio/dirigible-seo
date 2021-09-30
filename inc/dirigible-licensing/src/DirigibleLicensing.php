@@ -133,14 +133,14 @@ if (!class_exists('DirigibleLicensing')) {
       // if is a plugin
       if (in_array($_plugin_root, $_path_data) || in_array('mu-plugins', $_path_data)) {
         wp_register_script('ds-tools-js', plugin_dir_url(__FILE__) . 'js/admin.js', array('jquery'));
-        wp_localize_script('ds-tools-js', 'slug',  $this->slug);
+        wp_localize_script('ds-tools-js', 'slug',  [$this->slug]);
         wp_enqueue_script('ds-tools-js');
         wp_register_style('ds-licensing', plugin_dir_url(__FILE__) . '/licensing.css', false, '1.0.0');
         wp_enqueue_style('ds-licensing');
       } else {
         // if we are in a theme
         wp_register_script('ds-tools-js', get_template_directory_uri() . '/inc/dirigible-licensing/src/js/admin.js', array('jquery'));
-        wp_localize_script('ds-tools-js', 'slug',  $this->slug);
+        wp_localize_script('ds-tools-js', 'slug',  [$this->slug]);
         wp_enqueue_script('ds-tools-js');
         wp_register_style('ds-licensing', plugin_dir_url(__FILE__) . '/licensing.css', false, '1.0.0');
         wp_enqueue_style('ds-licensing');
