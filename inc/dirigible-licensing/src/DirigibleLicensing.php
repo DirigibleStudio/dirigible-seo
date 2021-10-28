@@ -206,7 +206,7 @@ if (!class_exists('DirigibleLicensing')) {
         }
         if (!$this->is_plugin_valid()) {
           echo '<tr class="active"><td>&nbsp;</td><td colspan="2">
-          <div class="update-message notice notice-error is-dismissible" style="padding: 8px 16px;">Please <a href="' . admin_url() . '/admin.php?page=' . $this->menu_slug . '">register</a> ' . $this->basename . ' to receive updates and support. </div>
+          <div class="update-message notice notice-error is-dismissible" style="padding: 8px 16px;">Please <a href="' . admin_url() . '/admin.php?page=dirigible%2Flicenses">register</a> ' . $this->basename . ' to receive updates and support. </div>
           </td></tr>';
         }
       }
