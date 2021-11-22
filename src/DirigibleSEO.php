@@ -75,7 +75,9 @@ class DirigibleSEO
         $firstBlockImage = $blocks[0]['attrs']['bgImageID'] ?? null;
         if ($firstBlockImage) {
           $url = wp_get_attachment_image_src($firstBlockImage, 'large');
-          echo "<meta property='og:image' content='{$url[0]}' />";
+          if ($url && is_array($url)) {
+            echo "<meta property='og:image' content='{$url[0]}' />";
+          }
         } else {
           foreach ($blocks as $block) {
             $this->searchForImageBlock($block);
