@@ -98,7 +98,9 @@ class DirigibleSEO
         $imageID = $block['attrs']['id'] ?? null;
         if ($imageID) {
           $url = wp_get_attachment_image_src($imageID, 'large');
-          $this->imageSearch = $url[0];
+          if ($url && is_array($url)) {
+            $this->imageSearch = $url[0];
+          }
         }
       } else {
         foreach ($block['innerBlocks'] as $newBlock) {
