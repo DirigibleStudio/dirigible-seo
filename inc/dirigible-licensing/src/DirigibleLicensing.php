@@ -142,7 +142,7 @@ if (!class_exists('DirigibleLicensing')) {
         wp_register_script('ds-tools-js', get_template_directory_uri() . '/inc/dirigible-licensing/src/js/admin.js', array('jquery'));
         wp_localize_script('ds-tools-js', 'slug',  [$this->slug]);
         wp_enqueue_script('ds-tools-js');
-        wp_register_style('ds-licensing', plugin_dir_url(__FILE__) . '/licensing.css', false, '1.0.0');
+        wp_register_style('ds-licensing', get_template_directory_uri() . '/inc/dirigible-licensing/src/licensing.css', false, '1.0.0');
         wp_enqueue_style('ds-licensing');
       }
     }
@@ -340,7 +340,6 @@ if (!class_exists('DirigibleLicensing')) {
         foreach (search_theme_directories() as $folder => $data) {
           foreach ($_path_data as $_path_part) {
             if ($_path_part == $folder)
-
               $base_file = trailingslashit($data['theme_root']);
           }
         }
@@ -349,6 +348,10 @@ if (!class_exists('DirigibleLicensing')) {
       }
       // Plugins
       elseif (in_array($_plugin_root, $_path_data)) {
+
+        if (!function_exists('get_plugins')) {
+          require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
 
         $plugins = get_plugins();
         foreach ($plugins as $plugin_file => $plugin_info) {
