@@ -29,6 +29,7 @@ class DirigibleSEO
       add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag']);
       add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag']);
       add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag']);
+      add_action('ds_seo_head_no_index_tag', [$this, 'printNoIndexTag']);
 
       if ($this->yoast) {
         add_action('admin_notices', [$this, 'nagYoast']);
@@ -53,6 +54,13 @@ class DirigibleSEO
   {
     $title = $this->stringFilters($this->metaTitle());
     echo '<meta property="og:title" content="' . $title . '">';
+  }
+
+  public function printNoIndexTag()
+  {
+    if(get_field('ds_seo_no_index')){
+      echo '<meta name="robots" content="noindex">';
+    }
   }
 
 
@@ -141,6 +149,7 @@ class DirigibleSEO
     do_action('ds_seo_head_title_tag');
     do_action('ds_seo_head_description_tag');
     do_action('ds_seo_head_image_tag');
+    do_action('ds_seo_head_no_index_tag');
     if ($this->yoast) {
       echo "-->\n";
     } // comment it out if yoast is active
@@ -347,6 +356,13 @@ class DirigibleSEO
           'type' => 'textarea',
           'rows' => 6,
           'maxlength' => 320,
+        ],
+        [
+          'key' => 'field_630cf96e4afd5',
+          'name' => 'ds_seo_no_index',
+          'type' => 'true_false',
+          'default' => 0,
+          'message' => "Stop search engines from indexing this page?"
         ],
       ],
       'location' => [
