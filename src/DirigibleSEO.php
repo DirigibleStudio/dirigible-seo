@@ -58,7 +58,7 @@ class DirigibleSEO
 
   public function printNoIndexTag()
   {
-    if(get_field('ds_seo_no_index')){
+    if (get_field('ds_seo_no_index')) {
       echo '<meta name="robots" content="noindex">';
     }
   }
@@ -76,7 +76,7 @@ class DirigibleSEO
     if ($id) {
 
       // If it's a person, retrieve the headshot.
-      if(is_singular('people')){
+      if (is_singular('people')) {
         $headshot = get_field('headshot', $id);
         echo "<meta property='og:image' content='{$headshot["sizes"]["large"]}' />";
         // If it's a person, ignore other images and only print the headshot.
@@ -141,7 +141,8 @@ class DirigibleSEO
       echo "Please deactivate Yoast SEO in order to use Dirigible SEO.\n";
     } // comment it out if yoast is active
 
-    $link = get_the_permalink();
+    global $wp;
+    $link = home_url($wp->request);
     $name = get_bloginfo('name');
     echo "<meta property='og:type' content='website' />";
     echo '<meta property="og:url" content="' . $link . '">';
@@ -268,8 +269,8 @@ class DirigibleSEO
           $returnTitle = get_field('ds_seo_title', $shop);
         }
       }
-      // is taxonomy
-      $returnTitle = get_field('ds_seo_title', $term) ?: $this->getDefaultTitle();
+      // is taxonomyå
+      $returnTitle = get_field('ds_seo_title', $term ?? null) ?: $this->getDefaultTitle();
     } elseif (is_archive()) {
       // is archive
 
@@ -283,13 +284,7 @@ class DirigibleSEO
   function getDefaultTitle()
   {
     $separator = get_theme_mod('ds_seo_separator', '-');
-    $title = wp_title('', false, 'right');
-    if (is_tax()) {
-      // only show one parent category
-      $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-      $term_title = $term->name;
-      $title = $term_title;
-    }
+    $title = trim(wp_title('', false, 'right'));
     $site = get_bloginfo('name');
     return "{$title} {$separator} {$site}";
   }
