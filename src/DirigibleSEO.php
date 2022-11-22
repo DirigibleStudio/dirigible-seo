@@ -160,6 +160,11 @@ class DirigibleSEO
 
   function dirigiblePageTitle($title_parts)
   {
+    // Break out if both yoast and dseo are active. Prevents infinite loop on events page.
+    if($this->yoast){
+      return $title_parts;
+    }
+
     $newTitle = $this->stringFilters($this->metaTitle());
     if ($newTitle) {
       $title_parts['title'] = $newTitle;
