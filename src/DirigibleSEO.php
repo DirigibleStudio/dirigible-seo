@@ -85,7 +85,8 @@ class DirigibleSEO
 
       if (has_post_thumbnail()) {
         $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
-        echo "<meta property='og:image' content='{$thumbnail[0]}' />";
+        $src = $thumbnail[0] ?? '';
+        echo "<meta property='og:image' content='{$src}' />";
       } else {
         global $post;
         $blocks = parse_blocks($post->post_content);
@@ -161,7 +162,7 @@ class DirigibleSEO
   function dirigiblePageTitle($title_parts)
   {
     // Break out if both yoast and dseo are active. Prevents infinite loop on events page.
-    if($this->yoast){
+    if ($this->yoast) {
       return $title_parts;
     }
 
