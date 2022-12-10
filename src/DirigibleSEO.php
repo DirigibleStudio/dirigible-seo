@@ -78,7 +78,8 @@ class DirigibleSEO
       // If it's a person, retrieve the headshot.
       if (is_singular('people')) {
         $headshot = get_field('headshot', $id);
-        echo "<meta property='og:image' content='{$headshot["sizes"]["large"]}' />";
+        $img = $headshot["sizes"]["large"] ?? '';
+        echo "<meta property='og:image' content='{$img}' />";
         // If it's a person, ignore other images and only print the headshot.
         return;
       }
