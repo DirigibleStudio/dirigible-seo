@@ -13,7 +13,8 @@
 					"default": "-",
 					"placeholder": "-",
 					"description": "Determines what character separates the page title from the site title for page names.",
-					"type": "inline-text"
+					"type": "inline-text",
+					"sanitizer": "sanitize_text_field"
 				}
 			]
 		}
