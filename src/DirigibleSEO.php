@@ -67,6 +67,7 @@ class DirigibleSEO
   public function printMetaDescriptionTag()
   {
     $description = $this->stringFilters($this->metaDescription());
+    echo '<meta name="description" content="' . $description . '">';
     echo '<meta property="og:description" name="description" content="' . $description . '">';
   }
 
