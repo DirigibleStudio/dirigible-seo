@@ -9,38 +9,123 @@ class DirigibleSEO
 
   function __construct($args)
   {
-    if (
-      is_plugin_active('advanced-custom-fields-pro/acf.php') ||
-      is_plugin_active('advanced-custom-fields/acf.php') ||
-      !(class_exists('acf_pro') || class_exists('acf'))
-    ) {
-      $this->path = $args;
-      $this->dir = plugin_dir_path($args);
-      if (is_plugin_active('wordpress-seo/wp-seo.php')) {
-        $this->yoast = true;
-      }
-      add_action('admin_enqueue_scripts', [$this, 'registerStyle']);
-      add_action('admin_enqueue_scripts', [$this, 'registerScripts']);
-      add_filter('document_title_parts', [$this, 'dirigiblePageTitle']);
-      add_action('customize_register', [$this, 'registerCustomizer'], 999, 1);
-      add_action('acf/init', [$this, 'registerFields']);
-      add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
+    $this->path = $args;
+    $this->dir = plugin_dir_path($args);
+    if (is_plugin_active('wordpress-seo/wp-seo.php')) {
+      $this->yoast = true;
+    }
+    add_action('admin_enqueue_scripts', [$this, 'registerStyle']);
+    add_action('admin_enqueue_scripts', [$this, 'registerScripts']);
+    add_filter('document_title_parts', [$this, 'dirigiblePageTitle']);
+    add_action('customize_register', [$this, 'registerCustomizer'], 999, 1);
 
-      add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag']);
-      add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag']);
-      add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag']);
-      add_action('ds_seo_head_no_index_tag', [$this, 'printNoIndexTag']);
+    // new meta boxes
+    add_action('add_meta_boxes', [$this, 'registerMetaBoxes']);
+    add_action('save_post', [$this, 'saveMetaBoxData']);
+    // add_action('acf/init', [$this, 'registerFields']);
 
-      if ($this->yoast) {
-        add_action('admin_notices', [$this, 'nagYoast']);
-      }
+    add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
+
+    add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag']);
+    add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag']);
+    add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag']);
+    add_action('ds_seo_head_no_index_tag', [$this, 'printNoIndexTag']);
 
 
-      add_action('admin_menu', [$this, 'registerToolsPages'], 11);
-    } else {
-      add_action('admin_notices', [$this, 'nagACF']);
+
+    if ($this->yoast) {
+      add_action('admin_notices', [$this, 'nagYoast']);
+    }
+
+
+    add_action('admin_menu', [$this, 'registerToolsPages'], 11);
+  }
+
+
+  public function registerMetaBoxes()
+  {
+    $post_types = get_post_types(['public' => true]);
+    // Loop through each post type and add the meta box
+    foreach ($post_types as $post_type) {
+      add_meta_box(
+        'ds_seo_meta', // Meta box ID
+        'SEO', // Title
+        [$this, 'renderMetaBox'], // Callback function to display the meta box content
+        $post_type, // Post type
+        'side', // Context (side column)
+        'default' // Priority
+      );
     }
   }
+
+  public function renderMetaBox($post)
+  {
+    // Nonce field for security
+    wp_nonce_field('ds_seo_nonce', 'ds_seo_nonce_field');
+    $ds_seo_title = get_post_meta($post->ID, 'ds_seo_title', true);
+    $ds_seo_description = get_post_meta($post->ID, 'ds_seo_description', true);
+    $ds_seo_no_index = get_post_meta($post->ID, 'ds_seo_no_index', true);
+?>
+    <div id="ds-seo-meta-box">
+      <div id="ds-editor-seo-preview">
+        <div class=" ds-seo-preview">
+          <p>Search Engine Preview</p>
+        </div>
+      </div>
+      <div id="ds-editor-seo-fields">
+        <div id="ds-editor-seo-title" class="seo-field">
+          <label for=" ds_seo_title">SEO Title</label>
+          <input type="text" name="ds_seo_title" id="ds_seo_title" placeholder="{title} {|} {site}" value="<?php echo esc_attr($ds_seo_title); ?>" />
+        </div>
+        <div id="ds-editor-seo-description" class="seo-field">
+          <label for=" ds_seo_description">SEO Description</label>
+          <textarea name="ds_seo_description" id="ds_seo_description" placeholder="Enter a description for this page..." rows="6"><?php echo esc_textarea($ds_seo_description); ?></textarea>
+        </div>
+        <div id="ds-editor-seo-no-index" class="seo-field">
+          <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
+          <label for="ds_seo_no_index">Stop search engines from indexing this page?</label>
+        </div>
+      </div>
+    </div>
+  <?php
+  }
+
+  public function saveMetaBoxData($post_id)
+  {
+    if (!isset($_POST['ds_seo_nonce_field']) || !wp_verify_nonce($_POST['ds_seo_nonce_field'], 'ds_seo_nonce')) {
+      return;
+    }
+
+    // Check if the user has permission to edit the post
+    if (!current_user_can('edit_post', $post_id)) {
+      return;
+    }
+
+    // Avoid saving on autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+      return;
+    }
+
+    // Save the SEO Title
+    if (isset($_POST['ds_seo_title'])) {
+      update_post_meta($post_id, 'ds_seo_title', sanitize_text_field($_POST['ds_seo_title']));
+    }
+
+    // Save the SEO Description
+    if (isset($_POST['ds_seo_description'])) {
+      update_post_meta($post_id, 'ds_seo_description', sanitize_textarea_field($_POST['ds_seo_description']));
+    }
+
+    // Save the No Index checkbox (store as 1 or 0)
+    if (isset($_POST['ds_seo_no_index'])) {
+      update_post_meta($post_id, 'ds_seo_no_index', 1);
+    } else {
+      update_post_meta($post_id, 'ds_seo_no_index', 0);
+    }
+
+    // Save additional fields as needed
+  }
+
 
   public function registerCustomizer($wp_customize)
   {
@@ -58,11 +143,10 @@ class DirigibleSEO
 
   public function printNoIndexTag()
   {
-    if (get_field('ds_seo_no_index')) {
+    if (get_post_meta(get_the_ID(), 'ds_seo_no_index', true)) {
       echo '<meta name="robots" content="noindex">';
     }
   }
-
 
   public function printMetaDescriptionTag()
   {
@@ -77,7 +161,7 @@ class DirigibleSEO
     if ($id) {
 
       // If it's a person, retrieve the headshot.
-      if (is_singular('people')) {
+      if (is_singular('people') && function_exists('get_field')) {
         $headshot = get_field('headshot', $id);
         $img = $headshot["sizes"]["large"] ?? '';
         echo "<meta property='og:image' content='{$img}' />";
@@ -201,35 +285,43 @@ class DirigibleSEO
   {
     $seoDescription = "";
     $term = get_queried_object();
-    if (is_home()) { // blog page
-      $page_for_posts = get_option('page_for_posts');
-      $seoDescription = get_field('ds_seo_description', $page_for_posts) ?: $this->getDefaultDescription();
-    } elseif (isset($term)) {
-      if (function_exists('is_shop')) {
 
+    if (is_home()) {
+      // Blog page
+      $page_for_posts = get_option('page_for_posts');
+      $seoDescription = get_post_meta($page_for_posts, 'ds_seo_description', true) ?: $this->getDefaultDescription();
+    } elseif (isset($term)) {
+      // WooCommerce shop or product pages
+      if (function_exists('is_shop')) {
         if (is_shop()) {
-          // shop
           $shop = get_option('woocommerce_shop_page_id');
-          $seoDescription = get_field('ds_seo_description', $shop) ?: $this->getDefaultDescription();
-        }
-        if (is_product()) {
-          // product
-          $seoDescription = get_field('ds_seo_description', $term) ?: $this->getDefaultDescription();
+          $seoDescription = get_post_meta($shop, 'ds_seo_description', true) ?: $this->getDefaultDescription();
+        } elseif (is_product() && $term instanceof WP_Post) {
+          // For WooCommerce product pages
+          $seoDescription = get_post_meta($term->ID, 'ds_seo_description', true) ?: $this->getDefaultDescription();
         }
       }
-      if ($term instanceof WP_Post) {
-        $seoDescription = get_field('ds_seo_description') ?: $this->getDefaultDescription();
-      } else {
-        $seoDescription = get_field('ds_seo_description', $term) ?: $this->getDefaultDescription();
+
+      // Taxonomy term description
+      if ($term instanceof WP_Term) {
+        $seoDescription = get_term_meta($term->term_id, 'ds_seo_description', true) ?: $this->getDefaultDescription();
+      }
+      // Post description
+      elseif ($term instanceof WP_Post) {
+        $seoDescription = get_post_meta($term->ID, 'ds_seo_description', true) ?: $this->getDefaultDescription();
       }
     } elseif (is_archive()) {
+      // Archive pages (fallback to blog page description)
       $page_for_posts = get_option('page_for_posts');
-      $seoDescription = get_field('ds_seo_description', $page_for_posts) ?: $this->getDefaultDescription();
+      $seoDescription = get_post_meta($page_for_posts, 'ds_seo_description', true) ?: $this->getDefaultDescription();
     } else {
-      $seoDescription = get_field('ds_seo_description') ?: $this->getDefaultDescription();
+      // Default for single posts or pages
+      $seoDescription = get_post_meta(get_the_ID(), 'ds_seo_description', true) ?: $this->getDefaultDescription();
     }
+
     return $seoDescription === '' ? $this->getDefaultDescription() : $seoDescription;
   }
+
 
 
   function addMigrateTool()
@@ -263,31 +355,37 @@ class DirigibleSEO
     $returnTitle = "";
 
     if (is_home()) {
-      // blog page
+      // Blog page
       $page_for_posts = get_option('page_for_posts');
-      $returnTitle = get_field('ds_seo_title', $page_for_posts) ?: $this->getDefaultTitle();
+      $returnTitle = get_post_meta($page_for_posts, 'ds_seo_title', true) ?: $this->getDefaultTitle();
     } elseif (is_front_page()) {
-      // home page
-      $returnTitle = get_field('ds_seo_title') ?: get_bloginfo('name');
+      // Home page
+      $returnTitle = get_post_meta(get_the_ID(), 'ds_seo_title', true) ?: get_bloginfo('name');
     } elseif (isset($term)) {
-      // if shop
-      if (function_exists('is_shop')) {
-        if (is_shop()) {
-          $shop = get_option('woocommerce_shop_page_id');
-          $returnTitle = get_field('ds_seo_title', $shop);
-        }
+      // Check if it's the WooCommerce shop page
+      if (function_exists('is_shop') && is_shop()) {
+        $shop = get_option('woocommerce_shop_page_id');
+        $returnTitle = get_post_meta($shop, 'ds_seo_title', true) ?: $this->getDefaultTitle();
       }
-      // is taxonomyå
-      $returnTitle = get_field('ds_seo_title', $term ?? null) ?: $this->getDefaultTitle();
+      // If term is a taxonomy or archive
+      elseif ($term instanceof WP_Term) {
+        $returnTitle = get_term_meta($term->term_id, 'ds_seo_title', true) ?: $this->getDefaultTitle();
+      }
+      // If term is a post (e.g., custom post type)
+      elseif ($term instanceof WP_Post) {
+        $returnTitle = get_post_meta($term->ID, 'ds_seo_title', true) ?: $this->getDefaultTitle();
+      }
     } elseif (is_archive()) {
-      // is archive
-
+      // Archive pages
       $returnTitle = $this->getDefaultTitle();
     } else {
-      $returnTitle = get_field('ds_seo_title') ?: $this->getDefaultTitle();
+      // Fallback for single posts, pages, or other post types
+      $returnTitle = get_post_meta(get_the_ID(), 'ds_seo_title', true) ?: $this->getDefaultTitle();
     }
+
     return $returnTitle === '' ? $this->getDefaultTitle() : $returnTitle;
   }
+
 
   function getDefaultTitle()
   {
@@ -321,6 +419,7 @@ class DirigibleSEO
     wp_register_script('dirigible-seo-js', plugins_url('dirigible-seo/dist/ds-seo-min.js'), ['jquery'], NULL, true);
     wp_enqueue_script('dirigible-seo-js');
   }
+
 
   public function registerFields()
   {
@@ -411,6 +510,7 @@ class DirigibleSEO
     ];
     acf_add_local_field_group($SEO_fields);
   }
+
 
   public function registerToolsPages()
   {

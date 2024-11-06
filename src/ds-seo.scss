@@ -1,22 +1,38 @@
 #ds-editor-seo-preview .ds-seo-preview {
+	box-shadow: 0 0 0 1px var(--slate-text, rgba(0, 0, 0, 0.1));
+	padding: 1rem;
+	border-radius: 5px;
+	cursor: not-allowed;
+	background: var(--ds-body, #fff);
 	span {
 		display: block;
 		font-style: normal;
 		line-height: 1.33;
 		&.title {
 			margin-bottom: 4px;
-			font-size: 15px;
+			font-size: 14px;
 			color: #1a0dab;
 		}
 		&.link {
-			font-size: 11px;
+			font-size: 10px;
 			margin-bottom: 4px;
 			color: #006621;
 		}
-		&.excerpt {
-			font-size: 11px;
+		&.description {
+			font-size: 10px;
 			margin-bottom: 0px;
 			color: #545454;
+		}
+	}
+	&.no-index {
+		background: #fef2f2;
+		box-shadow: 0 0 0 1px #ef4444;
+		span {
+			&.title,
+			&.link,
+			&.description {
+				color: #991b1b;
+			}
 		}
 	}
 }
@@ -89,10 +105,48 @@
 			}
 			&.error {
 				border-left: 0px solid white;
-				border: 1px solid darken($red, 10%);
+				border: 1px solid $red;
 				margin-bottom: 0px;
 				background: $red;
 			}
+		}
+	}
+}
+
+#ds-seo-meta-box {
+	box-sizing: border-box;
+	* {
+		box-sizing: border-box;
+	}
+
+	#ds-editor-seo-fields {
+		width: 100%;
+		.seo-field {
+			margin-top: 1em;
+		}
+		label {
+			display: block;
+			margin-bottom: 0.5em;
+		}
+		label,
+		textarea,
+		input[type="text"] {
+			width: 100%;
+		}
+		textarea {
+			font-size: 0.8rem;
+		}
+	}
+	#ds-editor-seo-no-index {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 0.5em;
+		label {
+			cursor: pointer;
+		}
+		input {
+			margin-top: 2px;
 		}
 	}
 }

@@ -7,8 +7,12 @@ if (!function_exists('dsGetPreviewSEO')) {
   add_action('wp_ajax_dsGetPreviewSEO', 'dsGetPreviewSEO');
   function dsGetPreviewSEO()
   {
+
     $seo_title = sanitize_text_field($_REQUEST['seo_title']);
     $seo_description = sanitize_textarea_field($_REQUEST['seo_description']);
+
+
+
     if (isset($_REQUEST['page_id'])) {
       $page_id = (int) filter_var($_REQUEST['page_id'], FILTER_SANITIZE_NUMBER_INT);
     } else {
@@ -165,10 +169,11 @@ if (!function_exists('ds_replace_yoast_string_term')) {
 
 
 
-/* Get Preview Text Ajax
+/* Migrate Yoast Data
 *******************************************************/
 if (!function_exists('ds_migrate_yoast')) {
   add_action('wp_ajax_ds_migrate_yoast', 'ds_migrate_yoast');
+
   function get_post_primary_category($post_id, $term = 'category', $return_all_categories = false)
   {
     $return = array();
@@ -195,6 +200,7 @@ if (!function_exists('ds_migrate_yoast')) {
     }
     return $return;
   }
+
   function ds_migrate_yoast()
   {
     $return = [];
@@ -215,20 +221,23 @@ if (!function_exists('ds_migrate_yoast')) {
       while ($loop->have_posts()) : $loop->the_post();
         $totalCount++;
         $id = get_the_id();
+
         // title
         $yoast_title = get_post_meta($id, '_yoast_wpseo_title', true);
         if ($yoast_title) {
           $new_title = ds_replace_yoast_string($yoast_title, $id);
-          update_field('ds_seo_title', $new_title, $id);
+          update_post_meta($id, 'ds_seo_title', $new_title); // Changed to update_post_meta
           $titleUpdates++;
         }
+
         // meta
         $yoast_meta = get_post_meta($id, '_yoast_wpseo_metadesc', true);
         if ($yoast_meta) {
           $new_meta = ds_replace_yoast_string($yoast_meta, $id);
-          update_field('ds_seo_description', $new_meta, $id);
+          update_post_meta($id, 'ds_seo_description', $new_meta); // Changed to update_post_meta
           $descUpdates++;
         }
+
         if ($yoast_title || $yoast_meta) {
           $totalUpdates++;
         }
@@ -236,32 +245,35 @@ if (!function_exists('ds_migrate_yoast')) {
       wp_reset_postdata();
 
 
+
       // Handle Terms
       $terms = get_option('wpseo_taxonomy_meta');
       $termsUpdated = 0;
       $termTitlesUpdates = 0;
       $termDescUpdates = 0;
+
       foreach ($terms as $key => $meta) {
         foreach ($meta as $tax_id => $single_cat) {
-          //    $return[] = "<div class='notification'>$tax_id</div>";
-          //  $return[] = "<pre>".print_r($single_cat, true)."</pre>";
           $seoTitle = $single_cat['wpseo_title'];
           if ($seoTitle) {
             $new_title = ds_replace_yoast_string_term($seoTitle, $tax_id);
-            update_field('ds_seo_title', $new_title, get_term($tax_id));
+            update_term_meta($tax_id, 'ds_seo_title', $new_title); // Changed to update_term_meta
             $termTitlesUpdates++;
           }
+
           $seoDesc = $single_cat['wpseo_desc'];
           if ($seoDesc) {
             $new_meta = ds_replace_yoast_string_term($seoDesc, $tax_id);
-            update_field('ds_seo_description', $new_meta, get_term($tax_id));
+            update_term_meta($tax_id, 'ds_seo_description', $new_meta); // Changed to update_term_meta
             $termDescUpdates++;
           }
+
           if ($seoTitle || $seoDesc) {
             $termsUpdated++;
           }
         }
       }
+
 
       $return[] = "<div class='notification'>
         <h3>We found <strong>{$totalCount}</strong> posts/pages on your site.</h3>

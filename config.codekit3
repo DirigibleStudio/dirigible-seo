@@ -7,7 +7,7 @@
       "uuidString" : "FAFC8C73-8681-4E31-BCFF-85AD4F8C30F9"
     }
   ],
-  "creatorBuild" : "34127",
+  "creatorBuild" : "34592",
   "files" : {
     "\/.gitattributes" : {
       "cB" : 0,
@@ -56,908 +56,23 @@
       "oF" : 0,
       "pg" : 0
     },
-    "\/inc\/dirigible-licensing\/index.php" : {
+    "\/dist\/ds-seo.css.map" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/index.php",
+      "oAP" : "\/dist\/ds-seo.css.map",
       "oF" : 0
     },
-    "\/inc\/dirigible-licensing\/src\/DirigibleLicensing.php" : {
+    "\/inc\/licensing.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/src\/DirigibleLicensing.php",
+      "oAP" : "\/inc\/licensing.php",
       "oF" : 0
     },
-    "\/inc\/dirigible-licensing\/src\/js\/admin-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/src\/js\/admin-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/inc\/dirigible-licensing\/src\/js\/admin.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/src\/js\/admin-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/inc\/dirigible-licensing\/src\/js\/options.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/src\/js\/options.php",
-      "oF" : 0
-    },
-    "\/inc\/dirigible-licensing\/src\/licensing-min.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/src\/licensing-min-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/inc\/dirigible-licensing\/src\/licensing.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/dirigible-licensing\/src\/licensing-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/inc\/init.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/init.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/.editorconfig" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/.editorconfig",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/.gitignore" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/.gitignore",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/composer.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/inc\/plugin-update-checker\/composer-min.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
-    },
-    "\/inc\/plugin-update-checker\/css\/puc-debug-bar.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/css\/puc-debug-bar-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/inc\/plugin-update-checker\/examples\/plugin.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/inc\/plugin-update-checker\/examples\/plugin-min.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
-    },
-    "\/inc\/plugin-update-checker\/examples\/theme.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/inc\/plugin-update-checker\/examples\/theme-min.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
-    },
-    "\/inc\/plugin-update-checker\/js\/debug-bar.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/js\/debug-bar-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ca.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ca.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ca.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ca.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-cs_CZ.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-cs_CZ.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-cs_CZ.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-cs_CZ.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-da_DK.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-da_DK.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-da_DK.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-da_DK.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-de_DE.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-de_DE.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-de_DE.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-de_DE.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_AR.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_AR.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_AR.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_AR.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CL.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CL.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CL.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CL.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CO.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CO.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CO.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CO.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CR.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CR.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CR.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_CR.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_DO.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_DO.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_DO.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_DO.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_ES.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_ES.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_ES.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_ES.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_GT.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_GT.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_GT.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_GT.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_HN.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_HN.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_HN.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_HN.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_MX.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_MX.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_MX.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_MX.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PE.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PE.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PE.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PE.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PR.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PR.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PR.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_PR.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_UY.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_UY.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_UY.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_UY.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_VE.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_VE.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_VE.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-es_VE.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fa_IR.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fa_IR.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fa_IR.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fa_IR.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_CA.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_CA.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_CA.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_CA.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_FR.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_FR.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_FR.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-fr_FR.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-hu_HU.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-hu_HU.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-hu_HU.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-hu_HU.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-it_IT.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-it_IT.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-it_IT.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-it_IT.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ja.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ja.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ja.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-ja.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_BE.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_BE.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_BE.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_BE.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_NL.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_NL.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_NL.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-nl_NL.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-pt_BR.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-pt_BR.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-pt_BR.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-pt_BR.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sl_SI.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sl_SI.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sl_SI.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sl_SI.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sv_SE.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sv_SE.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sv_SE.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-sv_SE.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-zh_CN.mo" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-zh_CN.mo",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-zh_CN.po" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker-zh_CN.po",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/languages\/plugin-update-checker.pot" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/languages\/plugin-update-checker.pot",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/license.txt" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/license.txt",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/load-v4p10.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/load-v4p10.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/plugin-update-checker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/plugin-update-checker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4\/Factory.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4\/Factory.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Autoloader.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Autoloader.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/Extension.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/Extension.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/Panel.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/Panel.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/PluginExtension.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/PluginExtension.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/PluginPanel.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/PluginPanel.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/ThemePanel.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/DebugBar\/ThemePanel.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Factory.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Factory.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/InstalledPackage.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/InstalledPackage.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Metadata.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Metadata.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/OAuthSignature.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/OAuthSignature.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Info.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Info.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Package.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Package.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Ui.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Ui.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Update.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/Update.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/UpdateChecker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Plugin\/UpdateChecker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Scheduler.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Scheduler.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/StateStore.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/StateStore.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Theme\/Package.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Theme\/Package.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Theme\/Update.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Theme\/Update.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Theme\/UpdateChecker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Theme\/UpdateChecker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Update.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Update.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/UpdateChecker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/UpdateChecker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/UpgraderStatus.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/UpgraderStatus.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Utils.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Utils.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/Api.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/Api.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/BaseChecker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/BaseChecker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/BitBucketApi.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/BitBucketApi.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/GitHubApi.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/GitHubApi.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/GitLabApi.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/GitLabApi.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/PluginUpdateChecker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/PluginUpdateChecker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/Reference.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/Reference.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/ThemeUpdateChecker.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/Puc\/v4p10\/Vcs\/ThemeUpdateChecker.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/README.md" : {
+    "\/README.md" : {
       "cB" : 0,
       "cS" : 0,
       "eF" : 1,
@@ -967,7 +82,7 @@
       "ft" : 4096,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/README.html",
+      "oAP" : "\/README.html",
       "oF" : 0,
       "oFM" : 0,
       "oS" : 0,
@@ -975,38 +90,6 @@
       "pME" : 1,
       "rFN" : 0,
       "uCM" : 0
-    },
-    "\/inc\/plugin-update-checker\/vendor\/Parsedown.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/vendor\/Parsedown.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/vendor\/ParsedownLegacy.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/vendor\/ParsedownLegacy.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/vendor\/ParsedownModern.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/vendor\/ParsedownModern.php",
-      "oF" : 0
-    },
-    "\/inc\/plugin-update-checker\/vendor\/PucReadmeParser.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/inc\/plugin-update-checker\/vendor\/PucReadmeParser.php",
-      "oF" : 0
     },
     "\/readme.txt" : {
       "cB" : 0,
@@ -1046,10 +129,11 @@
     "\/src\/ds-seo.scss" : {
       "aP" : 1,
       "bl" : 1,
+      "co" : 1,
       "dP" : 2,
       "ec" : 0,
       "ft" : 4,
-      "ma" : 0,
+      "ma" : 1,
       "oA" : 0,
       "oAP" : "\/dist\/ds-seo.css",
       "oF" : 2,
@@ -1375,144 +459,6 @@
     "buildFolderActive" : 0,
     "buildFolderName" : "build",
     "cleanBuild" : 1,
-    "coffeeLintFlags2" : {
-      "arrow_spacing" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "camel_case_classes" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "colon_assignment_spacing" : {
-        "active" : 0,
-        "flagValue" : 1
-      },
-      "cyclomatic_complexity" : {
-        "active" : 0,
-        "flagValue" : 10
-      },
-      "duplicate_key" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "empty_constructor_needs_parens" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "ensure_comprehensions" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "indentation" : {
-        "active" : 1,
-        "flagValue" : 2
-      },
-      "line_endings" : {
-        "active" : 0,
-        "flagValue" : 0
-      },
-      "max_line_length" : {
-        "active" : 0,
-        "flagValue" : 150
-      },
-      "missing_fat_arrows" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "newlines_after_classes" : {
-        "active" : 0,
-        "flagValue" : 3
-      },
-      "no_backticks" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_debugger" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_empty_functions" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_empty_param_list" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_implicit_braces" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_implicit_parens" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_interpolation_in_single_quotes" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_nested_string_interpolation" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_plusplus" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_private_function_fat_arrows" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_stand_alone_at" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_tabs" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_this" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_throwing_strings" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_trailing_semicolons" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_trailing_whitespace" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "no_unnecessary_double_quotes" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "no_unnecessary_fat_arrows" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "non_empty_constructor_needs_parens" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "prefer_english_operator" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "space_operators" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "spacing_after_comma" : {
-        "active" : 1,
-        "flagValue" : -1
-      }
-    },
     "cssoForceMediaMerge" : 0,
     "cssoRestructure" : 1,
     "environmentVariableEntries" : [
@@ -1564,10 +510,6 @@
       "brace-style" : {
         "active" : 0,
         "optionString" : "'1tbs', {'allowSingleLine': true}"
-      },
-      "callback-return" : {
-        "active" : 0,
-        "optionString" : "['callback', 'cb', 'next']"
       },
       "camelcase" : {
         "active" : 0,
@@ -1660,6 +602,10 @@
         "active" : 0,
         "optionString" : "'expression'"
       },
+      "function-call-argument-newline" : {
+        "active" : 0,
+        "optionString" : "'always'"
+      },
       "function-paren-newline" : {
         "active" : 0,
         "optionString" : "'multiline'"
@@ -1672,9 +618,6 @@
         "active" : 0,
         "optionString" : "{'allowImplicit': false}"
       },
-      "global-require" : {
-        "active" : 0
-      },
       "grouped-accessor-pairs" : {
         "active" : 0,
         "optionString" : "'anyOrder'"
@@ -1682,11 +625,7 @@
       "guard-for-in" : {
         "active" : 0
       },
-      "handle-callback-err" : {
-        "active" : 0,
-        "optionString" : "'err'"
-      },
-      "id-blacklist" : {
+      "id-denylist" : {
         "active" : 0,
         "optionString" : "'data', 'err', 'e', 'cb', 'callback'"
       },
@@ -1722,10 +661,6 @@
         "active" : 0,
         "optionString" : "{'before': true, 'after': true, 'overrides': {}}"
       },
-      "line-comment-position" : {
-        "active" : 0,
-        "optionString" : "{'position': 'above'}"
-      },
       "linebreak-style" : {
         "active" : 0,
         "optionString" : "'unix'"
@@ -1737,6 +672,10 @@
       "lines-between-class-members" : {
         "active" : 0,
         "optionString" : "'always', {exceptAfterSingleLine: false}"
+      },
+      "logical-assignment-operators" : {
+        "active" : 0,
+        "optionString" : "'always',  {'enforceForIfStatements': false}"
       },
       "max-classes-per-file" : {
         "active" : 0,
@@ -1774,10 +713,6 @@
         "active" : 0,
         "optionString" : "{'max': 1}"
       },
-      "multiline-comment-style" : {
-        "active" : 0,
-        "optionString" : "'starred-block'"
-      },
       "multiline-ternary" : {
         "active" : 0,
         "optionString" : "'always'"
@@ -1810,9 +745,6 @@
         "active" : 0,
         "optionString" : "{'allow': ['~'], 'int32Hint': true}"
       },
-      "no-buffer-constructor" : {
-        "active" : 0
-      },
       "no-caller" : {
         "active" : 0
       },
@@ -1838,6 +770,9 @@
         "optionString" : "{'allow': ['warn', 'error']}"
       },
       "no-const-assign" : {
+        "active" : 1
+      },
+      "no-constant-binary-expression" : {
         "active" : 1
       },
       "no-constant-condition" : {
@@ -1874,6 +809,9 @@
       "no-dupe-keys" : {
         "active" : 1
       },
+      "no-duplicate-case" : {
+        "active" : 1
+      },
       "no-duplicate-imports" : {
         "active" : 0,
         "optionString" : "{'includeExports': false}"
@@ -1895,6 +833,9 @@
       "no-empty-pattern" : {
         "active" : 1
       },
+      "no-empty-static-block" : {
+        "active" : 1
+      },
       "no-eq-null" : {
         "active" : 0
       },
@@ -1913,9 +854,10 @@
         "active" : 0
       },
       "no-extra-boolean-cast" : {
-        "active" : 1
+        "active" : 1,
+        "optionString" : "{'enforceForInnerExpressions': false}"
       },
-      "no-extra-labels" : {
+      "no-extra-label" : {
         "active" : 0
       },
       "no-extra-parens" : {
@@ -1926,7 +868,8 @@
         "active" : 1
       },
       "no-fallthrough" : {
-        "active" : 1
+        "active" : 1,
+        "optionString" : "{'allowEmptyCase': false}"
       },
       "no-floating-decimal" : {
         "active" : 0
@@ -1997,22 +940,20 @@
         "optionString" : "{'ignore': [], 'ignoreArrayIndexes': true, 'enforceConst': false, 'detectObjects': false}"
       },
       "no-misleading-character-class" : {
-        "active" : 0
+        "active" : 0,
+        "optionString" : "{'allowEscape': false}"
       },
       "no-mixed-operators" : {
         "active" : 0,
         "optionString" : "{'groups': [['+', '-', '*', '\/', '%', '**'], ['&', '|', '^', '~', '<<', '>>', '>>>'], ['==', '!=', '===', '!==', '>', '>=', '<', '<='], ['&&', '||'], ['in', 'instanceof']], 'allowSamePrecedence': true}"
-      },
-      "no-mixed-requires" : {
-        "active" : 0,
-        "optionString" : "{'grouping': false, 'allowCall': false }"
       },
       "no-mixed-spaces-and-tabs" : {
         "active" : 0,
         "optionString" : ""
       },
       "no-multi-assign" : {
-        "active" : 0
+        "active" : 0,
+        "optionString" : "{'ignoreNonDeclaration': false}"
       },
       "no-multi-spaces" : {
         "active" : 0,
@@ -2037,11 +978,8 @@
       "no-new-func" : {
         "active" : 0
       },
-      "no-new-object" : {
-        "active" : 0
-      },
-      "no-new-require" : {
-        "active" : 0
+      "no-new-native-nonconstructor" : {
+        "active" : 1
       },
       "no-new-symbol" : {
         "active" : 1
@@ -2055,6 +993,9 @@
       "no-obj-calls" : {
         "active" : 1
       },
+      "no-object-constructor" : {
+        "active" : 0
+      },
       "no-octal" : {
         "active" : 1
       },
@@ -2065,18 +1006,9 @@
         "active" : 0,
         "optionString" : "{'props': false}"
       },
-      "no-path-concat" : {
-        "active" : 0
-      },
       "no-plusplus" : {
         "active" : 0,
         "optionString" : "{'allowForLoopAfterthoughts': false}"
-      },
-      "no-process-env" : {
-        "active" : 0
-      },
-      "no-process-exit" : {
-        "active" : 0
       },
       "no-promise-executor-return" : {
         "active" : 0
@@ -2103,9 +1035,6 @@
         "optionString" : "'event', 'fdescribe'"
       },
       "no-restricted-imports" : {
-        "active" : 0
-      },
-      "no-restricted-modules" : {
         "active" : 0,
         "optionString" : ""
       },
@@ -2121,9 +1050,6 @@
         "active" : 0,
         "optionString" : "'except-parens'"
       },
-      "no-return-await" : {
-        "active" : 0
-      },
       "no-script-url" : {
         "active" : 0
       },
@@ -2135,7 +1061,8 @@
         "active" : 0
       },
       "no-sequences" : {
-        "active" : 0
+        "active" : 0,
+        "optionString" : "{'allowInParentheses': true}"
       },
       "no-setter-return" : {
         "active" : 1
@@ -2149,10 +1076,6 @@
       },
       "no-sparse-arrays" : {
         "active" : 1
-      },
-      "no-sync" : {
-        "active" : 0,
-        "optionString" : "{'allowAtRootLevel': false}"
       },
       "no-tabs" : {
         "active" : 0,
@@ -2221,6 +1144,9 @@
         "optionString" : "{'allowShortCircuit': false, 'allowTernary': false, 'allowTaggedTemplates': false}"
       },
       "no-unused-labels" : {
+        "active" : 1
+      },
+      "no-unused-private-class-members" : {
         "active" : 1
       },
       "no-unused-vars" : {
@@ -2341,6 +1267,9 @@
       "prefer-numeric-literals" : {
         "active" : 0
       },
+      "prefer-object-has-own" : {
+        "active" : 0
+      },
       "prefer-object-spread" : {
         "active" : 0
       },
@@ -2373,17 +1302,15 @@
         "optionString" : "'always'"
       },
       "require-atomic-updates" : {
-        "active" : 0
+        "active" : 0,
+        "optionString" : "{'allowProperties': false}"
       },
       "require-await" : {
         "active" : 0
       },
-      "require-jsdoc" : {
-        "active" : 0,
-        "optionString" : "{'require': {'FunctionDeclaration': true, 'MethodDefinition': false, 'ClassDeclaration': false, 'ArrowFunctionExpression': false}}"
-      },
       "require-unicode-regexp" : {
-        "active" : 0
+        "active" : 0,
+        "optionString" : "{'requireFlag': 'u'}"
       },
       "require-yield" : {
         "active" : 1
@@ -2467,10 +1394,6 @@
         "active" : 1,
         "optionString" : ""
       },
-      "valid-jsdoc" : {
-        "active" : 0,
-        "optionString" : "{'prefer': {'return': 'returns'}, 'requireReturn': true, 'requireReturnDescription': true, 'requireReturnType': true, 'requireParamDescription': true}"
-      },
       "valid-typeof" : {
         "active" : 1,
         "optionString" : "{'requireStringLiterals': true}"
@@ -2499,354 +1422,6 @@
     "gitIgnoreBuildFolder" : 1,
     "hideConfigFile" : 0,
     "jsCheckerReservedNamesString" : "",
-    "jsHintFlags2" : {
-      "asi" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "bitwise" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "boss" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "browser" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "browserify" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "camelcase" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "couch" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "curly" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "debug" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "devel" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "dojo" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "elision" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "eqeqeq" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "eqnull" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "es3" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "esnext" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "evil" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "expr" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "forin" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "freeze" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "funcscope" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "futurehostile" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "globalstrict" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "immed" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "indent" : {
-        "active" : 0,
-        "flagValue" : 4
-      },
-      "iterator" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "jasmine" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "jquery" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "lastsemic" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "latedef" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "laxbreak" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "laxcomma" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "loopfunc" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "maxcomplexity" : {
-        "active" : 0,
-        "flagValue" : 10
-      },
-      "maxdepth" : {
-        "active" : 0,
-        "flagValue" : 3
-      },
-      "maxlen" : {
-        "active" : 0,
-        "flagValue" : 150
-      },
-      "maxparams" : {
-        "active" : 0,
-        "flagValue" : 3
-      },
-      "maxstatements" : {
-        "active" : 0,
-        "flagValue" : 4
-      },
-      "mocha" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "mootools" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "moz" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "multistr" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "newcap" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "noarg" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "nocomma" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "node" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "noempty" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "nonbsp" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "nonew" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "nonstandard" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "notypeof" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "noyield" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "onecase" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "phantom" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "plusplus" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "proto" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "prototypejs" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "qunit" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "regexp" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "rhino" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "scripturl" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "shadow" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "shelljs" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "singleGroups" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "strict" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "sub" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "supernew" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "typed" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "undef" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "unused" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "varstmt" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "withstmt" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "worker" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "wsh" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "yui" : {
-        "active" : 0,
-        "flagValue" : -1
-      }
-    },
-    "jsLintFlags2" : {
-      "bitwise" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "browser" : {
-        "active" : 1,
-        "flagValue" : -1
-      },
-      "couch" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "devel" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "es6" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "eval" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "for" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "maxlen" : {
-        "active" : 0,
-        "flagValue" : 150
-      },
-      "node" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "this" : {
-        "active" : 0,
-        "flagValue" : -1
-      },
-      "white" : {
-        "active" : 0,
-        "flagValue" : -1
-      }
-    },
     "languageDefaultsCOFFEE" : {
       "autoOutputAction" : 0,
       "autoOutputPathFilenamePattern" : "*.js",
@@ -2857,7 +1432,6 @@
       "minifierStyle" : 1,
       "outputStyle" : 0,
       "sourceMapStyle" : 0,
-      "syntaxCheckerStyle" : 1,
       "transpilerStyle" : 1
     },
     "languageDefaultsCSS" : {
@@ -3088,11 +1662,12 @@
       "createDeclarationFile" : 0,
       "jsxMode" : 0,
       "minifierStyle" : 0,
+      "moduleDetectionType" : 0,
       "moduleResolutionType" : 0,
       "moduleType" : 2,
       "removeComments" : 0,
       "sourceMapStyle" : 0,
-      "targetECMAVersion" : 0
+      "targetECMAVersion" : 2018
     },
     "languageDefaultsUserDefined" : [
 
@@ -3144,10 +1719,14 @@
       "ENVIRONMENT:::$NODE_ENV"
     ],
     "rollupTreeshakingEnabled" : 1,
+    "rollupTreeshakingModuleSideEffects" : 1,
     "skippedFoldersString" : "log, _logs, logs, _cache, cache, .idea, \/storage\/framework\/sessions, node_modules",
     "sourceFolderName" : "source",
     "susyVersion" : 3,
+    "tsAllowArbitraryExtensions" : 0,
+    "tsAllowImportingTSExtensions" : 0,
     "tsAllowSyntheticDefaultImports" : 0,
+    "tsAllowUMDGlobalAccess" : 0,
     "tsAllowUnreachableCode" : 0,
     "tsAllowUnusedLabels" : 0,
     "tsAlwaysStrict" : 0,
@@ -3155,34 +1734,38 @@
     "tsEmitBOM" : 0,
     "tsEmitDecoratorMetadata" : 0,
     "tsESModuleInterop" : 0,
+    "tsExactOptionalPropertyTypes" : 0,
+    "tsExperimentalDecorators" : 0,
     "tsForceConsistentCasingInFileNames" : 0,
     "tsImportHelpers" : 0,
     "tsIsolatedModules" : 0,
     "tsJSXFactory" : "React.createElement",
-    "tsKeyofStringsOnly" : 0,
+    "tsJSXFragmentFactory" : "Fragment",
     "tsNoEmitHelpers" : 0,
     "tsNoFallthroughCasesInSwitch" : 0,
     "tsNoImplicitAny" : 0,
+    "tsNoImplicitOverride" : 0,
     "tsNoImplicitReturns" : 0,
     "tsNoImplicitThis" : 0,
-    "tsNoImplicitUseStrict" : 0,
     "tsNoLib" : 0,
     "tsNoPropertyAccessFromIndexSignature" : 0,
     "tsNoResolve" : 0,
-    "tsNoStrictGenericChecks" : 0,
     "tsNoUncheckedIndexAccess" : 0,
     "tsNoUnusedLocals" : 0,
     "tsNoUnusedParameters" : 0,
     "tsPreserveConstEnums" : 0,
     "tsPreserveSymlinks" : 0,
     "tsResolveJsonModule" : 0,
+    "tsSkipDefaultLibCheck" : 0,
     "tsSkipLibCheck" : 0,
+    "tsStrictBindCallApply" : 0,
     "tsStrictFunctionTypes" : 0,
     "tsStrictNullChecks" : 0,
     "tsStrictPropertyInitialization" : 0,
     "tsStripInternal" : 0,
-    "tsSuppressExcessPropertyErrors" : 0,
-    "tsSuppressImplicitAnyIndexErrors" : 0,
+    "tsUseDefineForClassFields" : 0,
+    "tsUseUnknownInCatchVariables" : 0,
+    "tsVerbatimModuleSyntax" : 0,
     "uglifyDefinesString" : "",
     "uglifyFlags2" : {
       "arguments" : {
@@ -3215,7 +1798,7 @@
       },
       "comments" : {
         "active" : 0,
-        "flagValue" : -1
+        "flagValue" : 1
       },
       "comparisons" : {
         "active" : 1,
@@ -3317,6 +1900,10 @@
         "active" : 0,
         "flagValue" : -1
       },
+      "keep_numbers" : {
+        "active" : 0,
+        "flagValue" : -1
+      },
       "keep_quoted_props" : {
         "active" : 0,
         "flagValue" : -1
@@ -3340,6 +1927,10 @@
       "passes" : {
         "active" : 1,
         "flagValue" : 1
+      },
+      "preserve_annotations" : {
+        "active" : 0,
+        "flagValue" : -1
       },
       "properties" : {
         "active" : 1,
@@ -3443,6 +2034,10 @@
       },
       "webkit" : {
         "active" : 0,
+        "flagValue" : -1
+      },
+      "wrap_func_args" : {
+        "active" : 1,
         "flagValue" : -1
       },
       "wrap_iife" : {

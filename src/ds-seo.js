@@ -5,11 +5,15 @@ jQuery(document).ready(function ($) {
 		getPreviewSEO($seoPreview);
 		var $seoTitle = $("#ds-editor-seo-title").find("input");
 		var $seoDescription = $("#ds-editor-seo-description").find("textarea");
+		var $seoNoIndex = $("#ds-editor-seo-no-index").find("input");
 
 		$seoTitle.on("input", function () {
 			getPreviewSEO($seoPreview);
 		});
 		$seoDescription.on("input", function () {
+			getPreviewSEO($seoPreview);
+		});
+		$seoNoIndex.on("change", function () {
 			getPreviewSEO($seoPreview);
 		});
 	}
@@ -19,6 +23,8 @@ jQuery(document).ready(function ($) {
 		var url = window.location.href;
 		var description = $("#ds-editor-seo-description").find("textarea").val();
 		var id = getUrlParam("post", "-1");
+		var noIndex = $("#ds-editor-seo-no-index").find("input").is(":checked");
+
 		var data = {
 			action: "dsGetPreviewSEO",
 			page_id: id,
@@ -32,7 +38,7 @@ jQuery(document).ready(function ($) {
 			let link = json.permalink;
 			let desc = json.excerpt.replace(/\\/g, "");
 			$box.html(
-				`<div class="ds-seo-preview">
+				`<div class="ds-seo-preview ${noIndex ? "no-index" : ""}">
           <span class="title">${title}</span>
           <span class="link">${link}</span>
           <span class="description">${desc}</span>
