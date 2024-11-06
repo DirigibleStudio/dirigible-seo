@@ -2,10 +2,10 @@
 Contributors: dirigible
 Donate link: https://dirigiblestudio.com/wordpress/freeware-donation/
 Tags: seo, meta description, description, search engine optimization, meta, meta title, dirigible
-Requires at least: 3.1
-Tested up to: 5.5
+Requires at least: 6.6
+Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 1.1.3
+Stable tag: 2.3.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
