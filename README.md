@@ -1,5 +1,9 @@
 # Dirigible SEO
 
+## 2.3.20
+
+Removed ACF dependency.
+
 ## 2.3.17
 
 Sanitizer for text inputs.

@@ -22,6 +22,7 @@ class DirigibleSEO
     // new meta boxes
     add_action('add_meta_boxes', [$this, 'registerMetaBoxes']);
     add_action('save_post', [$this, 'saveMetaBoxData']);
+
     // add_action('acf/init', [$this, 'registerFields']);
 
     add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
@@ -122,8 +123,6 @@ class DirigibleSEO
     } else {
       update_post_meta($post_id, 'ds_seo_no_index', 0);
     }
-
-    // Save additional fields as needed
   }
 
 
