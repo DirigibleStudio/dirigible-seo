@@ -159,15 +159,6 @@ class DirigibleSEO
     $id = get_the_id();
     if ($id) {
 
-      // If it's a person, retrieve the headshot.
-      if (is_singular('people') && function_exists('get_field')) {
-        $headshot = get_field('headshot', $id);
-        $img = $headshot["sizes"]["large"] ?? '';
-        echo "<meta property='og:image' content='{$img}' />";
-        // If it's a person, ignore other images and only print the headshot.
-        return;
-      }
-
       if (has_post_thumbnail()) {
         $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
         $src = $thumbnail[0] ?? '';

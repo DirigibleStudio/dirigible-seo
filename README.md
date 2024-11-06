@@ -1,5 +1,9 @@
 # Dirigible SEO
 
+## 2.3.21
+
+Remove people headshot support now that we use the featured image.
+
 ## 2.3.20
 
 Removed ACF dependency.
