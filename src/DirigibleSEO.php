@@ -23,6 +23,9 @@ class DirigibleSEO
     add_action('add_meta_boxes', [$this, 'registerMetaBoxes']);
     add_action('save_post', [$this, 'saveMetaBoxData']);
 
+    // Register term meta fields
+    add_action('init', [$this, 'registerTermMetaFields']);
+
     // add_action('acf/init', [$this, 'registerFields']);
 
     add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
@@ -32,16 +35,12 @@ class DirigibleSEO
     add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag']);
     add_action('ds_seo_head_no_index_tag', [$this, 'printNoIndexTag']);
 
-
-
     if ($this->yoast) {
       add_action('admin_notices', [$this, 'nagYoast']);
     }
 
-
     add_action('admin_menu', [$this, 'registerToolsPages'], 11);
   }
-
 
   public function registerMetaBoxes()
   {
@@ -125,7 +124,6 @@ class DirigibleSEO
     }
   }
 
-
   public function registerCustomizer($wp_customize)
   {
     if (class_exists('DirigibleSettings')) {
@@ -142,8 +140,19 @@ class DirigibleSEO
 
   public function printNoIndexTag()
   {
-    if (get_post_meta(get_the_ID(), 'ds_seo_no_index', true)) {
-      echo '<meta name="robots" content="noindex">';
+    $term = get_queried_object();
+    
+    // Check if we're on a post/page
+    if (is_singular()) {
+      if (get_post_meta(get_the_ID(), 'ds_seo_no_index', true)) {
+        echo '<meta name="robots" content="noindex">';
+      }
+    } 
+    // Check if we're on a term/taxonomy page
+    elseif (is_tax() || is_category() || is_tag()) {
+      if ($term instanceof WP_Term && get_term_meta($term->term_id, 'ds_seo_no_index', true)) {
+        echo '<meta name="robots" content="noindex">';
+      }
     }
   }
 
@@ -204,9 +213,6 @@ class DirigibleSEO
     }
   }
 
-
-
-
   public function seoHeaderHook()
   {
     echo '<!-- Dirigible SEO -->';
@@ -234,7 +240,6 @@ class DirigibleSEO
     echo '<!-- End Dirigible SEO -->';
   }
 
-
   function dirigiblePageTitle($title_parts)
   {
     // Break out if both yoast and dseo are active. Prevents infinite loop on events page.
@@ -250,9 +255,6 @@ class DirigibleSEO
     }
     return $title_parts;
   }
-
-
-
 
   public function stringFilters($str)
   {
@@ -311,8 +313,6 @@ class DirigibleSEO
 
     return $seoDescription === '' ? $this->getDefaultDescription() : $seoDescription;
   }
-
-
 
   function addMigrateTool()
   { ?>
@@ -376,7 +376,6 @@ class DirigibleSEO
     return $returnTitle === '' ? $this->getDefaultTitle() : $returnTitle;
   }
 
-
   function getDefaultTitle()
   {
     $separator = get_theme_mod('ds_seo_separator', '-');
@@ -410,6 +409,41 @@ class DirigibleSEO
     wp_enqueue_script('dirigible-seo-js');
   }
 
+  public function registerTermMetaFields() {
+    // Get all public taxonomies
+    $taxonomies = get_taxonomies(['public' => true], 'names');
+    
+    // Add a callback for each taxonomy's edit form
+    foreach ($taxonomies as $taxonomy) {
+      add_action("{$taxonomy}_edit_form_fields", [$this, 'addTermNoIndexField'], 10, 2);
+      add_action("edited_{$taxonomy}", [$this, 'saveTermNoIndexField'], 10, 2);
+    }
+  }
+
+  public function addTermNoIndexField($term, $taxonomy) {
+    // Get the current value
+    $ds_seo_no_index = get_term_meta($term->term_id, 'ds_seo_no_index', true);
+    ?>
+    <tr class="form-field">
+      <th scope="row" valign="top"><label for="ds_seo_no_index">SEO Visibility</label></th>
+      <td>
+        <div id="ds-editor-seo-no-index" class="seo-field">
+          <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
+          <label for="ds_seo_no_index">Stop search engines from indexing this category?</label>
+        </div>
+        <p class="description">When checked, this adds a noindex meta tag to prevent search engines from indexing this category page.</p>
+      </td>
+    </tr>
+    <?php
+  }
+
+  public function saveTermNoIndexField($term_id, $tt_id) {
+    if (isset($_POST['ds_seo_no_index'])) {
+      update_term_meta($term_id, 'ds_seo_no_index', 1);
+    } else {
+      update_term_meta($term_id, 'ds_seo_no_index', 0);
+    }
+  }
 
   public function registerFields()
   {
@@ -500,7 +534,6 @@ class DirigibleSEO
     ];
     acf_add_local_field_group($SEO_fields);
   }
-
 
   public function registerToolsPages()
   {
