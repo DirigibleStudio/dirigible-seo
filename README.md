@@ -1,5 +1,9 @@
 # Dirigible SEO
 
+## 2.3.25
+
+Added support for noindex on terms.
+
 ## 2.3.21
 
 Remove people headshot support now that we use the featured image.
