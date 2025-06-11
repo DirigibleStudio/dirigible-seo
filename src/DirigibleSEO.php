@@ -296,7 +296,12 @@ class DirigibleSEO
 
       // Taxonomy term description
       if ($term instanceof WP_Term) {
-        $seoDescription = get_term_meta($term->term_id, 'ds_seo_description', true) ?: $this->getDefaultDescription();
+        $seoDescription = get_term_meta($term->term_id, 'ds_seo_description', true);
+        if (empty($seoDescription)) {
+          // Try WordPress category description before falling back to default
+          $category_description = term_description($term->term_id);
+          $seoDescription = !empty($category_description) ? strip_tags($category_description) : $this->getDefaultDescription();
+        }
       }
       // Post description
       elseif ($term instanceof WP_Post) {
