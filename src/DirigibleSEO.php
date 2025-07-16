@@ -4,13 +4,16 @@ class DirigibleSEO
 {
   public $path = "";
   public $dir = "";
+  public $version = "";
   public $yoast = false;
   public $imageSearch = null;
 
-  function __construct($args)
+  function __construct($args, $version)
   {
     $this->path = $args;
     $this->dir = plugin_dir_path($args);
+    $this->version = $version;
+
     if (is_plugin_active('wordpress-seo/wp-seo.php')) {
       $this->yoast = true;
     }
@@ -141,13 +144,13 @@ class DirigibleSEO
   public function printNoIndexTag()
   {
     $term = get_queried_object();
-    
+
     // Check if we're on a post/page
     if (is_singular()) {
       if (get_post_meta(get_the_ID(), 'ds_seo_no_index', true)) {
         echo '<meta name="robots" content="noindex">';
       }
-    } 
+    }
     // Check if we're on a term/taxonomy page
     elseif (is_tax() || is_category() || is_tag()) {
       if ($term instanceof WP_Term && get_term_meta($term->term_id, 'ds_seo_no_index', true)) {
@@ -414,10 +417,11 @@ class DirigibleSEO
     wp_enqueue_script('dirigible-seo-js');
   }
 
-  public function registerTermMetaFields() {
+  public function registerTermMetaFields()
+  {
     // Get all public taxonomies
     $taxonomies = get_taxonomies(['public' => true], 'names');
-    
+
     // Add a callback for each taxonomy's edit form
     foreach ($taxonomies as $taxonomy) {
       add_action("{$taxonomy}_edit_form_fields", [$this, 'addTermNoIndexField'], 10, 2);
@@ -425,10 +429,11 @@ class DirigibleSEO
     }
   }
 
-  public function addTermNoIndexField($term, $taxonomy) {
+  public function addTermNoIndexField($term, $taxonomy)
+  {
     // Get the current value
     $ds_seo_no_index = get_term_meta($term->term_id, 'ds_seo_no_index', true);
-    ?>
+  ?>
     <tr class="form-field">
       <th scope="row" valign="top"><label for="ds_seo_no_index">SEO Visibility</label></th>
       <td>
@@ -439,10 +444,11 @@ class DirigibleSEO
         <p class="description">When checked, this adds a noindex meta tag to prevent search engines from indexing this category page.</p>
       </td>
     </tr>
-    <?php
+  <?php
   }
 
-  public function saveTermNoIndexField($term_id, $tt_id) {
+  public function saveTermNoIndexField($term_id, $tt_id)
+  {
     if (isset($_POST['ds_seo_no_index'])) {
       update_term_meta($term_id, 'ds_seo_no_index', 1);
     } else {
