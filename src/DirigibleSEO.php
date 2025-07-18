@@ -14,9 +14,12 @@ class DirigibleSEO
     $this->dir = plugin_dir_path($args);
     $this->version = $version;
 
-    if (is_plugin_active('wordpress-seo/wp-seo.php')) {
+
+
+    if (defined('WPSEO_VERSION')) {
       $this->yoast = true;
     }
+
     add_action('admin_enqueue_scripts', [$this, 'registerStyle']);
     add_action('admin_enqueue_scripts', [$this, 'registerScripts']);
     add_filter('document_title_parts', [$this, 'dirigiblePageTitle']);
@@ -71,7 +74,7 @@ class DirigibleSEO
 ?>
     <div id="ds-seo-meta-box">
       <div id="ds-editor-seo-preview">
-        <div class=" ds-seo-preview">
+        <div class="ds-seo-preview">
           <p>Search Engine Preview</p>
         </div>
       </div>
