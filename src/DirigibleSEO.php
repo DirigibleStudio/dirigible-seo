@@ -35,6 +35,7 @@ class DirigibleSEO
     // add_action('acf/init', [$this, 'registerFields']);
 
     add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
+    add_action('ds-tools-page', [$this, 'addLLMsTxtTool'], 13, 0);
 
     add_action('ds_seo_head_title_tag', [$this, 'printMetaTitleTag']);
     add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag']);
@@ -335,6 +336,58 @@ class DirigibleSEO
   <?php
   }
 
+  function addLLMsTxtTool()
+  {
+    $content = $this->getLLMsTxtContent();
+  ?>
+    <div class="tool">
+      <h3>LLMs.txt Manager</h3>
+      <p>Create and manage an <a href="https://llmstxt.org/" target="_blank">llms.txt</a> file in your WordPress root directory to help LLMs understand your website. This feature is not compatible with WordPress multisite.</p>
+      <div id="llms-txt-editor">
+        <textarea id="llms-txt-content" rows="20" style="width: 100%; font-family: monospace;" placeholder="# Your Site Name
+
+> Brief description of your site
+
+Detailed information about your site and content.
+
+## Key Pages
+
+- [Home](https://yoursite.com): Your homepage
+- [About](https://yoursite.com/about): About your company"><?php echo esc_textarea($content); ?></textarea>
+        <br><br>
+        <button class='button button-primary' id='ds-save-llms-txt'>Save llms.txt</button>
+        <button class='button' id='ds-load-llms-txt'>Reload from File</button>
+        <button class='button button-link-delete' id='ds-delete-llms-txt' style='color: #d63638;'>Delete llms.txt</button>
+      </div>
+      <div id="llms-txt-status"></div>
+    </div>
+  <?php
+  }
+
+  function getLLMsTxtContent()
+  {
+    $file_path = ABSPATH . 'llms.txt';
+    if (file_exists($file_path)) {
+      return file_get_contents($file_path);
+    }
+    return '';
+  }
+
+  function saveLLMsTxtContent($content)
+  {
+    $file_path = ABSPATH . 'llms.txt';
+    return file_put_contents($file_path, $content) !== false;
+  }
+
+  function deleteLLMsTxtFile()
+  {
+    $file_path = ABSPATH . 'llms.txt';
+    if (file_exists($file_path)) {
+      return unlink($file_path);
+    }
+    return true; // File doesn't exist, so it's already "deleted"
+  }
+
   function getDefaultDescription()
   {
     $excerpt = "";
@@ -417,6 +470,9 @@ class DirigibleSEO
   public function registerScripts()
   {
     wp_register_script('dirigible-seo-js', plugins_url('dirigible-seo/dist/ds-seo-min.js'), ['jquery'], NULL, true);
+    wp_localize_script('dirigible-seo-js', 'ds_seo_ajax', [
+      'nonce' => wp_create_nonce('ds_llms_txt_nonce')
+    ]);
     wp_enqueue_script('dirigible-seo-js');
   }
 

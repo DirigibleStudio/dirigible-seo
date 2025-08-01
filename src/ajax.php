@@ -294,3 +294,98 @@ if (!function_exists('ds_migrate_yoast')) {
     wp_die();
   }
 }
+
+/* Save LLMs.txt Content Ajax
+*******************************************************/
+if (!function_exists('ds_save_llms_txt')) {
+  add_action('wp_ajax_ds_save_llms_txt', 'ds_save_llms_txt');
+
+  function ds_save_llms_txt()
+  {
+    // Check user permissions
+    if (!current_user_can('manage_options')) {
+      wp_die('Unauthorized');
+    }
+
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'ds_llms_txt_nonce')) {
+      wp_die('Security check failed');
+    }
+
+    $content = stripslashes($_POST['content']);
+    $file_path = ABSPATH . 'llms.txt';
+
+    $success = file_put_contents($file_path, $content) !== false;
+
+    if ($success) {
+      echo json_encode(['success' => true, 'message' => 'llms.txt saved successfully!']);
+    } else {
+      echo json_encode(['success' => false, 'message' => 'Failed to save llms.txt. Check file permissions.']);
+    }
+
+    wp_die();
+  }
+}
+
+/* Load LLMs.txt Content Ajax
+*******************************************************/
+if (!function_exists('ds_load_llms_txt')) {
+  add_action('wp_ajax_ds_load_llms_txt', 'ds_load_llms_txt');
+
+  function ds_load_llms_txt()
+  {
+    // Check user permissions
+    if (!current_user_can('manage_options')) {
+      wp_die('Unauthorized');
+    }
+
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'ds_llms_txt_nonce')) {
+      wp_die('Security check failed');
+    }
+
+    $file_path = ABSPATH . 'llms.txt';
+    $content = '';
+
+    if (file_exists($file_path)) {
+      $content = file_get_contents($file_path);
+    }
+
+    echo json_encode(['success' => true, 'content' => $content]);
+    wp_die();
+  }
+}
+
+/* Delete LLMs.txt File Ajax
+*******************************************************/
+if (!function_exists('ds_delete_llms_txt')) {
+  add_action('wp_ajax_ds_delete_llms_txt', 'ds_delete_llms_txt');
+
+  function ds_delete_llms_txt()
+  {
+    // Check user permissions
+    if (!current_user_can('manage_options')) {
+      wp_die('Unauthorized');
+    }
+
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'ds_llms_txt_nonce')) {
+      wp_die('Security check failed');
+    }
+
+    $file_path = ABSPATH . 'llms.txt';
+
+    if (file_exists($file_path)) {
+      $success = unlink($file_path);
+      if ($success) {
+        echo json_encode(['success' => true, 'message' => 'llms.txt deleted successfully!']);
+      } else {
+        echo json_encode(['success' => false, 'message' => 'Failed to delete llms.txt. Check file permissions.']);
+      }
+    } else {
+      echo json_encode(['success' => true, 'message' => 'llms.txt file does not exist.']);
+    }
+
+    wp_die();
+  }
+}
