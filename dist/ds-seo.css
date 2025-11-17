@@ -1,2 +1,156 @@
-#ds-editor-seo-preview .ds-seo-preview{box-shadow:0 0 0 1px var(--slate-text, rgba(0, 0, 0, 0.1));padding:1rem;border-radius:5px;cursor:not-allowed;background:var(--ds-body, #fff)}#ds-editor-seo-preview .ds-seo-preview span{display:block;font-style:normal;line-height:1.33}#ds-editor-seo-preview .ds-seo-preview span.title{margin-bottom:4px;font-size:14px;color:#1a0dab}#ds-editor-seo-preview .ds-seo-preview span.link{font-size:10px;margin-bottom:4px;color:#006621}#ds-editor-seo-preview .ds-seo-preview span.description{font-size:10px;margin-bottom:0;color:#545454}#ds-editor-seo-preview .ds-seo-preview.no-index{background:#fef2f2;box-shadow:0 0 0 1px #ef4444}#ds-editor-seo-preview .ds-seo-preview.no-index span.description,#ds-editor-seo-preview .ds-seo-preview.no-index span.link,#ds-editor-seo-preview .ds-seo-preview.no-index span.title{color:#991b1b}.term-php #ds-editor-seo-preview{display:block;width:200%}.term-php #ds-editor-seo-preview .ds-seo-preview{background:#fff;border-radius:5px;padding:24px;width:100%;max-width:500px;margin-bottom:32px;border:1px solid rgba(0,0,0,.2)}.dirigible-seo-page h1{margin-bottom:2rem;background:#fff;padding:2rem;line-height:1;border-bottom:1px solid rgba(0,0,0,.1)}@media screen and (min-width:700px){.dirigible-seo-page h1{margin:-8px -19px 24px -20px}}.dirigible-seo-page .dirigible-seo-tools .tool{box-sizing:border-box;padding:2rem;background:#fff;max-width:400px;min-width:100%;margin:0 1% 1%0;border-radius:6px;border:1px solid rgba(0,0,0,.1)}@media screen and (min-width:700px){.dirigible-seo-page .dirigible-seo-tools .tool{min-width:49%;max-width:none;width:49%}}.dirigible-seo-page .dirigible-seo-tools .tool input{margin-bottom:0}.dirigible-seo-page .dirigible-seo-tools .tool h3{margin-top:0}.dirigible-seo-page .dirigible-seo-tools .notification{margin-top:1.5rem;background:#2ecc71;border-radius:3px;padding:1rem;color:#fff}.dirigible-seo-page .dirigible-seo-tools .notification h3{margin-bottom:4px;color:#fff}.dirigible-seo-page .dirigible-seo-tools .notification p{margin:0}.dirigible-seo-page .dirigible-seo-tools .notification a{color:#fff!important}.dirigible-seo-page .dirigible-seo-tools .notification.error{border:1px solid #e74c3c;margin-bottom:0;background:#e74c3c}#ds-seo-meta-box,#ds-seo-meta-box *{box-sizing:border-box}#ds-seo-meta-box #ds-editor-seo-fields .seo-field{margin-top:1em}#ds-seo-meta-box #ds-editor-seo-fields label{display:block;margin-bottom:.5em;width:100%}#ds-seo-meta-box #ds-editor-seo-fields,#ds-seo-meta-box #ds-editor-seo-fields input[type=text],#ds-seo-meta-box #ds-editor-seo-fields textarea{width:100%}#ds-seo-meta-box #ds-editor-seo-fields textarea{font-size:.8rem}#ds-seo-meta-box #ds-editor-seo-no-index{display:flex;align-items:flex-start;justify-content:flex-start;gap:.5em}#ds-seo-meta-box #ds-editor-seo-no-index label{cursor:pointer}#ds-seo-meta-box #ds-editor-seo-no-index input{margin-top:2px}
+#ds-editor-seo-preview .ds-seo-preview {
+	box-shadow: 0 0 0 1px var(--slate-text, rgba(0, 0, 0, 0.1));
+	padding: 1rem;
+	border-radius: 5px;
+	cursor: not-allowed;
+	background: var(--ds-body, #fff);
+}
+#ds-editor-seo-preview .ds-seo-preview span {
+	display: block;
+	font-style: normal;
+	line-height: 1.33;
+}
+#ds-editor-seo-preview .ds-seo-preview span.title {
+	margin-bottom: 4px;
+	font-size: 14px;
+	color: #1a0dab;
+}
+#ds-editor-seo-preview .ds-seo-preview span.link {
+	font-size: 10px;
+	margin-bottom: 4px;
+	color: #006621;
+}
+#ds-editor-seo-preview .ds-seo-preview span.description {
+	font-size: 10px;
+	margin-bottom: 0;
+	color: #545454;
+}
+#ds-editor-seo-preview .ds-seo-preview.no-index {
+	background: #fef2f2;
+	box-shadow: 0 0 0 1px #ef4444;
+}
+#ds-editor-seo-preview .ds-seo-preview.no-index span.description,
+#ds-editor-seo-preview .ds-seo-preview.no-index span.link,
+#ds-editor-seo-preview .ds-seo-preview.no-index span.title {
+	color: #991b1b;
+}
+
+#ds-editor-seo-custom-jsonld {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	padding-top: 1em;
+}
+
+#ds-editor-seo-custom-jsonld p {
+	font-size: 10px;
+}
+
+#ds_seo_custom_jsonld {
+	font-family: monospace;
+	font-size: 7px;
+	line-height: 1.1;
+	padding: 1em;
+}
+
+.term-php #ds-editor-seo-preview {
+	display: block;
+	width: 200%;
+}
+.term-php #ds-editor-seo-preview .ds-seo-preview {
+	background: #fff;
+	border-radius: 5px;
+	padding: 24px;
+	width: 100%;
+	max-width: 500px;
+	margin-bottom: 32px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.dirigible-seo-page h1 {
+	margin-bottom: 2rem;
+	background: #fff;
+	padding: 2rem;
+	line-height: 1;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 700px) {
+	.dirigible-seo-page h1 {
+		margin: -8px -19px 24px -20px;
+	}
+}
+.dirigible-seo-page .dirigible-seo-tools .tool {
+	box-sizing: border-box;
+	padding: 2rem;
+	background: #fff;
+	max-width: 400px;
+	min-width: 100%;
+	margin: 0 1% 1%0;
+	border-radius: 6px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 700px) {
+	.dirigible-seo-page .dirigible-seo-tools .tool {
+		min-width: 49%;
+		max-width: none;
+		width: 49%;
+	}
+}
+.dirigible-seo-page .dirigible-seo-tools .tool input {
+	margin-bottom: 0;
+}
+.dirigible-seo-page .dirigible-seo-tools .tool h3 {
+	margin-top: 0;
+}
+.dirigible-seo-page .dirigible-seo-tools .notification {
+	margin-top: 1.5rem;
+	background: #2ecc71;
+	border-radius: 3px;
+	padding: 1rem;
+	color: #fff;
+}
+.dirigible-seo-page .dirigible-seo-tools .notification h3 {
+	margin-bottom: 4px;
+	color: #fff;
+}
+.dirigible-seo-page .dirigible-seo-tools .notification p {
+	margin: 0;
+}
+.dirigible-seo-page .dirigible-seo-tools .notification a {
+	color: #fff !important;
+}
+.dirigible-seo-page .dirigible-seo-tools .notification.error {
+	border: 1px solid #e74c3c;
+	margin-bottom: 0;
+	background: #e74c3c;
+}
+#ds-seo-meta-box,
+#ds-seo-meta-box * {
+	box-sizing: border-box;
+}
+#ds-seo-meta-box #ds-editor-seo-fields .seo-field {
+	margin-top: 1em;
+}
+#ds-seo-meta-box #ds-editor-seo-fields label {
+	display: block;
+	margin-bottom: 0.5em;
+	width: 100%;
+}
+#ds-seo-meta-box #ds-editor-seo-fields,
+#ds-seo-meta-box #ds-editor-seo-fields input[type="text"],
+#ds-seo-meta-box #ds-editor-seo-fields textarea {
+	width: 100%;
+}
+#ds-seo-meta-box #ds-editor-seo-fields textarea {
+	font-size: 0.8rem;
+}
+#ds-seo-meta-box #ds-editor-seo-no-index {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 0.5em;
+}
+#ds-seo-meta-box #ds-editor-seo-no-index label {
+	cursor: pointer;
+}
+#ds-seo-meta-box #ds-editor-seo-no-index input {
+	margin-top: 2px;
+}
 /*# sourceMappingURL=ds-seo.css.map */

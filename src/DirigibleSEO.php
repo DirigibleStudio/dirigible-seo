@@ -92,6 +92,11 @@ class DirigibleSEO
           <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
           <label for="ds_seo_no_index">Stop search engines from indexing this page?</label>
         </div>
+        <div id="ds-editor-seo-custom-jsonld" class="seo-field">
+          <label for="ds_seo_custom_jsonld">Custom JSON-LD</label>
+          <p>Paste your custom JSON-LD, without the &lt;script&gt; tags.</p>
+          <textarea name="ds_seo_custom_jsonld" id="ds_seo_custom_jsonld" placeholder="Paste your custom JSON-LD here." rows="6"><?php echo esc_textarea(get_post_meta($post->ID, 'ds_seo_custom_jsonld', true)); ?></textarea>
+        </div>
       </div>
     </div>
   <?php
@@ -128,6 +133,13 @@ class DirigibleSEO
       update_post_meta($post_id, 'ds_seo_no_index', 1);
     } else {
       update_post_meta($post_id, 'ds_seo_no_index', 0);
+    }
+
+    // Save the Custom JSON-LD
+    if (isset($_POST['ds_seo_custom_jsonld'])) {
+      update_post_meta($post_id, 'ds_seo_custom_jsonld', sanitize_textarea_field($_POST['ds_seo_custom_jsonld']));
+    } else {
+      update_post_meta($post_id, 'ds_seo_custom_jsonld', '');
     }
   }
 
