@@ -72,6 +72,13 @@ class DirigibleSEO
     $ds_seo_title = get_post_meta($post->ID, 'ds_seo_title', true);
     $ds_seo_description = get_post_meta($post->ID, 'ds_seo_description', true);
     $ds_seo_no_index = get_post_meta($post->ID, 'ds_seo_no_index', true);
+
+    $placeholderExample = "{
+  \"@context\": \"https://schema.org\",
+  \"@type\": \"AboutPage\",
+  \"name\": \"Leadership | Your Site\",
+  \"url\": \"https://yoursite.com/about-us/\",
+}";
 ?>
     <div id="ds-seo-meta-box">
       <div id="ds-editor-seo-preview">
@@ -95,7 +102,7 @@ class DirigibleSEO
         <div id="ds-editor-seo-custom-jsonld" class="seo-field">
           <label for="ds_seo_custom_jsonld">Custom JSON-LD</label>
           <p>Paste your custom JSON-LD, without the &lt;script&gt; tags.</p>
-          <textarea name="ds_seo_custom_jsonld" id="ds_seo_custom_jsonld" placeholder="Paste your custom JSON-LD here." rows="6"><?php echo esc_textarea(get_post_meta($post->ID, 'ds_seo_custom_jsonld', true)); ?></textarea>
+          <textarea name="ds_seo_custom_jsonld" id="ds_seo_custom_jsonld" placeholder="<?php echo esc_attr($placeholderExample); ?>" rows="6"><?php echo esc_textarea(get_post_meta($post->ID, 'ds_seo_custom_jsonld', true)); ?></textarea>
         </div>
       </div>
     </div>

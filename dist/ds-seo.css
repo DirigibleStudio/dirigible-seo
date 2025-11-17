@@ -44,9 +44,9 @@
 	font-size: 10px;
 }
 
-#ds_seo_custom_jsonld {
+#ds-seo-meta-box #ds-editor-seo-fields #ds_seo_custom_jsonld {
 	font-family: monospace;
-	font-size: 7px;
+	font-size: 0.75em;
 	line-height: 1.1;
 	padding: 1em;
 }
