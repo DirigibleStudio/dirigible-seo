@@ -47,6 +47,41 @@ class DirigibleSEO
     }
 
     add_action('admin_menu', [$this, 'registerToolsPages'], 11);
+
+    add_filter('ds_global_jsonld', [$this, 'outputCustomJsonldGlobal']);
+    add_filter('ds_single_jsonld', [$this, 'outputCustomJsonldSingle']);
+  }
+
+  public function outputCustomJsonldGlobal($jsonld)
+  {
+    // if hasCustomJsonld() is true, let's output it instead
+    if ($this->hasCustomJsonld()) {
+      $customJsonld = get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true);
+      if ($customJsonld) {
+        return '<script type="application/ld+json" id="ds-custom-jsonld-global">' . $customJsonld . '</script>';
+      }
+    }
+
+    return $jsonld;
+  }
+
+  public function outputCustomJsonldSingle($jsonld)
+  {
+    // if hasCustomJsonld() is true, let's kill this one and only return the global version
+    if ($this->hasCustomJsonld()) {
+      return false;
+    }
+    return $jsonld;
+  }
+
+  public function hasCustomJsonld()
+  {
+    // check is this page or post has ds_seo_custom_jsonld meta field set
+    // null or empty string is false
+    if (get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true) !== null && get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true) !== '') {
+      return true;
+    }
+    return false;
   }
 
   public function registerMetaBoxes()
@@ -102,7 +137,7 @@ class DirigibleSEO
         <div id="ds-editor-seo-custom-jsonld" class="seo-field">
           <label for="ds_seo_custom_jsonld">Custom JSON-LD</label>
           <p>Paste your custom JSON-LD, without the &lt;script&gt; tags.</p>
-          <textarea name="ds_seo_custom_jsonld" id="ds_seo_custom_jsonld" placeholder="<?php echo esc_attr($placeholderExample); ?>" rows="6"><?php echo esc_textarea(get_post_meta($post->ID, 'ds_seo_custom_jsonld', true)); ?></textarea>
+          <textarea name="ds_seo_custom_jsonld" id="ds_seo_custom_jsonld" placeholder="<?php echo esc_attr($placeholderExample); ?>" rows="6"><?php echo (get_post_meta($post->ID, 'ds_seo_custom_jsonld', true)); ?></textarea>
         </div>
       </div>
     </div>

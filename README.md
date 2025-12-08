@@ -1,5 +1,9 @@
 # Dirigible SEO
 
+## 2.3.34
+
+Added support for custom JSON-LD on posts and terms.
+
 ## 2.3.25
 
 Added support for noindex on terms.
