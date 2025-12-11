@@ -3,13 +3,13 @@
  Plugin Name: Dirigible SEO
  Plugin URI: https://dirigiblestudio.com/wordpress/plugins/
  description: Dead simple SEO Control for Wordpress. Requires ACF.
- Version: 2.3.35
+ Version: 2.3.36
  Author: Dirigible Studio
  Author URI: https://dirigiblestudio.com
 */
 
 defined('ABSPATH') or exit;
-define('DS_SEO_VERSION', '2.3.35');
+define('DS_SEO_VERSION', '2.3.36');
 define('DS_SEO_NAME', 'Dirigible SEO');
 define('DS_SEO_SLUG', 'dirigible-seo');
 define('DS_SEO_PATH', __FILE__);

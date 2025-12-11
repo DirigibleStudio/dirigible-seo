@@ -538,13 +538,25 @@ Detailed information about your site and content.
 
   public function registerStyle()
   {
-    wp_register_style('dirigible-seo', plugins_url('dirigible-seo/dist/ds-seo.css'));
+    wp_register_style(
+      'dirigible-seo',
+      plugins_url('dirigible-seo/dist/ds-seo.css'),
+      [],
+      DS_SEO_VERSION,
+      'all'
+    );
     wp_enqueue_style('dirigible-seo');
   }
 
   public function registerScripts()
   {
-    wp_register_script('dirigible-seo-js', plugins_url('dirigible-seo/dist/ds-seo-min.js'), ['jquery'], NULL, true);
+    wp_register_script(
+      'dirigible-seo-js',
+      plugins_url('dirigible-seo/dist/ds-seo-min.js'),
+      ['jquery'],
+      DS_SEO_VERSION,
+      true
+    );
     wp_localize_script('dirigible-seo-js', 'ds_seo_ajax', [
       'nonce' => wp_create_nonce('ds_llms_txt_nonce')
     ]);
