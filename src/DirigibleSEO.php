@@ -76,12 +76,11 @@ class DirigibleSEO
 
   public function hasCustomJsonld()
   {
-    // check is this page or post has ds_seo_custom_jsonld meta field set
-    // null or empty string is false
-    if (get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true) !== null && get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true) !== '') {
-      return true;
-    }
-    return false;
+    // check if custom JSON-LD is enabled AND has content
+    $enabled = get_post_meta(get_the_ID(), 'ds_seo_enable_custom_jsonld', true);
+    $content = get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true);
+
+    return $enabled && !empty($content);
   }
 
   public function registerMetaBoxes()
@@ -107,6 +106,7 @@ class DirigibleSEO
     $ds_seo_title = get_post_meta($post->ID, 'ds_seo_title', true);
     $ds_seo_description = get_post_meta($post->ID, 'ds_seo_description', true);
     $ds_seo_no_index = get_post_meta($post->ID, 'ds_seo_no_index', true);
+    $ds_seo_enable_custom_jsonld = get_post_meta($post->ID, 'ds_seo_enable_custom_jsonld', true);
 
     $placeholderExample = "{
   \"@context\": \"https://schema.org\",
@@ -130,9 +130,23 @@ class DirigibleSEO
           <label for=" ds_seo_description">SEO Description</label>
           <textarea name="ds_seo_description" id="ds_seo_description" placeholder="Enter a description for this page..." rows="6"><?php echo esc_textarea($ds_seo_description); ?></textarea>
         </div>
-        <div id="ds-editor-seo-no-index" class="seo-field">
-          <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
-          <label for="ds_seo_no_index">Stop search engines from indexing this page?</label>
+        <div id="ds-editor-seo-no-index" class="seo-field seo-field-checkbox">
+
+          <label class="seo-field-checkbox-input" style="--checked:var(--danger)">
+            <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
+            <span>Private Page</span>
+          </label>
+
+          <p>When checked, search engines will not index this page and a noindex meta tag will be printed.</p>
+        </div>
+        <div class="seo-divider"></div>
+        <h3>JSON-LD</h3>
+        <div id="ds-editor-seo-enable-custom-jsonld" class="seo-field seo-field-checkbox">
+          <label class="seo-field-checkbox-input" style="--checked:var(--success)">
+            <input type="checkbox" name="ds_seo_enable_custom_jsonld" id="ds_seo_enable_custom_jsonld" value="1" <?php checked($ds_seo_enable_custom_jsonld, 1); ?> />
+            <span>Enable Custom JSON-LD</span>
+          </label>
+          <p>Enabling custom JSON-LD will replace the default JSON-LD for this page.</p>
         </div>
         <div id="ds-editor-seo-custom-jsonld" class="seo-field">
           <label for="ds_seo_custom_jsonld">Custom JSON-LD</label>
@@ -175,6 +189,13 @@ class DirigibleSEO
       update_post_meta($post_id, 'ds_seo_no_index', 1);
     } else {
       update_post_meta($post_id, 'ds_seo_no_index', 0);
+    }
+
+    // Save the Enable Custom JSON-LD checkbox (store as 1 or 0)
+    if (isset($_POST['ds_seo_enable_custom_jsonld'])) {
+      update_post_meta($post_id, 'ds_seo_enable_custom_jsonld', 1);
+    } else {
+      update_post_meta($post_id, 'ds_seo_enable_custom_jsonld', 0);
     }
 
     // Save the Custom JSON-LD

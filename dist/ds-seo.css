@@ -35,22 +35,6 @@
 	color: #991b1b;
 }
 
-#ds-editor-seo-custom-jsonld {
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
-	padding-top: 1em;
-}
-
-#ds-editor-seo-custom-jsonld p {
-	font-size: 10px;
-}
-
-#ds-seo-meta-box #ds-editor-seo-fields #ds_seo_custom_jsonld {
-	font-family: monospace;
-	font-size: 0.75em;
-	line-height: 1.1;
-	padding: 1em;
-}
-
 .term-php #ds-editor-seo-preview {
 	display: block;
 	width: 200%;
@@ -141,16 +125,40 @@
 #ds-seo-meta-box #ds-editor-seo-fields textarea {
 	font-size: 0.8rem;
 }
-#ds-seo-meta-box #ds-editor-seo-no-index {
+
+.seo-divider {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	padding-top: 1em;
+	margin-top: 1em;
+}
+
+.seo-field-checkbox input[type="checkbox"] {
+	margin: -1.5px 0 0 0 !important;
+}
+
+.seo-field p {
+	font-size: 10px;
+}
+
+.seo-field-checkbox .seo-field-checkbox-input {
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
-	gap: 0.5em;
-}
-#ds-seo-meta-box #ds-editor-seo-no-index label {
+	gap: 1em;
 	cursor: pointer;
 }
-#ds-seo-meta-box #ds-editor-seo-no-index input {
-	margin-top: 2px;
+
+#ds-editor-seo-custom-jsonld {
+	display: none;
 }
-/*# sourceMappingURL=ds-seo.css.map */
+
+#ds-editor-seo-enable-custom-jsonld:has(input:checked) + #ds-editor-seo-custom-jsonld {
+	display: block;
+}
+
+#ds-seo-meta-box #ds-editor-seo-fields #ds_seo_custom_jsonld {
+	font-family: monospace;
+	font-size: 0.75em;
+	line-height: 1.1;
+	padding: 1em;
+}
