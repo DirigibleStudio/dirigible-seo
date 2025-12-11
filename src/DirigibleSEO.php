@@ -48,29 +48,21 @@ class DirigibleSEO
 
     add_action('admin_menu', [$this, 'registerToolsPages'], 11);
 
-    add_filter('ds_global_jsonld', [$this, 'outputCustomJsonldGlobal']);
-    add_filter('ds_single_jsonld', [$this, 'outputCustomJsonldSingle']);
+    add_filter('ds_jsonld_output', [$this, 'overrideJsonldOutput']);
   }
 
-  public function outputCustomJsonldGlobal($jsonld)
+  /**
+   * Override JSON-LD output with custom JSON-LD if enabled
+   */
+  public function overrideJsonldOutput($jsonld)
   {
-    // if hasCustomJsonld() is true, let's output it instead
     if ($this->hasCustomJsonld()) {
       $customJsonld = get_post_meta(get_the_ID(), 'ds_seo_custom_jsonld', true);
       if ($customJsonld) {
-        return '<script type="application/ld+json" id="ds-custom-jsonld-global">' . $customJsonld . '</script>';
+        return '<script type="application/ld+json" id="ds-custom-jsonld">' . $customJsonld . '</script>';
       }
     }
 
-    return $jsonld;
-  }
-
-  public function outputCustomJsonldSingle($jsonld)
-  {
-    // if hasCustomJsonld() is true, let's kill this one and only return the global version
-    if ($this->hasCustomJsonld()) {
-      return false;
-    }
     return $jsonld;
   }
 
@@ -729,5 +721,3 @@ Detailed information about your site and content.
 <?php
   }
 }
-
-?>
