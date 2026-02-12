@@ -2,10 +2,10 @@
 Contributors: dirigible
 Donate link: https://dirigiblestudio.com/wordpress/freeware-donation/
 Tags: seo, meta description, description, search engine optimization, meta, meta title, dirigible
-Requires at least: 6.6
-Tested up to: 6.6
+Requires at least: 6.0.0
+Tested up to: 6.9.1
 Requires PHP: 7.0
-Stable tag: 2.3.18
+Stable tag: 2.3.38
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,10 +15,10 @@ Free, fast and easy search engine optimization for web developers & SEO pros. Ed
 == Description ==
 Tired of bloated SEO plugins?
 
-Us too. That’s why we built Dirigible SEO. We’re search engine optimization experts who use professional keyword research and tracking tools to optimize and refine our content outside of WordPress.
+Same. That’s why we built Dirigible SEO. We’re search engine optimization experts who use professional keyword research and tracking tools to optimize and refine our content outside of WordPress.
 We don’t need a complex plugin to help us accomplish our SEO goals—we simply needed a way to edit our title tags and meta descriptions within a WordPress page or post.
 
-Dirigible SEO uses the power of [Advanced Custom Fields](https://www.advancedcustomfields.com) to set up everything you need to manage your SEO.
+There are additional tools to noindex pages and insert JSON-LD.
 
 See it in action https://www.youtube.com/watch?v=Dd7ZeIrZMC0&feature=youtu.be
 
