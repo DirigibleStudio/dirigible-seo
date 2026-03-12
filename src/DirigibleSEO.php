@@ -49,6 +49,8 @@ class DirigibleSEO
     add_action('admin_menu', [$this, 'registerToolsPages'], 11);
 
     add_filter('ds_jsonld_output', [$this, 'overrideJsonldOutput']);
+
+    add_action('save_post', [$this, 'cacheOgImage'], 20);
   }
 
   /**
@@ -240,51 +242,89 @@ class DirigibleSEO
   public function printMetaImageTag()
   {
     $id = get_the_id();
-    if ($id) {
+    if (!$id) {
+      return;
+    }
 
-      if (has_post_thumbnail()) {
-        $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'large');
-        $src = $thumbnail[0] ?? '';
-        echo "<meta property='og:image' content='{$src}' />";
-      } else {
-        global $post;
-        $blocks = parse_blocks($post->post_content);
-        $firstBlockImage = $blocks[0]['attrs']['bgImageID'] ?? null;
-        if ($firstBlockImage) {
-          $url = wp_get_attachment_image_src($firstBlockImage, 'large');
-          if ($url && is_array($url)) {
-            echo "<meta property='og:image' content='{$url[0]}' />";
-          }
-        } else {
-          foreach ($blocks as $block) {
-            $this->searchForImageBlock($block);
-            if ($this->imageSearch) {
-              echo "<meta property='og:image' content='{$this->imageSearch}' />";
-            }
-          }
-        }
-      }
+    $cachedUrl = get_post_meta($id, 'ds_seo_og_image', true);
+
+    if ($cachedUrl === '' && !metadata_exists('post', $id, 'ds_seo_og_image')) {
+      $this->cacheOgImage($id);
+      $cachedUrl = get_post_meta($id, 'ds_seo_og_image', true);
+    }
+
+    if ($cachedUrl) {
+      echo "<meta property='og:image' content='" . esc_url($cachedUrl) . "' />";
     }
   }
 
-  public function searchForImageBlock($block)
+  public function cacheOgImage($post_id)
   {
-    if ($this->imageSearch === null) {
-      $blockName = $block['blockName'] ?? null;
-      if ($blockName === 'core/image') {
-        $imageID = $block['attrs']['id'] ?? null;
-        if ($imageID) {
-          $url = wp_get_attachment_image_src($imageID, 'large');
-          if ($url && is_array($url)) {
-            $this->imageSearch = $url[0];
-          }
-        }
-      } else {
-        foreach ($block['innerBlocks'] as $newBlock) {
-          $this->searchForImageBlock($newBlock);
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+      return;
+    }
+    if (wp_is_post_revision($post_id)) {
+      return;
+    }
+
+    $post = get_post($post_id);
+    if (!$post || $post->post_status === 'auto-draft') {
+      return;
+    }
+
+    $imageUrl = '';
+
+    if (has_post_thumbnail($post_id)) {
+      $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), 'large');
+      $imageUrl = $thumbnail[0] ?? '';
+    } elseif ($post->post_content) {
+      $imageUrl = $this->findFirstImageInBlocks(parse_blocks($post->post_content));
+    }
+
+    update_post_meta($post_id, 'ds_seo_og_image', $imageUrl);
+  }
+
+  private function findFirstImageInBlocks(array $blocks): string
+  {
+    $firstBlockImage = $blocks[0]['attrs']['bgImageID'] ?? null;
+    if ($firstBlockImage) {
+      $url = wp_get_attachment_image_src($firstBlockImage, 'large');
+      if ($url && is_array($url)) {
+        return $url[0];
+      }
+    }
+
+    foreach ($blocks as $block) {
+      $found = $this->searchBlockForImage($block);
+      if ($found) {
+        return $found;
+      }
+    }
+
+    return '';
+  }
+
+  private function searchBlockForImage(array $block): string
+  {
+    $blockName = $block['blockName'] ?? null;
+    if ($blockName === 'core/image') {
+      $imageID = $block['attrs']['id'] ?? null;
+      if ($imageID) {
+        $url = wp_get_attachment_image_src($imageID, 'large');
+        if ($url && is_array($url)) {
+          return $url[0];
         }
       }
     }
+
+    foreach ($block['innerBlocks'] ?? [] as $innerBlock) {
+      $found = $this->searchBlockForImage($innerBlock);
+      if ($found) {
+        return $found;
+      }
+    }
+
+    return '';
   }
 
   public function seoHeaderHook()
