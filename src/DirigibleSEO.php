@@ -32,6 +32,12 @@ class DirigibleSEO
     // Register term meta fields
     add_action('init', [$this, 'registerTermMetaFields']);
 
+    // User profile no-index field
+    add_action('show_user_profile', [$this, 'addUserNoIndexField']);
+    add_action('edit_user_profile', [$this, 'addUserNoIndexField']);
+    add_action('personal_options_update', [$this, 'saveUserNoIndexField']);
+    add_action('edit_user_profile_update', [$this, 'saveUserNoIndexField']);
+
     // add_action('acf/init', [$this, 'registerFields']);
 
     add_action('ds-tools-page', [$this, 'addMigrateTool'], 12, 0);
@@ -227,6 +233,13 @@ class DirigibleSEO
     // Check if we're on a term/taxonomy page
     elseif (is_tax() || is_category() || is_tag()) {
       if ($term instanceof WP_Term && get_term_meta($term->term_id, 'ds_seo_no_index', true)) {
+        echo '<meta name="robots" content="noindex">';
+      }
+    }
+    // Check if we're on an author archive page
+    elseif (is_author()) {
+      $author_id = get_query_var('author');
+      if ($author_id && get_user_meta($author_id, 'ds_seo_no_index', true)) {
         echo '<meta name="robots" content="noindex">';
       }
     }
@@ -631,6 +644,39 @@ Detailed information about your site and content.
       update_term_meta($term_id, 'ds_seo_no_index', 1);
     } else {
       update_term_meta($term_id, 'ds_seo_no_index', 0);
+    }
+  }
+
+  public function addUserNoIndexField($user)
+  {
+    $ds_seo_no_index = get_user_meta($user->ID, 'ds_seo_no_index', true);
+    ?>
+    <h2>SEO Visibility</h2>
+    <table class="form-table">
+      <tr>
+        <th scope="row">Author Archive No-Index</th>
+        <td>
+          <label for="ds_seo_no_index">
+            <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
+            Stop search engines from indexing this author's archive page?
+          </label>
+          <p class="description">When checked, a noindex meta tag will be added to this author's archive page, preventing search engines from indexing it.</p>
+        </td>
+      </tr>
+    </table>
+    <?php
+  }
+
+  public function saveUserNoIndexField($user_id)
+  {
+    if (!current_user_can('edit_user', $user_id)) {
+      return;
+    }
+
+    if (isset($_POST['ds_seo_no_index'])) {
+      update_user_meta($user_id, 'ds_seo_no_index', 1);
+    } else {
+      update_user_meta($user_id, 'ds_seo_no_index', 0);
     }
   }
 
