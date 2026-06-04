@@ -54,7 +54,7 @@ if (!function_exists('dsGetPreviewSEO')) {
 
 
     if ($term_id > 0) {
-      $tax = $query['taxonomy'];
+      $tax = $query['taxonomy'] ?? '';
       $term = get_term($term_id, $tax);
       $titleSave = $term->name;
       $permalink = get_term_link($term_id, $tax);
