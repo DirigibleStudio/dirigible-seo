@@ -21,7 +21,10 @@ if (!function_exists('dsGetPreviewSEO')) {
 
     $editingURL = esc_url($_REQUEST['editing_URL']);
     $site = get_bloginfo('name');
-    $separator = get_theme_mod('ds_seo_separator') ?? '-';
+    $separator = get_theme_mod('ds_seo_separator', '-');
+    if ($separator === false || $separator === '') {
+      $separator = '-';
+    }
 
     $permalink = '';
     $title = 'Enter a Title';
@@ -105,7 +108,10 @@ if (!function_exists('dsGetPreviewSEO')) {
     $values = [
       'permalink' => $permalink,
       'title' => $title,
-      'excerpt' => $description
+      'excerpt' => $description,
+      'page_title' => $titleSave,
+      'site' => $site,
+      'separator' => $separator,
     ];
     echo json_encode($values);
     wp_die();

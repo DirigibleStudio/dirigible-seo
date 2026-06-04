@@ -47,6 +47,8 @@ class DirigibleSEO
     add_action('ds_seo_head_description_tag', [$this, 'printMetaDescriptionTag']);
     add_action('ds_seo_head_image_tag', [$this, 'printMetaImageTag']);
     add_action('ds_seo_head_no_index_tag', [$this, 'printNoIndexTag']);
+    add_action('ds_seo_head_canonical_tag', [$this, 'printCanonicalTag']);
+    remove_action('wp_head', 'rel_canonical');
 
     if ($this->yoast) {
       add_action('admin_notices', [$this, 'nagYoast']);
@@ -106,6 +108,7 @@ class DirigibleSEO
     $ds_seo_title = get_post_meta($post->ID, 'ds_seo_title', true);
     $ds_seo_description = get_post_meta($post->ID, 'ds_seo_description', true);
     $ds_seo_no_index = get_post_meta($post->ID, 'ds_seo_no_index', true);
+    $ds_seo_canonical_url = get_post_meta($post->ID, 'ds_seo_canonical_url', true);
     $ds_seo_enable_custom_jsonld = get_post_meta($post->ID, 'ds_seo_enable_custom_jsonld', true);
 
     $placeholderExample = "{
@@ -123,8 +126,27 @@ class DirigibleSEO
       </div>
       <div id="ds-editor-seo-fields">
         <div id="ds-editor-seo-title" class="seo-field">
-          <label for=" ds_seo_title">SEO Title</label>
-          <input type="text" name="ds_seo_title" id="ds_seo_title" placeholder="{title} {|} {site}" value="<?php echo esc_attr($ds_seo_title); ?>" />
+          <label for="ds_seo_title">SEO Title</label>
+          <div class="seo-token-insert" aria-label="Insert token">
+            <button type="button" class="seo-pill seo-pill--insert seo-pill--title" data-token="{title}">Title</button>
+            <button type="button" class="seo-pill seo-pill--insert seo-pill--sep" data-token="{|}">-</button>
+            <button type="button" class="seo-pill seo-pill--insert seo-pill--site" data-token="{site}">Site</button>
+          </div>
+          <div class="seo-title-input-wrap<?php echo empty($ds_seo_title) ? ' is-empty' : ''; ?>">
+            <span class="seo-title-placeholder" aria-hidden="true">Enter a title</span>
+            <div id="ds_seo_title_editor"
+                 contenteditable="true"
+                 role="textbox"
+                 aria-multiline="false"
+                 aria-label="SEO Title"
+                 spellcheck="false"
+                 autocorrect="off"
+                 autocomplete="off"></div>
+            <input type="hidden"
+                   name="ds_seo_title"
+                   id="ds_seo_title"
+                   value="<?php echo esc_attr($ds_seo_title); ?>" />
+          </div>
         </div>
         <div id="ds-editor-seo-description" class="seo-field">
           <label for=" ds_seo_description">SEO Description</label>
@@ -138,6 +160,23 @@ class DirigibleSEO
           </label>
 
           <p>When checked, search engines will not index this page and a noindex meta tag will be printed.</p>
+        </div>
+        <div class="seo-divider"></div>
+        <div id="ds-editor-seo-canonical" class="seo-field">
+          <label class="seo-field-checkbox-input">
+            <input type="checkbox" name="ds_seo_custom_canonical_enabled"
+                   id="ds_seo_custom_canonical_enabled" value="1"
+                   <?php checked(!empty($ds_seo_canonical_url)); ?> />
+            <span>Override canonical URL</span>
+          </label>
+          <p>By default this page's own URL is used as the canonical. Override only if this page is a duplicate of another.</p>
+          <div id="ds-editor-seo-canonical-url" class="seo-field"
+               style="<?php echo empty($ds_seo_canonical_url) ? 'display:none' : ''; ?>">
+            <label for="ds_seo_canonical_url">Canonical URL</label>
+            <input type="url" name="ds_seo_canonical_url" id="ds_seo_canonical_url"
+                   placeholder="https://example.com/original-page/"
+                   value="<?php echo esc_attr($ds_seo_canonical_url); ?>" />
+          </div>
         </div>
         <div class="seo-divider"></div>
         <h3>JSON-LD</h3>
@@ -191,6 +230,13 @@ class DirigibleSEO
       update_post_meta($post_id, 'ds_seo_no_index', 0);
     }
 
+    if (!empty($_POST['ds_seo_canonical_url'])) {
+      update_post_meta($post_id, 'ds_seo_canonical_url',
+        esc_url_raw(sanitize_text_field($_POST['ds_seo_canonical_url'])));
+    } else {
+      delete_post_meta($post_id, 'ds_seo_canonical_url');
+    }
+
     // Save the Enable Custom JSON-LD checkbox (store as 1 or 0)
     if (isset($_POST['ds_seo_enable_custom_jsonld'])) {
       update_post_meta($post_id, 'ds_seo_enable_custom_jsonld', 1);
@@ -217,7 +263,7 @@ class DirigibleSEO
   public function printMetaTitleTag()
   {
     $title = $this->stringFilters($this->metaTitle());
-    echo '<meta property="og:title" content="' . $title . '">';
+    echo '<meta property="og:title" content="' . esc_attr( $title ) . '">';
   }
 
   public function printNoIndexTag()
@@ -248,8 +294,57 @@ class DirigibleSEO
   public function printMetaDescriptionTag()
   {
     $description = $this->stringFilters($this->metaDescription());
-    echo '<meta name="description" content="' . $description . '">';
-    echo '<meta property="og:description" content="' . $description . '">';
+    echo '<meta name="description" content="' . esc_attr( $description ) . '">';
+    echo '<meta property="og:description" content="' . esc_attr( $description ) . '">';
+  }
+
+  public function printCanonicalTag()
+  {
+    $url = $this->canonicalUrl();
+    if ($url) {
+      echo '<link rel="canonical" href="' . esc_url($url) . '" />' . "\n";
+    }
+  }
+
+  public function canonicalUrl()
+  {
+    $term = get_queried_object();
+
+    if (is_singular()) {
+      $override = get_post_meta(get_the_ID(), 'ds_seo_canonical_url', true);
+      if (!empty($override)) {
+        $override = esc_url_raw($override);
+        if (!empty($override)) {
+          return $override;
+        }
+      }
+    } elseif ((is_tax() || is_category() || is_tag()) && $term instanceof WP_Term) {
+      $override = get_term_meta($term->term_id, 'ds_seo_canonical_url', true);
+      if (!empty($override)) {
+        $override = esc_url_raw($override);
+        if (!empty($override)) {
+          return $override;
+        }
+      }
+    }
+
+    if (is_singular()) {
+      return wp_get_canonical_url(get_the_ID()) ?: get_permalink();
+    } elseif (function_exists('is_shop') && is_shop()) {
+      return get_permalink(get_option('woocommerce_shop_page_id'));
+    } elseif (is_front_page()) {
+      return home_url('/');
+    } elseif (is_home()) {
+      return get_permalink(get_option('page_for_posts'));
+    } elseif ((is_tax() || is_category() || is_tag()) && $term instanceof WP_Term) {
+      $link = get_term_link($term);
+      return is_wp_error($link) ? '' : $link;
+    } elseif (is_author()) {
+      return get_author_posts_url(get_query_var('author'));
+    } elseif (is_archive()) {
+      return get_pagenum_link(get_query_var('paged') ?: 1);
+    }
+    return '';
   }
 
   public function printMetaImageTag()
@@ -355,12 +450,13 @@ class DirigibleSEO
     $link = home_url($wp->request);
     $name = get_bloginfo('name');
     echo "<meta property='og:type' content='website' />";
-    echo '<meta property="og:url" content="' . $link . '">';
-    echo '<meta property="og:site_name" content="' . $name . '">';
+    echo '<meta property="og:url" content="' . esc_url( $link ) . '">';
+    echo '<meta property="og:site_name" content="' . esc_attr( $name ) . '">';
     do_action('ds_seo_head_title_tag');
     do_action('ds_seo_head_description_tag');
     do_action('ds_seo_head_image_tag');
     do_action('ds_seo_head_no_index_tag');
+    do_action('ds_seo_head_canonical_tag');
     if ($this->yoast) {
       echo "-->\n";
     } // comment it out if yoast is active
@@ -571,7 +667,7 @@ Detailed information about your site and content.
   public function nagYoast()
   {
     $link = menu_page_url("dirigibleSEO", false);
-    $warning = "<p>It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. In the meantime, you can still set up your Dirigible SEO data.</p><p>If you already have Yoast metadata set up, you can <a href='$link'>use our migration tool</a> to move your data from Yoast to Dirigible SEO.</p>";
+    $warning = "<p>It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. In the meantime, you can still set up your Dirigible SEO data.</p><p>If you already have Yoast metadata set up, you can <a href='" . esc_url( $link ) . "'>use our migration tool</a> to move your data from Yoast to Dirigible SEO.</p>";
     printf("<div class='notice notice-error is-dismissable'><h2>Dirigible SEO and Yoast are both active.</h2>{$warning}</div>");
   }
 
@@ -597,13 +693,59 @@ Detailed information about your site and content.
   {
     wp_register_script(
       'dirigible-seo-js',
-      plugins_url('dirigible-seo/dist/ds-seo-min.js'),
-      ['jquery'],
+      plugins_url('src/ds-seo.js', $this->path),
+      [],
       DS_SEO_VERSION,
       true
     );
+
+    $post_id = isset($_GET['post']) ? (int) $_GET['post'] : 0;
+    $tag_id = isset($_GET['tag_ID']) ? (int) $_GET['tag_ID'] : 0;
+    $taxonomy = isset($_GET['taxonomy']) ? sanitize_key($_GET['taxonomy']) : '';
+
+    $page_title = '';
+    $permalink = 'https://example.com/';
+    $default_description = '';
+
+    if ($tag_id > 0 && $taxonomy) {
+      $term = get_term($tag_id, $taxonomy);
+      if ($term && !is_wp_error($term)) {
+        $page_title = $term->name;
+        $link = get_term_link($term);
+        $permalink = is_wp_error($link) ? '' : $link;
+      }
+    } elseif ($post_id > 0) {
+      $page_title = get_the_title($post_id);
+      $permalink = get_permalink($post_id) ?: 'https://example.com/';
+
+      $excerpt = apply_filters(
+        'the_excerpt',
+        get_post_field('post_excerpt', $post_id, 'display')
+      );
+      if (empty($excerpt)) {
+        $post = get_post($post_id);
+        if ($post) {
+          $excerpt = wp_html_excerpt($post->post_content, 320);
+          if ($excerpt) {
+            $excerpt .= '…';
+          }
+        }
+      }
+      $default_description = $excerpt ?: '';
+    }
+
+    $separator = get_theme_mod('ds_seo_separator', '-');
+    if (empty($separator)) {
+      $separator = '-';
+    }
+
     wp_localize_script('dirigible-seo-js', 'ds_seo_ajax', [
-      'nonce' => wp_create_nonce('ds_llms_txt_nonce')
+      'nonce' => wp_create_nonce('ds_llms_txt_nonce'),
+      'separator' => $separator,
+      'site' => get_bloginfo('name'),
+      'page_title' => $page_title,
+      'permalink' => $permalink,
+      'default_description' => $default_description,
     ]);
     wp_enqueue_script('dirigible-seo-js');
   }
@@ -635,6 +777,16 @@ Detailed information about your site and content.
         <p class="description">When checked, this adds a noindex meta tag to prevent search engines from indexing this category page.</p>
       </td>
     </tr>
+    <tr class="form-field">
+      <th scope="row" valign="top"><label for="ds_seo_canonical_url">Canonical URL</label></th>
+      <td>
+        <input type="url" name="ds_seo_canonical_url" id="ds_seo_canonical_url"
+               class="regular-text"
+               placeholder="https://example.com/original-page/"
+               value="<?php echo esc_attr(get_term_meta($term->term_id, 'ds_seo_canonical_url', true)); ?>" />
+        <p class="description">Leave empty to use this term's own URL as the canonical. Override only if this archive is a duplicate of another.</p>
+      </td>
+    </tr>
   <?php
   }
 
@@ -644,6 +796,13 @@ Detailed information about your site and content.
       update_term_meta($term_id, 'ds_seo_no_index', 1);
     } else {
       update_term_meta($term_id, 'ds_seo_no_index', 0);
+    }
+
+    if (!empty($_POST['ds_seo_canonical_url'])) {
+      update_term_meta($term_id, 'ds_seo_canonical_url',
+        esc_url_raw(sanitize_text_field($_POST['ds_seo_canonical_url'])));
+    } else {
+      delete_term_meta($term_id, 'ds_seo_canonical_url');
     }
   }
 
