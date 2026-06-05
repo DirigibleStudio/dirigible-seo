@@ -135,17 +135,17 @@ class DirigibleSEO
           <div class="seo-title-input-wrap<?php echo empty($ds_seo_title) ? ' is-empty' : ''; ?>">
             <span class="seo-title-placeholder" aria-hidden="true">Enter a title</span>
             <div id="ds_seo_title_editor"
-                 contenteditable="true"
-                 role="textbox"
-                 aria-multiline="false"
-                 aria-label="SEO Title"
-                 spellcheck="false"
-                 autocorrect="off"
-                 autocomplete="off"></div>
+              contenteditable="true"
+              role="textbox"
+              aria-multiline="false"
+              aria-label="SEO Title"
+              spellcheck="false"
+              autocorrect="off"
+              autocomplete="off"></div>
             <input type="hidden"
-                   name="ds_seo_title"
-                   id="ds_seo_title"
-                   value="<?php echo esc_attr($ds_seo_title); ?>" />
+              name="ds_seo_title"
+              id="ds_seo_title"
+              value="<?php echo esc_attr($ds_seo_title); ?>" />
           </div>
         </div>
         <div id="ds-editor-seo-description" class="seo-field">
@@ -156,7 +156,7 @@ class DirigibleSEO
 
           <label class="seo-field-checkbox-input" style="--checked:var(--danger)">
             <input type="checkbox" name="ds_seo_no_index" id="ds_seo_no_index" value="1" <?php checked($ds_seo_no_index, 1); ?> />
-            <span>Private Page</span>
+            <span>Private Page (Do Not Index)</span>
           </label>
 
           <p>When checked, search engines will not index this page and a noindex meta tag will be printed.</p>
@@ -165,17 +165,17 @@ class DirigibleSEO
         <div id="ds-editor-seo-canonical" class="seo-field">
           <label class="seo-field-checkbox-input">
             <input type="checkbox" name="ds_seo_custom_canonical_enabled"
-                   id="ds_seo_custom_canonical_enabled" value="1"
-                   <?php checked(!empty($ds_seo_canonical_url)); ?> />
+              id="ds_seo_custom_canonical_enabled" value="1"
+              <?php checked(!empty($ds_seo_canonical_url)); ?> />
             <span>Override canonical URL</span>
           </label>
           <p>By default this page's own URL is used as the canonical. Override only if this page is a duplicate of another.</p>
           <div id="ds-editor-seo-canonical-url" class="seo-field"
-               style="<?php echo empty($ds_seo_canonical_url) ? 'display:none' : ''; ?>">
+            style="<?php echo empty($ds_seo_canonical_url) ? 'display:none' : ''; ?>">
             <label for="ds_seo_canonical_url">Canonical URL</label>
             <input type="url" name="ds_seo_canonical_url" id="ds_seo_canonical_url"
-                   placeholder="https://example.com/original-page/"
-                   value="<?php echo esc_attr($ds_seo_canonical_url); ?>" />
+              placeholder="https://example.com/original-page/"
+              value="<?php echo esc_attr($ds_seo_canonical_url); ?>" />
           </div>
         </div>
         <div class="seo-divider"></div>
@@ -231,8 +231,11 @@ class DirigibleSEO
     }
 
     if (!empty($_POST['ds_seo_canonical_url'])) {
-      update_post_meta($post_id, 'ds_seo_canonical_url',
-        esc_url_raw(sanitize_text_field($_POST['ds_seo_canonical_url'])));
+      update_post_meta(
+        $post_id,
+        'ds_seo_canonical_url',
+        esc_url_raw(sanitize_text_field($_POST['ds_seo_canonical_url']))
+      );
     } else {
       delete_post_meta($post_id, 'ds_seo_canonical_url');
     }
@@ -263,7 +266,7 @@ class DirigibleSEO
   public function printMetaTitleTag()
   {
     $title = $this->stringFilters($this->metaTitle());
-    echo '<meta property="og:title" content="' . esc_attr( $title ) . '">';
+    echo '<meta property="og:title" content="' . esc_attr($title) . '">';
   }
 
   public function printNoIndexTag()
@@ -294,8 +297,8 @@ class DirigibleSEO
   public function printMetaDescriptionTag()
   {
     $description = $this->stringFilters($this->metaDescription());
-    echo '<meta name="description" content="' . esc_attr( $description ) . '">';
-    echo '<meta property="og:description" content="' . esc_attr( $description ) . '">';
+    echo '<meta name="description" content="' . esc_attr($description) . '">';
+    echo '<meta property="og:description" content="' . esc_attr($description) . '">';
   }
 
   public function printCanonicalTag()
@@ -450,8 +453,8 @@ class DirigibleSEO
     $link = home_url($wp->request);
     $name = get_bloginfo('name');
     echo "<meta property='og:type' content='website' />";
-    echo '<meta property="og:url" content="' . esc_url( $link ) . '">';
-    echo '<meta property="og:site_name" content="' . esc_attr( $name ) . '">';
+    echo '<meta property="og:url" content="' . esc_url($link) . '">';
+    echo '<meta property="og:site_name" content="' . esc_attr($name) . '">';
     do_action('ds_seo_head_title_tag');
     do_action('ds_seo_head_description_tag');
     do_action('ds_seo_head_image_tag');
@@ -667,7 +670,7 @@ Detailed information about your site and content.
   public function nagYoast()
   {
     $link = menu_page_url("dirigibleSEO", false);
-    $warning = "<p>It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. In the meantime, you can still set up your Dirigible SEO data.</p><p>If you already have Yoast metadata set up, you can <a href='" . esc_url( $link ) . "'>use our migration tool</a> to move your data from Yoast to Dirigible SEO.</p>";
+    $warning = "<p>It looks like you have Yoast active. In order minimize duplicate <head> entries, Dirigible SEO will not print any meta data until Yoast has been deactivated. In the meantime, you can still set up your Dirigible SEO data.</p><p>If you already have Yoast metadata set up, you can <a href='" . esc_url($link) . "'>use our migration tool</a> to move your data from Yoast to Dirigible SEO.</p>";
     printf("<div class='notice notice-error is-dismissable'><h2>Dirigible SEO and Yoast are both active.</h2>{$warning}</div>");
   }
 
@@ -781,9 +784,9 @@ Detailed information about your site and content.
       <th scope="row" valign="top"><label for="ds_seo_canonical_url">Canonical URL</label></th>
       <td>
         <input type="url" name="ds_seo_canonical_url" id="ds_seo_canonical_url"
-               class="regular-text"
-               placeholder="https://example.com/original-page/"
-               value="<?php echo esc_attr(get_term_meta($term->term_id, 'ds_seo_canonical_url', true)); ?>" />
+          class="regular-text"
+          placeholder="https://example.com/original-page/"
+          value="<?php echo esc_attr(get_term_meta($term->term_id, 'ds_seo_canonical_url', true)); ?>" />
         <p class="description">Leave empty to use this term's own URL as the canonical. Override only if this archive is a duplicate of another.</p>
       </td>
     </tr>
@@ -799,8 +802,11 @@ Detailed information about your site and content.
     }
 
     if (!empty($_POST['ds_seo_canonical_url'])) {
-      update_term_meta($term_id, 'ds_seo_canonical_url',
-        esc_url_raw(sanitize_text_field($_POST['ds_seo_canonical_url'])));
+      update_term_meta(
+        $term_id,
+        'ds_seo_canonical_url',
+        esc_url_raw(sanitize_text_field($_POST['ds_seo_canonical_url']))
+      );
     } else {
       delete_term_meta($term_id, 'ds_seo_canonical_url');
     }
@@ -809,7 +815,7 @@ Detailed information about your site and content.
   public function addUserNoIndexField($user)
   {
     $ds_seo_no_index = get_user_meta($user->ID, 'ds_seo_no_index', true);
-    ?>
+  ?>
     <h2>SEO Visibility</h2>
     <table class="form-table">
       <tr>
@@ -823,7 +829,7 @@ Detailed information about your site and content.
         </td>
       </tr>
     </table>
-    <?php
+  <?php
   }
 
   public function saveUserNoIndexField($user_id)
