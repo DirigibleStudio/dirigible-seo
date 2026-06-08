@@ -121,6 +121,7 @@ function makePillSpan(token, sep) {
 }
 
 var SEO_TITLE_PLACEHOLDER = 'Enter a title';
+var DEFAULT_SEO_TITLE = '{title} {|} {site}';
 
 function removePhantomPlaceholder(editor) {
   var first = editor.firstChild;
@@ -133,10 +134,11 @@ function removePhantomPlaceholder(editor) {
   }
 }
 
-function updatePlaceholder(editor, val) {
+function updatePlaceholder(editor) {
   var wrap = editor.closest('.seo-title-input-wrap');
   if (wrap) {
-    wrap.classList.toggle('is-empty', !val || !String(val).trim());
+    var val = extractEditorValue(editor);
+    wrap.classList.toggle('is-empty', !val || !val.trim());
   }
 }
 
@@ -172,7 +174,7 @@ function insertPillAtCaret(editor, hiddenInput, token) {
 
   removePhantomPlaceholder(editor);
   hiddenInput.value = extractEditorValue(editor);
-  updatePlaceholder(editor, hiddenInput.value);
+  updatePlaceholder(editor);
   notifySeoTitleChanged(hiddenInput);
 }
 
@@ -189,16 +191,15 @@ function initSeoTitleEditor() {
 
   removePhantomPlaceholder(editor);
 
-  if (hidden.value) {
-    editor.innerHTML = valueToEditorHtml(hidden.value, getSeoSeparator());
-  }
-  updatePlaceholder(editor, hidden.value);
+  var initialValue = hidden.value || DEFAULT_SEO_TITLE;
+  editor.innerHTML = valueToEditorHtml(initialValue, getSeoSeparator());
+  updatePlaceholder(editor);
 
   editor.addEventListener('input', function () {
     removePhantomPlaceholder(editor);
     var val = extractEditorValue(editor);
     hidden.value = val;
-    updatePlaceholder(editor, val);
+    updatePlaceholder(editor);
     notifySeoTitleChanged(hidden);
   });
 
@@ -226,7 +227,7 @@ function initSeoTitleEditor() {
       }
     }
     hidden.value = extractEditorValue(editor);
-    updatePlaceholder(editor, hidden.value);
+    updatePlaceholder(editor);
     notifySeoTitleChanged(hidden);
   });
 
