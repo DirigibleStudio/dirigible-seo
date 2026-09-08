@@ -21,7 +21,7 @@ if (!function_exists('dsGetPreviewSEO')) {
 
     $editingURL = esc_url($_REQUEST['editing_URL']);
     $site = get_bloginfo('name');
-    $separator = get_theme_mod('ds_seo_separator', '-');
+    $separator = (function_exists('ds_get_setting') ? ds_get_setting('ds_seo_separator', '-') : get_theme_mod('ds_seo_separator', '-'));
     if ($separator === false || $separator === '') {
       $separator = '-';
     }

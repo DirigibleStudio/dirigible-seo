@@ -487,7 +487,7 @@ class DirigibleSEO
     if (strpos($str, '{') !== false) {
       $term = get_queried_object();
       $title = get_the_title();
-      $separator = get_theme_mod('ds_seo_separator', '-');
+      $separator = (function_exists('ds_get_setting') ? ds_get_setting('ds_seo_separator', '-') : get_theme_mod('ds_seo_separator', '-'));
       if (isset($term)) {
         $title = $term->name ?: get_the_title();
       }
@@ -661,7 +661,7 @@ Detailed information about your site and content.
 
   function getDefaultTitle()
   {
-    $separator = get_theme_mod('ds_seo_separator', '-');
+    $separator = (function_exists('ds_get_setting') ? ds_get_setting('ds_seo_separator', '-') : get_theme_mod('ds_seo_separator', '-'));
     $title = trim(wp_title('', false, 'right'));
     $site = get_bloginfo('name');
     return "{$title} {$separator} {$site}";
@@ -737,7 +737,7 @@ Detailed information about your site and content.
       $default_description = $excerpt ?: '';
     }
 
-    $separator = get_theme_mod('ds_seo_separator', '-');
+    $separator = (function_exists('ds_get_setting') ? ds_get_setting('ds_seo_separator', '-') : get_theme_mod('ds_seo_separator', '-'));
     if (empty($separator)) {
       $separator = '-';
     }
@@ -847,7 +847,7 @@ Detailed information about your site and content.
 
   public function registerFields()
   {
-    $separator = get_theme_mod('ds_seo_separator') ?? '-';
+    $separator = (function_exists('ds_get_setting') ? ds_get_setting('ds_seo_separator') : get_theme_mod('ds_seo_separator')) ?? '-';
     $site = get_bloginfo('name');
     $default_title = "Page Title {$separator} {$site}";
     $SEO_fields = [
