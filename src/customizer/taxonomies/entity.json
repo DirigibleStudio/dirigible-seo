@@ -1,0 +1,6 @@
+{
+	"slug": "taxonomies",
+	"title": "Categories and tags",
+	"source": "src/seo.json",
+	"group": "ds_seo_taxonomies_panel"
+}

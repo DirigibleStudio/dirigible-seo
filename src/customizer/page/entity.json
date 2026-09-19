@@ -1,0 +1,6 @@
+{
+	"slug": "page",
+	"title": "Page SEO",
+	"source": "src/seo.json",
+	"group": "ds_seo_page_panel"
+}

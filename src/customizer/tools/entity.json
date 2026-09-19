@@ -1,0 +1,6 @@
+{
+	"slug": "tools",
+	"title": "Tools",
+	"source": "src/seo.json",
+	"group": "ds_seo_tools_panel"
+}

@@ -1,0 +1,6 @@
+{
+	"slug": "users",
+	"title": "Author archives",
+	"source": "src/seo.json",
+	"group": "ds_seo_users_panel"
+}

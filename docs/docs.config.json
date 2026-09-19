@@ -1,0 +1,12 @@
+{
+	"base": "dirigible-seo",
+	"title": "Dirigible SEO",
+	"sections": [
+		{
+			"slug": "settings",
+			"title": "Settings",
+			"kind": "customizer",
+			"source": "src/customizer"
+		}
+	]
+}
