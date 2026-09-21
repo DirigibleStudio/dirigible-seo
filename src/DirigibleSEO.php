@@ -563,7 +563,7 @@ class DirigibleSEO
       <h3>LLMs.txt Manager</h3>
       <p>Create and manage an <a href="https://llmstxt.org/" target="_blank">llms.txt</a> file in your WordPress root directory to help LLMs understand your website. This feature is not compatible with WordPress multisite.</p>
       <div id="llms-txt-editor">
-        <textarea id="llms-txt-content" rows="20" style="width: 100%; font-family: monospace;" placeholder="# Your Site Name
+        <textarea id="llms-txt-content" rows="20" cols="100" placeholder="# Your Site Name
 
 > Brief description of your site
 
@@ -573,10 +573,11 @@ Detailed information about your site and content.
 
 - [Home](https://yoursite.com): Your homepage
 - [About](https://yoursite.com/about): About your company"><?php echo esc_textarea($content); ?></textarea>
-        <br><br>
-        <button class='button button-primary' id='ds-save-llms-txt'>Save llms.txt</button>
-        <button class='button' id='ds-load-llms-txt'>Reload from File</button>
-        <button class='button button-link-delete' id='ds-delete-llms-txt' style='color: #d63638;'>Delete llms.txt</button>
+        <div class="llms-txt-actions">
+          <button type="button" class="button" id="ds-save-llms-txt">Save llms.txt</button>
+          <button type="button" class="button" id="ds-load-llms-txt">Reload from File</button>
+          <button type="button" class="button button-link-delete" id="ds-delete-llms-txt">Delete llms.txt</button>
+        </div>
       </div>
       <div id="llms-txt-status"></div>
     </div>

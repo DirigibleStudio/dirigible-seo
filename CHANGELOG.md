@@ -2,6 +2,11 @@
 
 All notable changes to Dirigible SEO are documented here.
 
+## 2.3.48 — 2026-09-21
+
+### Changed
+- LLMs.txt Manager: full-width textarea with cols and quiet Save / Reload / Delete actions to match the Dirigible Tools card shell.
+
 ## 2.3.47 — 2026-09-08
 
 ### Changed
