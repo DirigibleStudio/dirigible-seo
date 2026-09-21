@@ -5,7 +5,11 @@
   },
   "ds_seo_separator": {
     "text": "Character between the page name and the site name in default titles and in the separator pill (default -).",
-    "sources": ["../../../seo.json", "../../../DirigibleSEO.php"],
-    "sig": "c41c99"
+    "sources": [
+      "../../../seo.json",
+      "../../../DirigibleSEO.php"
+    ],
+    "sig": "c41c99",
+    "screenshot": "settings/title-separator.png"
   }
 }
