@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "blockVersion": null,
+    "updatedAt": "2026-09-19T19:50:00.000Z"
+  },
+  "ds_seo_separator": {
+    "text": "Character between the page name and the site name in default titles and in the separator pill (default -).",
+    "sources": ["../../../seo.json", "../../../DirigibleSEO.php"],
+    "sig": "c41c99"
+  }
+}
