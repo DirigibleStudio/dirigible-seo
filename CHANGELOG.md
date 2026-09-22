@@ -2,6 +2,11 @@
 
 All notable changes to Dirigible SEO are documented here.
 
+## 2.3.50 — 2026-09-22
+
+### Added
+- Accessible `alt` text on showcase screenshots in `screenshots.json` for Dirigible Support docs (screen readers; pipeline falls back to caption when needed).
+
 ## 2.3.49 — 2026-09-21
 
 ### Changed

@@ -1,7 +1,8 @@
 [
-  {
-    "file": "featured.jpg",
-    "caption": "SEO box in the page editor sidebar.",
-    "role": "featured"
-  }
+	{
+		"file": "featured.jpg",
+		"caption": "SEO box in the page editor sidebar.",
+		"role": "featured",
+		"alt": "Page editor sidebar SEO box with title and description fields"
+	}
 ]

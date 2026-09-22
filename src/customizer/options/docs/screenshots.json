@@ -1,7 +1,8 @@
 [
-  {
-    "file": "featured.jpg",
-    "caption": "Title Separator in Appearance → Customize → Dirigible SEO → Options.",
-    "role": "featured"
-  }
+	{
+		"file": "featured.jpg",
+		"caption": "Title Separator in Appearance → Customize → Dirigible SEO → Options.",
+		"role": "featured",
+		"alt": "Customizer Dirigible SEO Options panel showing Title Separator"
+	}
 ]
