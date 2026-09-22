@@ -2,6 +2,11 @@
 
 All notable changes to Dirigible SEO are documented here.
 
+## 2.3.49 — 2026-09-21
+
+### Changed
+- Capture Title Separator Customizer screenshot at 2× (retina) and align the gloss screenshot path.
+
 ## 2.3.48 — 2026-09-21
 
 ### Changed
