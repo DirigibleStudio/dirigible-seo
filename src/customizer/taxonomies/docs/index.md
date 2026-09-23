@@ -10,7 +10,7 @@ status: published
 
 ## Overview
 
-Public taxonomies — categories, tags, and custom taxonomies — get two SEO fields on the **Edit** term screen. Use them when an archive should stay out of search results, or when it duplicates another URL.
+Categories, tags, and other public taxonomies get two SEO fields on their **Edit** screen. Use them when an archive should stay out of search results, or when it duplicates another URL.
 
 ## Where to find these settings
 
@@ -22,7 +22,7 @@ These fields appear only on the edit screen, not on the “Add new” form.
 
 ## Fields
 
-- **Stop search engines from indexing this category?** — prints a `noindex` robots tag on that archive
+- **Stop search engines from indexing this category?** — asks search engines to leave that archive out of their results
 - **Canonical URL** — leave empty to use the term’s own archive URL. Fill it in only when this archive is a duplicate of another page
 
 ## Titles and descriptions

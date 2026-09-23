@@ -32,7 +32,7 @@ After you migrate, deactivate Yoast so Dirigible SEO can print live tags.
 
 ## LLMs.txt Manager
 
-Creates or updates an `llms.txt` file in the WordPress root so language models can read a short description of the site. See [llmstxt.org](https://llmstxt.org/).
+Creates or updates an `llms.txt` file at your site’s address (for example `yoursite.com/llms.txt`) so AI tools can read a short description of the site. See [llmstxt.org](https://llmstxt.org/).
 
 - **Save llms.txt** writes the textarea to the file
 - **Reload from File** reads the file back into the editor
@@ -42,5 +42,5 @@ This tool is not compatible with WordPress multisite.
 
 ## Tips
 
-- Run the Yoast migration once, then turn Yoast off. Leaving both plugins on leaves Dirigible tags commented out.
-- Treat `llms.txt` like a public file — do not paste private notes.
+- Run the Yoast migration once, then turn Yoast off. While both plugins are on, Dirigible SEO’s tags stay switched off.
+- Anyone can read `llms.txt`, so do not paste private notes.

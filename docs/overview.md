@@ -1,8 +1,6 @@
 # Dirigible SEO
 
-Dirigible SEO writes the search and social tags for your pages: title, description, Open Graph image, canonical URL, and optional noindex. It also lets you replace a page’s JSON-LD and manage an `llms.txt` file for AI crawlers.
-
-Use the sections below for the Customizer separator, the **SEO** sidebar on posts and pages, category and tag archives, author archives, and the Tools screens.
+Set the SEO title and meta description for each page, and control how it looks when shared on social media. Dirigible SEO also handles canonical URLs, hiding pages from search engines, custom structured data, and an `llms.txt` file for AI tools.
 
 ## Getting started
 
@@ -14,15 +12,15 @@ Use the sections below for the Customizer separator, the **SEO** sidebar on post
 
 ## What gets printed
 
-On the front end, Dirigible SEO adds:
+On the live site, Dirigible SEO adds:
 
-- The document title in the browser tab
-- `og:title`, `og:description`, `og:image`, `og:url`, `og:site_name`, and `og:type`
+- The page title shown in the browser tab and search results
 - A meta description
-- A canonical URL (WordPress’s built-in canonical is removed so this one is the only one)
-- A `noindex` robots tag when you mark a page, term, or author archive private
+- Social sharing details (title, description, image, and link) for Facebook, LinkedIn, and other sites that read Open Graph tags
+- A canonical URL, replacing the one WordPress adds on its own
+- A noindex tag on any page, category, tag, or author archive you mark private
 
-The share image is not a field you pick. It uses the featured image, or the first background or Image block on the page if there is no featured image.
+You do not pick the share image. It uses the featured image, or the first background or Image block on the page if there is no featured image.
 
 ## Where to find settings
 

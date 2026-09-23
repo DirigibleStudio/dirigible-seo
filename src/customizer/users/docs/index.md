@@ -20,9 +20,9 @@ Each user profile has one SEO control: whether search engines may index that aut
 
 ## Fields
 
-- **Stop search engines from indexing this author's archive page?** — prints a `noindex` robots tag on that author archive
+- **Stop search engines from indexing this author's archive page?** — asks search engines to leave that author archive out of their results
 
 ## Tips
 
 - Turn this on for staff accounts that should not have a public author index, or when you already list people on a directory page.
-- This does not noindex posts the person wrote — only the archive that lists them.
+- Posts the person wrote stay in search. Only the archive page that lists them is hidden.
